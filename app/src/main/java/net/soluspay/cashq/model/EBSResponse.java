@@ -1,10 +1,6 @@
 package net.soluspay.cashq.model;
 
-import org.json.JSONObject;
-
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,6 +31,9 @@ public class EBSResponse implements Serializable {
     private String pubKeyValue;
     private String tranCurrency;
     private String paymentInfo;
+
+    private String message;
+    private String code;
 
     private HashMap<String, Double> balance;
 
@@ -143,4 +142,11 @@ public class EBSResponse implements Serializable {
         return workingKey;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public String getCode() {
+        return code;
+    }
 }

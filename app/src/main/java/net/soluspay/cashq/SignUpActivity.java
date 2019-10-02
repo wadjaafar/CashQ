@@ -1,11 +1,9 @@
 package net.soluspay.cashq;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -20,6 +18,7 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.gndi_sd.szzt.R;
 
 import net.soluspay.cashq.model.EBSRequest;
+import net.soluspay.cashq.model.EBSResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -105,19 +104,21 @@ public class SignUpActivity extends AppCompatActivity {
                 // handle error
                 progressDialog.dismiss();
                 AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+                EBSResponse response = error.getErrorAsObject(EBSResponse.class);
                 builder.setTitle("Failed")
-                        .setMessage("Something went wrong, please try again!")
+                        .setMessage("There is an error: " + response.getCode())
+//                        .setMessage(error.getResponse().message())
+
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-
-
                             }
                         });
                 AlertDialog alert = builder.create();
                 alert.show();
-                Log.i("Response", error.getErrorBody());
+                Log.i("registration_error", error.getErrorBody());
             }
+
         });
     }
 

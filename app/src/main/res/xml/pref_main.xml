@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Merchant Services">
+
+
+        <!--
+        <Preference
+            android:key="@string/key_batch"
+            android:summary="Get Batch"
+            android:title="Batch" />
+
+
+
+        <Preference android:title="Reports"
+            android:key="@string/key_reports"
+            android:summary="Get Reports"/>
+
+        <Preference android:title="Reverse"
+            android:key="@string/key_reverse"
+            android:summary="Reverse a purchase"/>
+
+            !-->
+
+
+        <Preference android:title="Working Key"
+            android:key="@string/key_working_key"
+            android:summary="Get working key"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="General">
+
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="Language"
+            android:entries="@array/pref_language_entries"
+            android:entryValues="@array/pref_language_values"
+            android:key="@string/key_language"
+            android:summary="Choose language"
+            android:title="Language" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

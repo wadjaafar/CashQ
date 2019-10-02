@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Admin Settings">
+
+        <net.soluspay.cashq.utils.EditTextPreference
+            android:title="Terminal ID"
+            android:key="@string/key_terminal"
+            android:inputType="number"
+            android:maxLength="8"/>
+
+
+        <net.soluspay.cashq.utils.EditTextPreference
+            android:title="Client ID"
+            android:key="@string/key_client"/>
+
+        <net.soluspay.cashq.utils.EditTextPreference
+            android:title="Master Key"
+        android:key="@string/key_master_key"
+        android:maxLength="16"/>
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Network Settings">
+
+        <net.soluspay.cashq.utils.EditTextPreference
+            android:key="@string/key_host"
+            android:title="Host"/>
+
+        <net.soluspay.cashq.utils.EditTextPreference
+            android:title="Port"
+            android:key="@string/key_port"
+            android:maxLength="5"
+            android:inputType="number"/>
+
+        <!--
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="Scheme"
+            android:entries="@array/pref_scheme_entries"
+            android:entryValues="@array/pref_scheme_values"
+            android:key="@string/key_language"
+            android:summary="%s"
+            android:title="Scheme" />
+
+            !-->
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

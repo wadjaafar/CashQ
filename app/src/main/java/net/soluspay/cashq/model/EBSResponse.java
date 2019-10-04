@@ -1,5 +1,7 @@
 package net.soluspay.cashq.model;
 
+import android.support.annotation.IntRange;
+
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -35,9 +37,14 @@ public class EBSResponse implements Serializable {
     private String message;
     private String code;
 
+    private ErrorMessage errorMessage;
+
     private HashMap<String, Double> balance;
 
     private HashMap<String, String> billInfo;
+
+    public EBSResponse() {
+    }
 
     public HashMap<String, String> getBillInfo() {
         return billInfo;
@@ -150,3 +157,18 @@ public class EBSResponse implements Serializable {
         return code;
     }
 }
+
+
+ class ErrorMessage implements Serializable{
+    private String message;
+    private Integer code;
+    private String status;
+    private ErrorDetails details;
+}
+
+class ErrorDetails implements Serializable {
+    private String errorMessage;
+    private String errorCode;
+}
+
+// there's also a one for validations errors, ones of 400 error code

@@ -12,14 +12,12 @@ import android.view.ViewGroup;
 import com.gndi_sd.szzt.R;
 
 import net.soluspay.cashq.BalanceInquiryActivity;
-import net.soluspay.cashq.CustomsActivity;
 import net.soluspay.cashq.E15Activity;
-import net.soluspay.cashq.EducationActivity;
 import net.soluspay.cashq.ElectricityActivity;
 import net.soluspay.cashq.FundsTransferActivity;
+import net.soluspay.cashq.QRPayActivity;
 import net.soluspay.cashq.ServicePayment;
 import net.soluspay.cashq.TelecomActivity;
-import net.soluspay.cashq.VoucherActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,8 +41,8 @@ public class MainFragment extends Fragment {
     ConstraintLayout viewTelecom;
     @BindView(R.id.view_electricity)
     ConstraintLayout viewElectricity;
-    //    @BindView(R.id.view_qr_payment)
-//    ConstraintLayout viewQrPayment;
+    @BindView(R.id.view_qr_payment)
+    ConstraintLayout viewQrPayment;
 //    @BindView(R.id.view_education)
 //    ConstraintLayout viewEducation;
     @BindView(R.id.view_e15)
@@ -74,7 +72,7 @@ public class MainFragment extends Fragment {
     }
 
 
-    @OnClick({R.id.view_balance, R.id.view_purchase, R.id.view_transfer, R.id.view_telecom, R.id.view_electricity, R.id.view_e15})
+    @OnClick({R.id.view_balance, R.id.view_purchase, R.id.view_transfer, R.id.view_telecom, R.id.view_electricity, R.id.view_e15, R.id.view_qr_payment})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.view_balance:
@@ -92,8 +90,9 @@ public class MainFragment extends Fragment {
             case R.id.view_electricity:
                 startActivity(new Intent(getActivity(), ElectricityActivity.class));
                 break;
-//            case R.id.view_qr_payment:
-//                break;
+            case R.id.view_qr_payment:
+                startActivity(new Intent(getActivity(), QRPayActivity.class));
+                break;
 //            case R.id.view_education:
 //                startActivity(new Intent(getActivity(), EducationActivity.class));
 //                break;

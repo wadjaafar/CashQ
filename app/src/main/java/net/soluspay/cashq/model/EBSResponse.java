@@ -1,7 +1,5 @@
 package net.soluspay.cashq.model;
 
-import android.support.annotation.IntRange;
-
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -111,14 +109,14 @@ public class EBSResponse implements Serializable {
     }
 
     public String getTranDateTime() {
-            Date newDate = new Date();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            try {
-                newDate = dateFormat.parse(tranDateTime);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            return dateFormat.format(newDate);
+        Date newDate = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            newDate = dateFormat.parse(tranDateTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateFormat.format(newDate);
     }
 
     public String getTerminalId() {
@@ -156,19 +154,105 @@ public class EBSResponse implements Serializable {
     public String getCode() {
         return code;
     }
+
+    public String getEbsError() {
+        return errorMessage.getEbsMessage();
+    }
+
+    public Integer getEbsCode() {
+        return errorMessage.getEbsCode();
+    }
+
+    /**
+     * @param code error code, get it from onError error.getErrorCode()
+     * @return String text of the error that occurred.
+     * <p>
+     * This method is particularly interesting in that it does magic things:
+     * - it checks if the error code is *NOT* zero (to handle ebs case)
+     * - the other case will be for non-ebs errors.
+     */
+    public String getError(Integer code) {
+        if (code >= 400 && code < 500) {
+            // a validation error - and other form of errors
+            return this.getCode();
+        } else {
+            return errorMessage.getMessage();
+        }
+    }
+
+    /*
+     * A helper functions that works for both classes of errors; whether they are ebs or not
+     */
+    public Integer getEbsCode(Integer code) {
+        if (errorMessage.isEbsError()) {
+            return errorMessage.getEbsCode();
+        } else {
+            return errorMessage.getCode();
+        }
+    }
+
 }
 
 
- class ErrorMessage implements Serializable{
+/**
+ * This class implements (marshals) noebs *all* error classes
+ * whether they were stemmed from EBS errors, or other kind of errors
+ */
+class ErrorMessage implements Serializable{
     private String message;
     private Integer code;
     private String status;
     private ErrorDetails details;
+
+    public ErrorMessage(Integer code) {
+
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    String getEbsMessage() {
+        return details.getResponseMessage();
+    }
+
+    Integer getEbsCode() {
+        return details.getResponseCode();
+    }
+
+    public String getEbsStatus() {
+        return details.getResponseStatus();
+    }
+
+    boolean isEbsError() {
+        if (details.getResponseCode() == null) {
+            return false;
+        } else {
+            return details.getResponseCode() != 0;
+        }
+    }
 }
 
 class ErrorDetails implements Serializable {
-    private String errorMessage;
-    private String errorCode;
+    private String responseMessage;
+    private String responseStatus;
+    private Integer responseCode;
+
+    public String getResponseMessage() {
+        return responseMessage;
+    }
+
+    public String getResponseStatus() {
+        return responseStatus;
+    }
+
+    public Integer getResponseCode() {
+        return responseCode;
+    }
 }
 
 // there's also a one for validations errors, ones of 400 error code

@@ -3,13 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.gndi_sd.szzt">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.CLOUDPOS_MSR" />
-    <uses-permission android:name="android.permission.CLOUDPOS_PRINTER" />
-
     <application
         android:name="net.soluspay.cashq.utils.MyApplication"
         android:allowBackup="false"
@@ -19,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="HardcodedDebugMode">
-        <activity android:name="net.soluspay.cashq.ServicePayment"></activity>
+        <activity android:name="net.soluspay.cashq.ScanCodeActivity"></activity>
+        <activity android:name="net.soluspay.cashq.QRPayActivity" />
+        <activity android:name="net.soluspay.cashq.ServicePayment" />
         <activity android:name="net.soluspay.cashq.AddCardActivity" />
         <activity android:name="net.soluspay.cashq.SignUpActivity" />
         <activity android:name="net.soluspay.cashq.CardActivity" />
@@ -66,5 +61,14 @@
         </activity>
         <activity android:name="net.soluspay.cashq.PurchaseActivity" />
     </application>
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.CLOUDPOS_MSR" />
+    <uses-permission android:name="android.permission.CLOUDPOS_PRINTER" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

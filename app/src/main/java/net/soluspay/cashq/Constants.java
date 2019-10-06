@@ -14,5 +14,7 @@ public class Constants {
     public static final String ADD_CARD = "add_card";
     public static final String BILL_PAYMENT = "bill_payment";
     public static final String BILL_INQUIRY = "bill_inquiry";
+    public static final String QR_PAYMENT = "qr_payment";
+    public static final String QR_REFUND = "qr_refund";
 
 }

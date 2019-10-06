@@ -103,7 +103,7 @@ public class QRPayActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        AndroidNetworking.post(request.serverUrl() + Constants.BILL_PAYMENT)
+        AndroidNetworking.post(request.serverUrl(true) + Constants.QR_PAYMENT)
                 .addJSONObjectBody(object) // posting java object
                 .setTag("test")
                 .setPriority(Priority.MEDIUM)

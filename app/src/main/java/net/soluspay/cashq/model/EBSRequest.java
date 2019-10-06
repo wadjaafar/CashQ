@@ -1,10 +1,5 @@
 package net.soluspay.cashq.model;
 
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-
-import net.soluspay.cashq.utils.MyApplication;
-
 import org.apache.http.client.utils.URIBuilder;
 
 import java.io.Serializable;
@@ -12,7 +7,6 @@ import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Random;
 import java.util.UUID;
 
 public class EBSRequest implements Serializable {
@@ -89,6 +83,28 @@ public class EBSRequest implements Serializable {
         UUID uuid = UUID.randomUUID();
         String randomUUIDString = uuid.toString();
         return randomUUIDString;
+    }
+
+    public String serverUrl(boolean development) {
+        String host;
+
+        if (development) {
+            host = "beta.soluspay.net/consumer/";
+        } else {
+            host = "beta.soluspay.net/api/consumer/";
+        }
+
+        URIBuilder builder = new URIBuilder();
+        try {
+            // how to handle https ones?
+            // url is: https://beta.soluspay.net/api/
+            builder.setScheme("https")
+                    .setHost(host)
+                    .build();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        return builder.toString();
     }
 
     public String serverUrl() {

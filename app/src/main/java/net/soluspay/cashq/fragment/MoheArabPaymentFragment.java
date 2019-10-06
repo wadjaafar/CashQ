@@ -44,7 +44,6 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import butterknife.BindView;
@@ -175,6 +174,7 @@ public class MoheArabPaymentFragment extends Fragment {
         map.put("STUDFORMKIND", String.valueOf(form.getId()));
 
         String paymentInfo = Joiner.on("/").withKeyValueSeparator("=").join(map);
+        Log.i("paymentinfoorder", paymentInfo);
 
         request.setPayeeId("0010030004");
         request.setPaymentInfo(paymentInfo);

@@ -75,7 +75,7 @@
             android:drawableTint="@color/darkGray"
             android:fontFamily="@font/latosemibold"
             android:hint="MERCHANT ID"
-            android:inputType="number"
+            android:inputType="text"
             android:maxLength="13"
             android:padding="20dp"
             android:textColorHint="#606060"

@@ -135,6 +135,7 @@ public class QRPayActivity extends AppCompatActivity {
 
                     }
 
+
                     @Override
                     public void onError(ANError error) {
                         // handle error

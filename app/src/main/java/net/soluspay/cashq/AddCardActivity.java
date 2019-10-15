@@ -3,7 +3,6 @@ package net.soluspay.cashq;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,9 +20,8 @@ import com.github.dewinjm.monthyearpicker.MonthYearPickerDialog;
 import com.github.dewinjm.monthyearpicker.MonthYearPickerDialogFragment;
 import com.gndi_sd.szzt.R;
 
-import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
-import net.soluspay.cashq.utils.Globals;
+import net.soluspay.cashq.utils.CardDBManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,6 +46,8 @@ public class AddCardActivity extends AppCompatActivity {
     TextView expDate;
 
     private String date;
+
+    CardDBManager dbManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,11 +93,9 @@ public class AddCardActivity extends AppCompatActivity {
                 builder.setTitle("Successful")
                         .setMessage("Your card has been added successfully")
                         .setCancelable(false)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                //do things
-                                finish();
-                            }
+                        .setPositiveButton("OK", (dialog, id) -> {
+                            //do things
+                            finish();
                         });
                 AlertDialog alert = builder.create();
                 alert.show();
@@ -113,14 +111,12 @@ public class AddCardActivity extends AppCompatActivity {
                 builder.setTitle("Failed")
                         .setMessage("Something went wrong")
                         .setCancelable(false)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                //do things
-                            }
+                        .setPositiveButton("OK", (dialog, id) -> {
+                            //do things
                         });
                 AlertDialog alert = builder.create();
                 alert.show();
-                Log.i("MESSAGE", "Fail");
+                Log.i("MESSAGE", error.getErrorBody());
 
 
             }

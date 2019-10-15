@@ -33,8 +33,6 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -134,7 +132,7 @@ public class ElectricityActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError error) {
                         // handle error
-                        Log.i("Purchase Error", String.valueOf(error.getErrorBody()));
+                        Log.i("Electricity Error", String.valueOf(error.getErrorBody()));
                         if (error.getErrorCode() == 504){
                             Toast.makeText(getApplicationContext(), "Unable to connect to host", Toast.LENGTH_SHORT).show();
                         }

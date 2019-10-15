@@ -58,5 +58,9 @@ public class CardDBManager {
         database.delete(CardDBHelper.TABLE_NAME, CardDBHelper._ID + "=" + _id, null);
     }
 
+    public void deleteAll() {
+//        database.delete(CardDBHelper.TABLE_NAME);
+        database.execSQL("DELETE FROM CARDS");
+    }
 
 }

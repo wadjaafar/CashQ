@@ -11,7 +11,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -22,6 +21,7 @@ import com.gndi_sd.szzt.R;
 import net.soluspay.cashq.adapter.CardAdapter;
 import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
+import net.soluspay.cashq.utils.CardDBManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,6 +42,8 @@ public class CardActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Card> cards;
 
+    CardDBManager dbManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +54,8 @@ public class CardActivity extends AppCompatActivity {
         setTitle("My Cards");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        dbManager = new CardDBManager(this);
+        dbManager.open();
         getCards();
 
     }
@@ -74,6 +78,9 @@ public class CardActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 // do anything with response
                 Log.i("MESSAGE", response.toString());
+                // remove the old db FIXME
+                dbManager.deleteAll();
+
                 try {
                     JSONArray cardArray = response.getJSONArray("cards");
                     cards = new ArrayList<>();
@@ -84,6 +91,9 @@ public class CardActivity extends AppCompatActivity {
                         int id = cardArray.getJSONObject(i).getInt("id");
                         Log.i("MESSAGE", cardArray.toString());
                         cards.add(new Card(id, name, pan, expDate));
+                        // should remove the previous DB!
+                        // and replace them with the current ones
+                        dbManager.insert(pan, expDate, name);
                     }
 
                     //creating recyclerview adapter

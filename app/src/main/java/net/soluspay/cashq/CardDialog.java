@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ import com.gndi_sd.szzt.R;
 import net.soluspay.cashq.adapter.CardAdapter;
 import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
+import net.soluspay.cashq.utils.CardDBManager;
 import net.soluspay.cashq.utils.MessageManager;
 
 import org.json.JSONArray;
@@ -79,6 +81,7 @@ public class CardDialog extends DialogFragment {
 
     List<Card> cards;
 
+    CardDBManager dbManager;
 
     public static CardDialog newInstance() {
 
@@ -103,7 +106,13 @@ public class CardDialog extends DialogFragment {
         unbinder = ButterKnife.bind(this, view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true));
-        getCards();
+        //getCards();
+        //creating recyclerview adapter
+        List<Card> cardList = getAllCards();
+        adapter = new CardAdapter(getActivity(), cardList);
+        //setting adapter to recyclerview
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
         return view;
     }
 
@@ -161,6 +170,38 @@ public class CardDialog extends DialogFragment {
 
         void onActionClick(Card card);
 
+    }
+
+    public List<Card> getAllCards() {
+
+        // sorting orders
+        //String sortOrder = RECIPE_TITLE + " ASC";
+        List<Card> cardList = new ArrayList<Card>();
+
+        dbManager = new CardDBManager(getActivity());
+        dbManager.open();
+
+        Cursor cursor = dbManager.fetch();
+        // Traversing through all rows and adding to list
+        if (cursor.moveToFirst()) {
+
+            do {
+
+                Card card = new Card();
+                card.setPan(cursor.getString(cursor.getColumnIndex("pan")));
+                card.setExpDate(cursor.getString(cursor.getColumnIndex("expdate")));
+                card.setName(cursor.getString(cursor.getColumnIndex("name")));
+
+                // Adding user record to list
+                cardList.add(card);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        dbManager.close();
+
+        // return user list
+        return cardList;
     }
 
     public void getCards() {

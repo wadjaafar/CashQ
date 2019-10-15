@@ -13,7 +13,7 @@ public class EBSRequest implements Serializable {
 
     private String uuid = generateUUID();
     private String tranDateTime = getDate();
-    private String applicationId = "ActsQA";
+    private String applicationId = "ACTSCon";
     private String pan, expDate, IPIN, newIPIN;
     private Float tranAmount;
     private String tranCurrencyCode;

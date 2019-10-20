@@ -41,8 +41,8 @@ public class MainFragment extends Fragment {
     ConstraintLayout viewTelecom;
     @BindView(R.id.view_electricity)
     ConstraintLayout viewElectricity;
-    @BindView(R.id.view_qr_payment)
-    ConstraintLayout viewQrPayment;
+//    @BindView(R.id.view_qr_payment)
+//    ConstraintLayout viewQrPayment;
 //    @BindView(R.id.view_education)
 //    ConstraintLayout viewEducation;
     @BindView(R.id.view_e15)
@@ -72,7 +72,7 @@ public class MainFragment extends Fragment {
     }
 
 
-    @OnClick({R.id.view_balance, R.id.view_purchase, R.id.view_transfer, R.id.view_telecom, R.id.view_electricity, R.id.view_e15, R.id.view_qr_payment})
+    @OnClick({R.id.view_balance, R.id.view_purchase, R.id.view_transfer, R.id.view_telecom, R.id.view_electricity, R.id.view_e15})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.view_balance:
@@ -90,9 +90,9 @@ public class MainFragment extends Fragment {
             case R.id.view_electricity:
                 startActivity(new Intent(getActivity(), ElectricityActivity.class));
                 break;
-            case R.id.view_qr_payment:
-                startActivity(new Intent(getActivity(), QRPayActivity.class));
-                break;
+//            case R.id.view_qr_payment:
+//                startActivity(new Intent(getActivity(), QRPayActivity.class));
+//                break;
 //            case R.id.view_education:
 //                startActivity(new Intent(getActivity(), EducationActivity.class));
 //                break;

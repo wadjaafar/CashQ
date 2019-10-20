@@ -109,7 +109,6 @@ public class CardActivity extends AppCompatActivity {
                 }
                 progressDialog.dismiss();
 
-
             }
 
             @Override

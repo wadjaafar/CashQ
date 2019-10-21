@@ -10,6 +10,22 @@ pool:
   vmImage: 'macos-latest'
 
 steps:
+
+- task: DownloadSecureFile@1
+  inputs:
+    secureFile: 'key.jks'
+
+
+- task: AndroidSigning@3
+  inputs:
+    apkFiles: '**/*.apk'
+    apksignerKeystoreFile: 'key.jks'
+    apksignerKeystorePassword: 'Adonese=1994'
+    apksignerKeystoreAlias: 'key0'
+    apksignerKeyPassword: 'Adonese=1994'
+
+
+
 - task: Gradle@2
   inputs:
     workingDirectory: ''
@@ -19,3 +35,4 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug'
+

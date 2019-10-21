@@ -16,11 +16,11 @@ android {
     }
     compileSdkVersion 28
     defaultConfig {
-        applicationId "net.soluspay.cashq"
-        minSdkVersion 22
+        applicationId "net.soluspay.cashqlite"
+        minSdkVersion 21
         targetSdkVersion 28
-        versionCode 3
-        versionName '2.1-beta'
+        versionCode 1
+        versionName '1.1-beta'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

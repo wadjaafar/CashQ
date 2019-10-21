@@ -140,7 +140,7 @@ public class SignUpActivity extends AppCompatActivity {
             error = true;
             mobile.setError("Mobile number cannot be empty");
         }
-        if (email.getText().toString().length() < 10)
+        if (email.getText().toString().length() != 10)
         {
             error = true;
             email.setError("Mobile number should be 10 digits");

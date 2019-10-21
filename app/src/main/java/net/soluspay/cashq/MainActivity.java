@@ -42,6 +42,11 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 
+//Azure imports
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
+
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
@@ -57,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Adding Azure Stats (remind me to send you the link / invitation later
+        AppCenter.start(getApplication(), "450069cc-94d3-49f9-9623-f38b3eb30831",
+                Analytics.class, Crashes.class);
 
         if (isNetworkAvailable()) {
             getPublicKey();

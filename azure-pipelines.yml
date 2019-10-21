@@ -16,16 +16,6 @@ steps:
     secureFile: 'key.jks'
 
 
-- task: AndroidSigning@3
-  inputs:
-    apkFiles: '**/*.apk'
-    apksignerKeystoreFile: 'key.jks'
-    apksignerKeystorePassword: 'Adonese=1994'
-    apksignerKeystoreAlias: 'key0'
-    apksignerKeyPassword: 'Adonese=1994'
-
-
-
 - task: Gradle@2
   inputs:
     workingDirectory: ''
@@ -36,3 +26,26 @@ steps:
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug'
 
+- task: AndroidSigning@3
+  inputs:
+    apkFiles: '**/*.apk'
+    apksign: true
+    apksignerKeystoreFile: 'key.jks'
+    apksignerKeystorePassword: 'Adonese=1994'
+    apksignerKeystoreAlias: 'key0'
+    apksignerKeyPassword: 'Adonese=1994'
+    apksignerArguments: --out $(Build.SourcesDirectory)/app/build/outputs/apk/release/app-release.apk
+    zipalign: true
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: $(Build.SourcesDirectory)
+    contents: '**/*-release.apk'
+    targetFolder: '$(build.artifactStagingDirectory)'
+    overWrite: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)/app/build/outputs/apk/release/'
+    artifactName: 'apks'
+    publishLocation: 'container'

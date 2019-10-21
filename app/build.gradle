@@ -1,20 +1,20 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        debug {
-            storeFile file('C:\\Users\\MSI\\Documents\\solus\\key.jks')
-            storePassword 'Adonese=1994'
-            keyAlias = 'key0'
-            keyPassword 'Adonese=1994'
-        }
-        release {
-            storeFile file('C:\\Users\\MSI\\Documents\\solus\\key.jks')
-            storePassword 'Adonese=1994'
-            keyAlias = 'key0'
-            keyPassword 'Adonese=1994'
-        }
-    }
+//    signingConfigs {
+//        debug {
+//            storeFile file('C:\\Users\\MSI\\Documents\\solus\\key.jks')
+//            storePassword 'Adonese=1994'
+//            keyAlias = 'key0'
+//            keyPassword 'Adonese=1994'
+//        }
+//        release {
+//            storeFile file('C:\\Users\\MSI\\Documents\\solus\\key.jks')
+//            storePassword 'Adonese=1994'
+//            keyAlias = 'key0'
+//            keyPassword 'Adonese=1994'
+//        }
+//    }
     lintOptions {
 
         checkReleaseBuilds false

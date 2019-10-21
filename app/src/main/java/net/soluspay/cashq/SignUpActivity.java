@@ -136,15 +136,15 @@ public class SignUpActivity extends AppCompatActivity {
             error = true;
             mobile.setError("Mobile number cannot be empty");
         }
-        if (email.getText().toString().isEmpty()) {
-            error = true;
-            mobile.setError("Mobile number cannot be empty");
-        }
-        if (mobile.getText().toString().length() != 10)
-        {
+        if (mobile.getText().toString().length() != 10) {
             error = true;
             mobile.setError("Mobile number should be 10 digits");
         }
+        if (email.getText().toString().isEmpty()) {
+            error = true;
+            email.setError("Mobile number cannot be empty");
+        }
+
         if(fullname.getText().toString().isEmpty())
         {
             error = true;

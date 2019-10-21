@@ -86,13 +86,11 @@ public class SignUpActivity extends AppCompatActivity {
                 builder.setTitle("Successful")
                         .setMessage("You have been registered successfully")
                         .setCancelable(false)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                //do things
-                                startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
-                                finish();
+                        .setPositiveButton("OK", (dialog, id) -> {
+                            //do things
+                            startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
+                            finish();
 
-                            }
                         });
                 AlertDialog alert = builder.create();
                 alert.show();

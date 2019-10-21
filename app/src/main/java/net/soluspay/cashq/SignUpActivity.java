@@ -69,6 +69,7 @@ public class SignUpActivity extends AppCompatActivity {
             jsonObject.put("mobile", mobile.getText().toString());
         } catch (JSONException e) {
             e.printStackTrace();
+
         }
 
         AndroidNetworking.post(request.serverUrl() + Constants.SIGN_UP)

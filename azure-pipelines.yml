@@ -6,6 +6,9 @@
 trigger:
 - dev
 
+variables:
+- group: my-variable-group
+
 pool:
   vmImage: 'macos-latest'
 
@@ -31,9 +34,9 @@ steps:
     apkFiles: '**/*.apk'
     apksign: true
     apksignerKeystoreFile: 'key.jks'
-    apksignerKeystorePassword: 'Adonese=1994'
+    apksignerKeystorePassword: $(password)
     apksignerKeystoreAlias: 'key0'
-    apksignerKeyPassword: 'Adonese=1994'
+    apksignerKeyPassword: $(password)
     apksignerArguments: --out $(Build.SourcesDirectory)/app/build/outputs/apk/release/app-release.apk
     zipalign: true
 

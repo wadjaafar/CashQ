@@ -177,4 +177,5 @@ public class SignUpActivity extends AppCompatActivity {
             //manage error case here
         }
     }
+
 }

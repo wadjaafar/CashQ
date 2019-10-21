@@ -31,9 +31,9 @@ steps:
     apkFiles: '**/*.apk'
     apksign: true
     apksignerKeystoreFile: 'key.jks'
-    apksignerKeystorePassword: $PASSWORD
+    apksignerKeystorePassword: $(password)
     apksignerKeystoreAlias: 'key0'
-    apksignerKeyPassword: $PASSWORD
+    apksignerKeyPassword: $(password)
     apksignerArguments: --out $(Build.SourcesDirectory)/app/build/outputs/apk/release/app-release.apk
     zipalign: true
 

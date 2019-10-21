@@ -6,9 +6,6 @@
 trigger:
 - dev
 
-variables:
-- group: my-variable-group
-
 pool:
   vmImage: 'macos-latest'
 

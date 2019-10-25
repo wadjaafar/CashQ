@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class EBSResponse implements Serializable {
 
@@ -110,7 +111,8 @@ public class EBSResponse implements Serializable {
 
     public String getTranDateTime() {
         Date newDate = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        // we have to set the locale as this will fail in a non en-US ones!
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
         try {
             newDate = dateFormat.parse(tranDateTime);
         } catch (ParseException e) {

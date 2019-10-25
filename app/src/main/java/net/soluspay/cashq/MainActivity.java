@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.preference.PreferenceManager;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -17,7 +17,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -28,14 +27,16 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.gndi_sd.szzt.R;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 
 import net.soluspay.cashq.fragment.MainFragment;
 import net.soluspay.cashq.model.EBSRequest;
 import net.soluspay.cashq.model.EBSResponse;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,9 +44,6 @@ import org.json.JSONObject;
 import java.lang.reflect.Type;
 
 //Azure imports
-import com.microsoft.appcenter.AppCenter;
-import com.microsoft.appcenter.analytics.Analytics;
-import com.microsoft.appcenter.crashes.Crashes;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -181,11 +179,12 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError error) {
                         // handle error
+                        EBSResponse response = error.getErrorAsObject(EBSResponse.class);
                         Log.i("Working Key Error", String.valueOf(error.getErrorBody()));
                         //Toast.makeText(getApplicationContext(), error.getErrorCode(), Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                         //Toast.makeText(getApplicationContext(), error.getErrorCode(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getApplicationContext(), "Key downloading failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Key downloading failed. Code" + response.getCode(), Toast.LENGTH_SHORT).show();
                         //android.os.Process.killProcess(android.os.Process.myPid());
                     }
                 });

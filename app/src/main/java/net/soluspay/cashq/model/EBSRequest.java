@@ -7,6 +7,7 @@ import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 public class EBSRequest implements Serializable {
@@ -74,7 +75,7 @@ public class EBSRequest implements Serializable {
     }
 
     public String getDate(){
-        DateFormat dateFormat = new SimpleDateFormat("ddMMyyHHmmss");
+        DateFormat dateFormat = new SimpleDateFormat("ddMMyyHHmmss", Locale.US);
         Date date = new Date();
         return dateFormat.format(date);
     }

@@ -27,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -160,8 +161,8 @@ public class AddCardActivity extends AppCompatActivity {
                 // do something
                 String yearString = Integer.toString(year);
                 int month = monthOfYear + 1;
-                expDate.setText(String.format("%02d / %s", month, year));
-                date = String.format("%s%02d", yearString.substring(2), month);
+                expDate.setText(String.format(Locale.US, "%02d / %s", month, year));
+                date = String.format(Locale.US, "%s%02d", yearString.substring(2), month);
                 Log.i("Date", date);
             }
         });

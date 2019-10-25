@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                         //Toast.makeText(getApplicationContext(), error.getErrorCode(), Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                         //Toast.makeText(getApplicationContext(), error.getErrorCode(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getApplicationContext(), "Key downloading failed. Code" + response.getCode(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Key downloading failed. Code: " + response.getCode(), Toast.LENGTH_SHORT).show();
                         //android.os.Process.killProcess(android.os.Process.myPid());
                     }
                 });

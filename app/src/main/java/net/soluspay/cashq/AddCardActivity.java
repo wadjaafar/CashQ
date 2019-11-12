@@ -118,8 +118,6 @@ public class AddCardActivity extends AppCompatActivity {
                 AlertDialog alert = builder.create();
                 alert.show();
                 Log.i("MESSAGE", error.getErrorBody());
-
-
             }
         });
     }
@@ -155,18 +153,14 @@ public class AddCardActivity extends AppCompatActivity {
 
         dialogFragment.show(getSupportFragmentManager(), null);
 
-        dialogFragment.setOnDateSetListener(new MonthYearPickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(int year, int monthOfYear) {
-                // do something
-                String yearString = Integer.toString(year);
-                int month = monthOfYear + 1;
-                expDate.setText(String.format(Locale.US, "%02d / %s", month, year));
-                date = String.format(Locale.US, "%s%02d", yearString.substring(2), month);
-                Log.i("Date", date);
-            }
+        dialogFragment.setOnDateSetListener((year, monthOfYear) -> {
+            // do something
+            String yearString = Integer.toString(year);
+            int month = monthOfYear + 1;
+            expDate.setText(String.format(Locale.US, "%02d / %s", month, year));
+            date = String.format(Locale.US, "%s%02d", yearString.substring(2), month);
+            Log.i("Date", date);
         });
-
     }
 
 

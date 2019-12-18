@@ -18,9 +18,7 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.gndi_sd.szzt.R;
 
-import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
-import net.soluspay.cashq.utils.Globals;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,6 +57,7 @@ public class SignInActivity extends AppCompatActivity {
 
         final ProgressDialog progressDialog;
         progressDialog = ProgressDialog.show(this, "Sign In", "Please wait...", false, false);
+
         EBSRequest request = new EBSRequest();
 
         JSONObject jsonObject = new JSONObject();

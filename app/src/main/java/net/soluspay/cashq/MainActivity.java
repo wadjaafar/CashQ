@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = sp.edit();
                                 editor.putString("public_key", result.getPubKeyValue());
                                 editor.commit();
-                                //Toast.makeText(getApplicationContext(), "Key downloaded successfully ", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Key downloaded successfully ", Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -251,8 +251,65 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        String token = getHeader();
+        // Send Request
+
+        EBSRequest request = new EBSRequest();
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("token", token);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        AndroidNetworking.post(request.serverUrl() + Constants.REFRESH_TOKEN)
+                .addJSONObjectBody(jsonObject)
+                .setTag("test")
+                .setContentType("application/json")
+                .setPriority(Priority.MEDIUM)
+                .addHeaders("Authorization", token)
+                .build().getAsJSONObject(new JSONObjectRequestListener() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // do anything with response
+                try {
+                    // either get "authorization" or "token"
+                    String token = response.getString("authorization");
+
+
+                    SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putString("token", token);
+                    editor.apply();
+                    finish();
+
+                } catch (JSONException e) {
+                    Log.i("refresh_token", "There is an error: ", e);
+                }
+
+            }
+
+            @Override
+            public void onError(ANError error) {
+                // handle error
+                Log.i("Response", error.getErrorBody());
+                Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private String getHeader() {
+        SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);
+        String token = sp.getString("token", null);
+        return token;
+    }
     @Override
     protected void onPause() {
         super.onPause();
@@ -266,5 +323,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
 }

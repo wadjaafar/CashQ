@@ -3,29 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.gndi_sd.szzt">
 
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.CLOUDPOS_MSR" />
     <uses-permission android:name="android.permission.CLOUDPOS_PRINTER" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name="net.soluspay.cashq.utils.MyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="HardcodedDebugMode">
-
-        <activity android:name="net.soluspay.cashq.ScanCodeActivity" />
-        <activity android:name="net.soluspay.cashq.QRPayActivity" />
-        <activity android:name="net.soluspay.cashq.ServicePayment" />
+        <activity android:name="net.soluspay.cashq.ServicePayment"></activity>
         <activity android:name="net.soluspay.cashq.AddCardActivity" />
         <activity android:name="net.soluspay.cashq.SignUpActivity" />
         <activity android:name="net.soluspay.cashq.CardActivity" />
@@ -66,13 +60,8 @@
         <activity android:name="net.soluspay.cashq.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:host="web.soluspay.net" android:scheme="https" />
-                <data android:host="cashq.soluspay.net" android:scheme="https" />
-                <category android:name="android.intent.category.LAUNCHER" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="net.soluspay.cashq.PurchaseActivity" />

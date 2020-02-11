@@ -49,10 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
-    private NavigationView navigationView;
     FragmentManager fragmentManager = getSupportFragmentManager();
 
-    private boolean isAuthorized;
 
     TextView username, emailtext;
 
@@ -74,35 +72,19 @@ public class MainActivity extends AppCompatActivity {
 
                     // Specifying a listener allows you to take an action before dismissing the dialog.
                     // The dialog is automatically dismissed when a dialog button is clicked.
-                    .setPositiveButton("Retry", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            // Continue with delete operation
-                            getPublicKey();
-                        }
+                    .setPositiveButton("Retry", (dialog, which) -> {
+                        // Continue with delete operation
+                        getPublicKey();
                     })
 
                     // A null listener allows the button to dismiss the dialog and take no further action.
-                    .setNegativeButton("Close", new DialogInterface.OnClickListener(){
-
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            android.os.Process.killProcess(android.os.Process.myPid());
-                        }
-                    })
+//                    .setNegativeButton("Close", (dialog, which) -> android.os.Process.killProcess(android.os.Process.myPid()))
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
         }
-        /*
-        if (isNetworkAvailable()) {
-            //Connected to the Internet
-        } else {
-            //Not connected
-            Toast.makeText(this, "Please check your network connection", Toast.LENGTH_LONG).show();
 
-        }
-        */
 
-        navigationView = findViewById(R.id.mydrawer);
+        NavigationView navigationView = findViewById(R.id.mydrawer);
         username = navigationView.getHeaderView(0).findViewById(R.id.header_name);
         emailtext = navigationView.getHeaderView(0).findViewById(R.id.header_email);
         SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);
@@ -116,14 +98,11 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         fragmentManager.beginTransaction().replace(R.id.fragment, new MainFragment()).commit();
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        navigationView.setNavigationItemSelectedListener(item -> {
 
-                selectDrawerItem(item);
-                return true;
+            selectDrawerItem(item);
+            return true;
 
-            }
         });
 
 
@@ -256,10 +235,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onRestart() {
+        // this method halts the app to its grinds
+//        this.oAuthRetry();
         super.onRestart();
-        String token = getHeader();
+    }
+
+
+    // this function handles auth retry on onRestart method
+    private void  oAuthRetry(){
         // Send Request
 
+        String token = getHeader();
         EBSRequest request = new EBSRequest();
 
         JSONObject jsonObject = new JSONObject();
@@ -307,9 +293,9 @@ public class MainActivity extends AppCompatActivity {
 
     private String getHeader() {
         SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);
-        String token = sp.getString("token", null);
-        return token;
+        return sp.getString("token", null);
     }
+
     @Override
     protected void onPause() {
         super.onPause();

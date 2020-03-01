@@ -229,20 +229,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+
         super.onResume();
 
     }
 
-    @Override
-    protected void onRestart() {
-        // this method halts the app to its grinds
-//        this.oAuthRetry();
-        super.onRestart();
-    }
 
 
     // this function handles auth retry on onRestart method
-    private void  oAuthRetry(){
+    private void  authRetry(){
         // Send Request
 
         String token = getHeader();

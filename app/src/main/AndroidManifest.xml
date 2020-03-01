@@ -65,6 +65,8 @@
             </intent-filter>
         </activity>
         <activity android:name="net.soluspay.cashq.PurchaseActivity" />
+        <activity android:name="net.soluspay.cashq.QRPayActivity" />
+        <activity android:name="net.soluspay.cashq.ScanCodeActivity" />
     </application>
 
 </manifest>

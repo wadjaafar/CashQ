@@ -486,14 +486,14 @@
 -->
             </LinearLayout>
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="fill_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@+id/new_inquery_lin"-->
-<!--                android:layout_weight="0.5"-->
-<!--                android:orientation="horizontal">-->
-<!--                &lt;!&ndash;-->
-<!--                                <android.support.constraint.ConstraintLayout-->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/new_inquery_lin"
+                android:layout_weight="0.5"
+                android:orientation="horizontal">
+
+<!--                <android.support.constraint.ConstraintLayout-->
 <!--                                    android:id="@+id/view_education"-->
 <!--                                    android:layout_width="match_parent"-->
 <!--                                    android:layout_height="120dp"-->
@@ -537,52 +537,51 @@
 
 <!--                                </android.support.constraint.ConstraintLayout>-->
 
-<!--                &ndash;&gt;-->
-<!--                <android.support.constraint.ConstraintLayout-->
-<!--                    android:id="@+id/view_qr_payment"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="120dp"-->
-<!--                    android:layout_margin="5dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:background="@drawable/layout_bok"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:padding="3dp">-->
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/view_qr_payment"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/layout_bok"
+                    android:orientation="vertical"
+                    android:padding="3dp">
 
-<!--                    <ImageView-->
-<!--                        android:id="@+id/image_qr_payment"-->
-<!--                        android:layout_width="45dp"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:layout_marginTop="24dp"-->
-<!--                        android:adjustViewBounds="true"-->
-<!--                        android:scaleType="fitXY"-->
-<!--                        android:tint="@color/colorPrimary"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintHorizontal_bias="0.5"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toTopOf="parent"-->
-<!--                        app:srcCompat="@drawable/image_qr" />-->
+                    <ImageView
+                        android:id="@+id/image_qr_payment"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="24dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:tint="@color/colorPrimary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/image_qr" />
 
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:layout_marginTop="8dp"-->
-<!--                        android:fontFamily="@font/latosemibold"-->
-<!--                        android:gravity="center"-->
-<!--                        android:padding="2dp"-->
-<!--                        android:text="QR Pay"-->
-<!--                        android:textAllCaps="true"-->
-<!--                        android:textSize="12dp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintHorizontal_bias="0.5"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@+id/image_qr_payment" />-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/latosemibold"
+                        android:gravity="center"
+                        android:padding="2dp"
+                        android:text="QR Pay"
+                        android:textAllCaps="true"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/image_qr_payment" />
 
-<!--                </android.support.constraint.ConstraintLayout>-->
+                </android.support.constraint.ConstraintLayout>
 
-<!--            </LinearLayout>-->
+            </LinearLayout>
 
         </LinearLayout>
 

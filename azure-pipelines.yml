@@ -18,3 +18,12 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug'
+
+
+
+
+Bank Code        Bank Card PREFIX        Bank Short Name        Bank Full name
+2                    639186                      FISB                                 Faisal Islamic Bank
+4                    639256                      BAKH                                  Bank of Khartoum
+16                    639184                       RAKA                                  Al Baraka Sudanese Bank
+30                    639330                       ALSA                                  Al Salam Bank

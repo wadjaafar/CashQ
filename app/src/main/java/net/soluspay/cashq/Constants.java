@@ -17,5 +17,6 @@ public class Constants {
     public static final String QR_PAYMENT = "qr_payment";
     public static final String QR_REFUND = "qr_refund";
     public static final String REFRESH_TOKEN = "refresh";
+    public static final String CONTRIBUTE_SUDAN = "0010060207";
 
 }

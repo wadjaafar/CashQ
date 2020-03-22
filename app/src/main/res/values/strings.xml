@@ -57,6 +57,7 @@
     <string name="key_admin_password">key_admin_password</string>
 
     <string name="key_merchant_password">key_merchant_password</string>
+    <string name="support_sudan">Support Sudan</string>
     <string-array name="pref_example_list_titles">
         <item>Always</item>
         <item>When possible</item>

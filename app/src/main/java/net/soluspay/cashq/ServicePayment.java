@@ -40,8 +40,10 @@ import butterknife.OnClick;
 
 public class ServicePayment extends AppCompatActivity {
 
+    // we don't need this now, since it will be used from the system
     @BindView(R.id.service_id)
     EditText serviceId;
+
     @BindView(R.id.amount)
     EditText amount;
     @BindView(R.id.proceed)
@@ -74,7 +76,10 @@ public class ServicePayment extends AppCompatActivity {
         Log.i("Public Key", card.getIpin());
         String encryptedIPIN =  new IPINBlockGenerator().getIPINBlock(card.getIpin(),key, request.getUuid());
 
-        request.setServiceProviderId(serviceId.getText().toString());
+        // request.setServiceProviderId(serviceId.getText().toString());
+        // use service ID of Contribute to Sudan
+
+        request.setServiceProviderId(Constants.CONTRIBUTE_SUDAN); // it is better not to use it this way
         request.setTranAmount(Float.parseFloat(amount.getText().toString()));
         request.setTranCurrencyCode("SDG");
         request.setPan(card.getPan());
@@ -155,11 +160,12 @@ public class ServicePayment extends AppCompatActivity {
     public void onViewClicked() {
         boolean error = false;
 
-        if(serviceId.getText().toString().isEmpty())
-        {
-            error = true;
-            serviceId.setError("Enter an id");
-        }
+//        if(serviceId.getText().toString().isEmpty())
+//        {
+//            error = true;
+//            serviceId.setError("Enter an id");
+//        }
+
         if(amount.getText().toString().isEmpty())
         {
             error = true;
@@ -168,15 +174,9 @@ public class ServicePayment extends AppCompatActivity {
         if(!error)
         {
             Globals.service = "purchase";
-            Globals.serviceName = "Service Payment";
+            Globals.serviceName = "Service Payment - Support Sudan"; // change name to support Sudan
             CardDialog dialog = CardDialog.newInstance();
-            dialog.setCallback(new CardDialog.Callback() {
-                @Override
-                public void onActionClick(Card card) {
-                    purchaseElectricity(card);
-                }
-
-            });
+            dialog.setCallback(this::purchaseElectricity);
             Bundle args = new Bundle();
             args.putString("service", "Service Payment");
             args.putString("amount",  amount.getText().toString() + " SDG");

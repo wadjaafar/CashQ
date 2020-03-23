@@ -15,6 +15,7 @@ import net.soluspay.cashq.BalanceInquiryActivity;
 import net.soluspay.cashq.E15Activity;
 import net.soluspay.cashq.ElectricityActivity;
 import net.soluspay.cashq.FundsTransferActivity;
+import net.soluspay.cashq.IPinActivity;
 import net.soluspay.cashq.QRPayActivity;
 import net.soluspay.cashq.ServicePayment;
 import net.soluspay.cashq.TelecomActivity;
@@ -33,22 +34,25 @@ public class MainFragment extends Fragment {
     Unbinder unbinder;
     @BindView(R.id.view_balance)
     ConstraintLayout viewBalance;
-    //    @BindView(R.id.view_voucher)
-//    ConstraintLayout viewVoucher;
+
     @BindView(R.id.view_transfer)
     ConstraintLayout viewTransfer;
+
+    @BindView(R.id.request_ipin)
+    ConstraintLayout viewIpin;
+
     @BindView(R.id.view_telecom)
     ConstraintLayout viewTelecom;
+
     @BindView(R.id.view_electricity)
     ConstraintLayout viewElectricity;
+
     @BindView(R.id.view_qr_payment)
     ConstraintLayout viewQrPayment;
-//    @BindView(R.id.view_education)
-//    ConstraintLayout viewEducation;
+
     @BindView(R.id.view_e15)
     ConstraintLayout viewE15;
-//    @BindView(R.id.view_customs)
-//    ConstraintLayout viewCustoms;
+
     @BindView(R.id.view_purchase)
     ConstraintLayout viewPurchase;
 
@@ -72,7 +76,7 @@ public class MainFragment extends Fragment {
     }
 
 
-    @OnClick({R.id.view_qr_payment, R.id.view_balance, R.id.view_purchase, R.id.view_transfer, R.id.view_telecom, R.id.view_electricity, R.id.view_e15})
+    @OnClick({R.id.view_qr_payment, R.id.view_balance, R.id.view_purchase, R.id.view_transfer, R.id.view_telecom, R.id.view_electricity, R.id.view_e15, R.id.request_ipin})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.view_balance:
@@ -93,15 +97,13 @@ public class MainFragment extends Fragment {
             case R.id.view_qr_payment:
                 startActivity(new Intent(getActivity(), QRPayActivity.class));
                 break;
-//            case R.id.view_education:
-//                startActivity(new Intent(getActivity(), EducationActivity.class));
-//                break;
+
             case R.id.view_e15:
                 startActivity(new Intent(getActivity(), E15Activity.class));
                 break;
-//            case R.id.view_customs:
-//                startActivity(new Intent(getActivity(), CustomsActivity.class));
-//                break;
+            case R.id.request_ipin:
+                startActivity(new Intent(getActivity(), IPinActivity.class));
+                break;
         }
     }
 }

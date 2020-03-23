@@ -62,6 +62,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity implements Sha
         }
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

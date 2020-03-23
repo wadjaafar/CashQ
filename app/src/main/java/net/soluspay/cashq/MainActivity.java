@@ -190,10 +190,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.settings:
                 break;
-//            case R.id.ipin_change:
-//                intent = new Intent(MainActivity.this, PinChangeActivity.class);
-//                startActivity(intent);
-//                break;
+
             case R.id.logout:
                 SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();

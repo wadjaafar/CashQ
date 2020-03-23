@@ -15,7 +15,7 @@ public class EBSRequest implements Serializable {
     private String uuid = generateUUID();
     private String tranDateTime = getDate();
     private String applicationId = "ACTSCon";
-    private String pan, expDate, IPIN, newIPIN;
+    private String pan, expDate, IPIN, newIPIN, otp, ipin;
     private Float tranAmount;
     private String tranCurrencyCode;
     private String toCard;
@@ -23,6 +23,7 @@ public class EBSRequest implements Serializable {
     private String payeeId;
     private String paymentInfo;
     private String serviceProviderId;
+
 
     public void setServiceProviderId(String serviceProviderId) {
         this.serviceProviderId = serviceProviderId;
@@ -123,4 +124,19 @@ public class EBSRequest implements Serializable {
         return builder.toString();
     }
 
+    public String getOtp() {
+        return otp;
+    }
+
+    public void setOtp(String otp) {
+        this.otp = otp;
+    }
+
+    public String getIpin() {
+        return ipin;
+    }
+
+    public void setIpin(String ipin) {
+        this.ipin = ipin;
+    }
 }

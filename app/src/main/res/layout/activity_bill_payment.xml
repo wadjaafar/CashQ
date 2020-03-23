@@ -33,6 +33,7 @@
                 android:layout_weight="0.5"
                 android:orientation="horizontal">
 
+<!--                E15 View-->
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/view_e15"
                     android:layout_width="match_parent"
@@ -78,6 +79,7 @@
 
                 </android.support.constraint.ConstraintLayout>
 
+<!--                Customs View-->
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/view_customs"
                     android:layout_width="match_parent"
@@ -122,6 +124,7 @@
 
                 </android.support.constraint.ConstraintLayout>
 
+<!--                Education View-->
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/view_education"
                     android:layout_width="match_parent"
@@ -168,6 +171,7 @@
 
             </LinearLayout>
 
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -175,6 +179,7 @@
                 android:layout_weight="0.5"
                 android:orientation="horizontal">
 
+                <!--            Telecom View-->
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/view_telecom"
                     android:layout_width="match_parent"
@@ -219,6 +224,7 @@
 
                 </android.support.constraint.ConstraintLayout>
 
+<!--                Electricity View-->
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/view_electricity"
                     android:layout_width="match_parent"
@@ -264,6 +270,7 @@
                 </android.support.constraint.ConstraintLayout>
 
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="fill_parent"

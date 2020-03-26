@@ -7,6 +7,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -23,6 +24,8 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
+
+        <!--        pan-->
         <EditText
             android:id="@+id/pan"
             android:layout_width="match_parent"
@@ -35,18 +38,19 @@
             android:drawablePadding="10dp"
             android:drawableTint="@color/darkGray"
             android:fontFamily="@font/latosemibold"
-            android:hint="PHONE"
+            android:hint="@string/pan_prompt"
             android:inputType="number"
             android:padding="20dp"
-            android:maxLength="10"
+            android:maxLength="19"
             android:textColorHint="#606060"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
             app:layout_editor_absoluteY="300dp" />
 
+<!--        expDate-->
         <EditText
             android:id="@+id/exp_date"
             android:layout_width="match_parent"
@@ -59,7 +63,7 @@
             android:drawablePadding="10dp"
 
             android:fontFamily="@font/latosemibold"
-            android:hint="AMOUNT"
+            android:hint="@string/expiration_date"
             android:inputType="numberDecimal"
             android:padding="20dp"
             android:textColorHint="#606060"
@@ -67,8 +71,84 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pan"
+            app:layout_editor_absoluteY="300dp" />
+
+<!--        phone-->
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/edittext_background"
+            android:drawableLeft="@drawable/ic_phone"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/darkGray"
+            android:fontFamily="@font/latosemibold"
+            android:hint="@string/phone_number"
+            android:inputType="phone"
+            android:padding="20dp"
+            android:maxLength="10"
+            android:textColorHint="#606060"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exp_date"
+            app:layout_editor_absoluteY="300dp" />
+<!--otp-->
+        <EditText
+            android:id="@+id/otp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/edittext_background"
+            android:drawableLeft="@drawable/ic_phone"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/darkGray"
+            android:fontFamily="@font/latosemibold"
+            android:hint="@string/otp"
+            android:inputType="number"
+            android:padding="20dp"
+            android:maxLength="10"
+            android:textColorHint="#606060"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phone"
             app:layout_editor_absoluteY="300dp" />
+
+<!--        ipin-->
+        <EditText
+            android:id="@+id/ipin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/edittext_background"
+            android:drawableLeft="@drawable/ic_phone"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/darkGray"
+            android:fontFamily="@font/latosemibold"
+            android:hint="@string/ipin"
+            android:inputType="number"
+            android:padding="20dp"
+            android:maxLength="10"
+            android:textColorHint="#606060"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/otp"
+            app:layout_editor_absoluteY="300dp" />
+
+
 
 
         <Button

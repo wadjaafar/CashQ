@@ -23,6 +23,7 @@
         <activity android:name="net.soluspay.cashq.AddCardActivity" />
         <activity android:name="net.soluspay.cashq.SignUpActivity" />
         <activity android:name="net.soluspay.cashq.CardActivity" />
+
         <activity android:name="net.soluspay.cashq.WorkingKeyActivity" />
         <activity
             android:name="net.soluspay.cashq.SettingsActivity"
@@ -67,6 +68,7 @@
         <activity android:name="net.soluspay.cashq.PurchaseActivity" />
         <activity android:name="net.soluspay.cashq.QRPayActivity" />
         <activity android:name="net.soluspay.cashq.ScanCodeActivity" />
+        <activity android:name="net.soluspay.cashq.IPinActivity" />
     </application>
 
 </manifest>

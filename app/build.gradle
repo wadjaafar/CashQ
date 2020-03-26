@@ -25,8 +25,8 @@ android {
         applicationId "net.soluspay.cashq"
         minSdkVersion 22
         targetSdkVersion 28
-        versionCode 13
-        versionName '2.4-beta'
+        versionCode 14
+        versionName '2.5-alpha'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

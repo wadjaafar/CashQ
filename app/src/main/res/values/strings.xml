@@ -58,6 +58,16 @@
 
     <string name="key_merchant_password">key_merchant_password</string>
     <string name="support_sudan">Support Sudan</string>
+    <string name="pan_length_validation">Pan length is either 16 or 19</string>
+    <string name="ipin_management">iPIN</string>
+    <string name="add_cards">Add a payment card to your account</string>
+    <string name="proceed">PROCEED</string>
+    <string name="phone_number">Phone number</string>
+    <string name="ipin">IPIN</string>
+    <string name="otp">OTP</string>
+    <string name="expiration_date">expiration date</string>
+    <string name="pan_prompt">Enter PAN</string>
+    <string name="ipin_management1">IPIN Management</string>
     <string-array name="pref_example_list_titles">
         <item>Always</item>
         <item>When possible</item>

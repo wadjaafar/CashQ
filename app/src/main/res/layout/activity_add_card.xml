@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/latosemibold"
-        android:text="Add a payment card to your account"
+        android:text="@string/add_cards"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textSize="16sp"

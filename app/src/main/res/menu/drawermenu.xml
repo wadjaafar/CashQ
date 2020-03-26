@@ -9,11 +9,10 @@
         <!--
         <item android:id="@+id/ipin_change" android:title="iPIN Change" android:icon="@drawable/ic_lock" android:iconTint="@color/darkGray"/>
         -->
+
         <item android:id="@+id/settings" android:title="Settings" android:icon="@drawable/ic_settings_black_24dp"/>
         <item android:id="@+id/logout" android:title="Logout" android:icon="@drawable/ic_exit_to_app_black_24dp"/>
+        <item android:id="@+id/ipin_side" android:title="@string/ipin_management" android:icon="@drawable/ic_lock"/>
 
     </group>
-
-
-
 </menu>

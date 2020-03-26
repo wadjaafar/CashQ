@@ -1,5 +1,8 @@
 package net.soluspay.cashq.model;
 
+import net.soluspay.cashq.utils.CardDBHelper;
+import net.soluspay.cashq.utils.CardDBManager;
+
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
@@ -10,11 +13,14 @@ import java.io.Serializable;
 
 public class Card implements Serializable {
 
+
+
     private String name, pan, expDate, ipin;
     private int id;
 
     public Card() {
     }
+
 
     public Card(int id, String name, String pan, String expDate) {
         this.name = name;
@@ -42,6 +48,7 @@ public class Card implements Serializable {
         this.ipin = ipin;
         this.id = id;
     }
+
 
     public int getId() {
         return id;

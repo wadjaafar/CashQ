@@ -15,7 +15,7 @@ public class EBSRequest implements Serializable {
     private String uuid = generateUUID();
     private String tranDateTime = getDate();
     private String applicationId = "ACTSCon";
-    private String pan, expDate, IPIN, newIPIN, otp, ipin;
+    private String pan, expDate, IPIN, newIPIN, otp, ipin, phoneNumber;
     private Float tranAmount;
     private String tranCurrencyCode;
     private String toCard;
@@ -138,5 +138,13 @@ public class EBSRequest implements Serializable {
 
     public void setIpin(String ipin) {
         this.ipin = ipin;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

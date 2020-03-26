@@ -23,6 +23,7 @@ import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
 import net.soluspay.cashq.model.EBSResponse;
 import net.soluspay.cashq.utils.AnsiX98PinHandler;
+import net.soluspay.cashq.utils.CardDBManager;
 import net.soluspay.cashq.utils.Globals;
 import net.soluspay.cashq.utils.IPINBlockGenerator;
 
@@ -61,10 +62,14 @@ public class PinChangeActivity extends AppCompatActivity {
         setTitle("iPIN Change");
         Globals.serviceName = "Pin Change";
         CardDialog dialog = CardDialog.newInstance();
+        CardDBManager db = new CardDBManager(this);
+        db.open();
         dialog.setCallback(new CardDialog.Callback() {
             @Override
             public void onActionClick(Card card) {
                 myCard = card;
+                db.open();
+                db.updateCount(card.getPan());
             }
 
         });

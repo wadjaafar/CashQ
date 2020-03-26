@@ -33,6 +33,7 @@ import net.soluspay.cashq.ResultActivity;
 import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
 import net.soluspay.cashq.model.EBSResponse;
+import net.soluspay.cashq.utils.CardDBManager;
 import net.soluspay.cashq.utils.Globals;
 import net.soluspay.cashq.utils.IPINBlockGenerator;
 
@@ -69,6 +70,8 @@ public class TelecomPaymentFragment extends Fragment {
     @BindView(R.id.radio_mtn)
     RadioButton radioMtn;
 
+    CardDBManager db;
+
     private String payeeId, serviceName, receipt;
 
     public TelecomPaymentFragment() {
@@ -80,6 +83,9 @@ public class TelecomPaymentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        db = new CardDBManager(this.getActivity());
+        db.open();
+
         View view = inflater.inflate(R.layout.fragment_telecom_payment, container, false);
         unbinder = ButterKnife.bind(this, view);
         Globals.service = "telecom_payment";
@@ -235,6 +241,7 @@ public class TelecomPaymentFragment extends Fragment {
                 @Override
                 public void onActionClick(Card card) {
                     telecomPayment(card);
+                    db.updateCount(card.getPan());
                 }
 
             });

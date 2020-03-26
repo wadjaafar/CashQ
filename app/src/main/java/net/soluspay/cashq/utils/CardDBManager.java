@@ -38,7 +38,7 @@ public class CardDBManager {
 
     public Cursor fetch() {
         String[] columns = new String[]{CardDBHelper._ID, CardDBHelper.PAN, CardDBHelper.EXPDATE, CardDBHelper.NAME};
-        Cursor cursor = database.query(CardDBHelper.TABLE_NAME, columns, null, null, null, null, null);
+        Cursor cursor = database.query(CardDBHelper.TABLE_NAME, columns, null, null, null, null, "count desc");
         if (cursor != null) {
             cursor.moveToFirst();
         }
@@ -50,9 +50,16 @@ public class CardDBManager {
         contentValues.put(CardDBHelper.PAN, pan);
         contentValues.put(CardDBHelper.EXPDATE, expdate);
         contentValues.put(CardDBHelper.NAME, name);
-        int i = database.update(CardDBHelper.TABLE_NAME, contentValues, CardDBHelper._ID + " = " + _id, null);
-        return i;
+        return database.update(CardDBHelper.TABLE_NAME, contentValues, CardDBHelper._ID + " = " + _id, null);
+
     }
+
+    public void updateCount(String pan) {
+//        String q = "insert into cards(count) values(" + count + ")" + "where pan == " + pan;
+
+        database.execSQL("update cards set count = count + 1 where pan == ?", new String[]{pan});
+    }
+
 
     public void delete(long _id) {
         database.delete(CardDBHelper.TABLE_NAME, CardDBHelper._ID + "=" + _id, null);

@@ -17,12 +17,14 @@ import com.gndi_sd.szzt.R;
 
 import net.soluspay.cashq.fragment.ComingSoonFragment;
 import net.soluspay.cashq.fragment.PurchaseFragment;
+import net.soluspay.cashq.utils.CardDBManager;
 
 public class PurchaseActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    CardDBManager dbManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,8 @@ public class PurchaseActivity extends AppCompatActivity {
         getSupportActionBar().setElevation(0);
         setTitle("Purchase");
 
+        dbManager = new CardDBManager(this);
+        dbManager.open();
         //toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 

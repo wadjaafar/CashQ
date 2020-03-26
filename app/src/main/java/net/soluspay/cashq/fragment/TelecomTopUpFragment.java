@@ -33,6 +33,7 @@ import net.soluspay.cashq.ResultActivity;
 import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
 import net.soluspay.cashq.model.EBSResponse;
+import net.soluspay.cashq.utils.CardDBManager;
 import net.soluspay.cashq.utils.Globals;
 import net.soluspay.cashq.utils.IPINBlockGenerator;
 
@@ -70,6 +71,7 @@ public class TelecomTopUpFragment extends Fragment {
     @BindView(R.id.radio_mtn)
     RadioButton radioMtn;
 
+    CardDBManager db;
 
     private String payeeId, serviceName, receipt;
 
@@ -178,6 +180,9 @@ public class TelecomTopUpFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        db = new CardDBManager(this.getActivity());
+        db.open();
+
         View view = inflater.inflate(R.layout.fragment_telecom_top_up, container, false);
         unbinder = ButterKnife.bind(this, view);
         Globals.service = "telecom_topup";
@@ -185,6 +190,8 @@ public class TelecomTopUpFragment extends Fragment {
         serviceName = "Zain Top-up";
         receipt = "zainTopup";
         payeeId = "0010010001";
+
+
         radio.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
                 case R.id.radio_zain:
@@ -242,6 +249,9 @@ public class TelecomTopUpFragment extends Fragment {
                 @Override
                 public void onActionClick(Card card) {
                     topUp(card);
+                    db.open();
+                    db.updateCount(card.getPan());
+
                 }
 
             });

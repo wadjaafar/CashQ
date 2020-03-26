@@ -21,6 +21,7 @@ import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
 import net.soluspay.cashq.model.EBSResponse;
 import net.soluspay.cashq.utils.AnsiX98PinHandler;
+import net.soluspay.cashq.utils.CardDBManager;
 import net.soluspay.cashq.utils.Globals;
 import net.soluspay.cashq.utils.IPINBlockGenerator;
 
@@ -39,6 +40,8 @@ import butterknife.ButterKnife;
 
 public class BalanceInquiryActivity extends AppCompatActivity {
 
+    CardDBManager dbManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +53,15 @@ public class BalanceInquiryActivity extends AppCompatActivity {
         setTitle("Balance Inquiry");
         Globals.serviceName = "Balance Inquiry";
         Globals.service = "balance";
+        dbManager = new CardDBManager(this);
+        dbManager.open();
         CardDialog dialog = CardDialog.newInstance();
         dialog.setCallback(new CardDialog.Callback() {
             @Override
             public void onActionClick(Card card) {
                 getBalance(card);
+                dbManager.updateCount(card.getPan());
+
             }
 
         });

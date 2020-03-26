@@ -84,6 +84,7 @@ public class IPinRequestFragment extends Fragment {
 
         request.setPan(card.getPan());
         request.setExpDate(card.getExpDate());
+        request.setPhoneNumber(phone.getText().toString());
 
         Gson gson = new GsonBuilder().create();
         String json = gson.toJson(request);
@@ -165,7 +166,7 @@ public class IPinRequestFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ipin, container, false);
         unbinder = ButterKnife.bind(this, view);
         Globals.service = "telecom_topup";
-        serviceName = "Zain Top-up";
+        serviceName = "iPIN Generation";
         receipt = "zainTopup";
         return view;
     }

@@ -25,6 +25,7 @@ import com.google.gson.reflect.TypeToken;
 import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
 import net.soluspay.cashq.model.EBSResponse;
+import net.soluspay.cashq.utils.CardDBManager;
 import net.soluspay.cashq.utils.Globals;
 import net.soluspay.cashq.utils.IPINBlockGenerator;
 
@@ -39,6 +40,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class ElectricityActivity extends AppCompatActivity {
+
+    CardDBManager db;
 
     @BindView(R.id.meter)
     EditText meter;
@@ -56,6 +59,8 @@ public class ElectricityActivity extends AppCompatActivity {
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Globals.service = "electricity";
+        db = new CardDBManager(this);
+        db.open();
     }
 
     @Override
@@ -180,6 +185,11 @@ public class ElectricityActivity extends AppCompatActivity {
                 @Override
                 public void onActionClick(Card card) {
                     purchaseElectricity(card);
+                    // please fix me
+                    db.open();
+                    db.updateCount(card.getPan());
+
+
                 }
 
             });

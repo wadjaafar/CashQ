@@ -31,6 +31,7 @@ import net.soluspay.cashq.ResultActivity;
 import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
 import net.soluspay.cashq.model.EBSResponse;
+import net.soluspay.cashq.utils.CardDBManager;
 import net.soluspay.cashq.utils.Globals;
 import net.soluspay.cashq.utils.IPINBlockGenerator;
 
@@ -60,6 +61,8 @@ public class CustomsInquiryFragment extends Fragment {
     Button proceed;
     Unbinder unbinder;
 
+    CardDBManager db;
+
     public CustomsInquiryFragment() {
         // Required empty public constructor
     }
@@ -69,6 +72,9 @@ public class CustomsInquiryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        db = new CardDBManager(this.getActivity());
+        db.open();
+
         View view = inflater.inflate(R.layout.fragment_customs_inquiry, container, false);
         unbinder = ButterKnife.bind(this, view);
         return view;
@@ -197,6 +203,8 @@ public class CustomsInquiryFragment extends Fragment {
                 @Override
                 public void onActionClick(Card card) {
                     customInquiry(card);
+                    db.open();
+                    db.updateCount(card.getPan());
                 }
 
             });

@@ -190,6 +190,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.settings:
                 break;
+            case R.id.ipin_side:
+                intent = new Intent(MainActivity.this, IPinActivity.class);
+                startActivity(intent);
+                break;
 
             case R.id.logout:
                 SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);
@@ -219,8 +223,6 @@ public class MainActivity extends AppCompatActivity {
         //setTitle(item.getTitle());
         // Close the navigation drawer
         drawerLayout.closeDrawers();
-
-
 
     }
 

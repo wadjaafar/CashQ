@@ -36,6 +36,7 @@ import net.soluspay.cashq.model.Course;
 import net.soluspay.cashq.model.EBSRequest;
 import net.soluspay.cashq.model.EBSResponse;
 import net.soluspay.cashq.model.Form;
+import net.soluspay.cashq.utils.CardDBManager;
 import net.soluspay.cashq.utils.Globals;
 import net.soluspay.cashq.utils.IPINBlockGenerator;
 
@@ -58,6 +59,7 @@ import butterknife.Unbinder;
  */
 public class MohePaymentFragment extends Fragment {
 
+    CardDBManager db;
 
     @BindView(R.id.course_spinner)
     Spinner courseSpinner;
@@ -84,6 +86,9 @@ public class MohePaymentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        db = new CardDBManager(this.getActivity());
+        db.open();
+
         View view = inflater.inflate(R.layout.fragment_mohe_payment, container, false);
         unbinder = ButterKnife.bind(this, view);
         setCourseData();
@@ -288,6 +293,9 @@ public class MohePaymentFragment extends Fragment {
                 @Override
                 public void onActionClick(Card card) {
                     mohePayment(card);
+                    db.open();
+                    db.updateCount(card.getPan());
+
                 }
 
             });

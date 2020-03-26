@@ -36,6 +36,7 @@ import net.soluspay.cashq.model.Course;
 import net.soluspay.cashq.model.EBSRequest;
 import net.soluspay.cashq.model.EBSResponse;
 import net.soluspay.cashq.model.Form;
+import net.soluspay.cashq.utils.CardDBManager;
 import net.soluspay.cashq.utils.Globals;
 import net.soluspay.cashq.utils.IPINBlockGenerator;
 
@@ -74,6 +75,8 @@ public class MoheArabPaymentFragment extends Fragment {
     Course course;
     Form form;
 
+    CardDBManager db;
+
     public MoheArabPaymentFragment() {
         // Required empty public constructor
     }
@@ -82,6 +85,8 @@ public class MoheArabPaymentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        db = new CardDBManager(this.getActivity());
+        db.open();
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_mohe_arab_payment, container, false);
         unbinder = ButterKnife.bind(this, view);
@@ -278,6 +283,8 @@ public class MoheArabPaymentFragment extends Fragment {
                 @Override
                 public void onActionClick(Card card) {
                     moheArabPayment(card);
+                    db.open();
+                    db.updateCount(card.getPan());
                 }
 
             });

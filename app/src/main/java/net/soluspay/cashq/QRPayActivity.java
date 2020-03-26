@@ -23,9 +23,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import net.soluspay.cashq.fragment.CardTransferFragment;
 import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
 import net.soluspay.cashq.model.EBSResponse;
+import net.soluspay.cashq.utils.CardDBManager;
 import net.soluspay.cashq.utils.Globals;
 import net.soluspay.cashq.utils.IPINBlockGenerator;
 
@@ -51,6 +53,7 @@ public class QRPayActivity extends AppCompatActivity {
     ImageButton qrImage;
 
     String resultCode;
+    CardDBManager db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,9 @@ public class QRPayActivity extends AppCompatActivity {
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Globals.service = "qrpay";
+
+        db = new CardDBManager(this);
+        db.open();
     }
 
     @Override
@@ -190,6 +196,9 @@ public class QRPayActivity extends AppCompatActivity {
                 @Override
                 public void onActionClick(Card card) {
                     purchaseElectricity(card);
+                    // get base context is not tested!
+                    db.open();
+                    db.updateCount(card.getPan());
                 }
 
             });

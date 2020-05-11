@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.CLOUDPOS_MSR" />
     <uses-permission android:name="android.permission.CLOUDPOS_PRINTER" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
 
 
@@ -22,7 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="HardcodedDebugMode">
-        <activity android:name="net.soluspay.cashq.ServicePayment"></activity>
+        <activity android:name="net.soluspay.cashq.ServicePayment" />
         <activity android:name="net.soluspay.cashq.AddCardActivity" />
         <activity android:name="net.soluspay.cashq.SignUpActivity" />
         <activity android:name="net.soluspay.cashq.CardActivity" />
@@ -34,7 +35,7 @@
         <activity
             android:name="net.soluspay.cashq.ComingSoonActivity"
             android:label="Coming Soon" />
-        <activity android:name="net.soluspay.cashq.BalanceInquiryActivity" />
+        <activity android:name="net.soluspay.cashq.BalanceInquiryActivity"></activity>
         <activity android:name="net.soluspay.cashq.MOHEArabActivity" />
         <activity android:name="net.soluspay.cashq.MOHEActivity" />
         <activity android:name="net.soluspay.cashq.EducationActivity" />
@@ -56,7 +57,28 @@
             android:name="net.soluspay.cashq.MerchantActivity"
             android:label="Merchant Services" />
         <activity android:name="net.soluspay.cashq.BillPaymentActivity" />
-        <activity android:name="net.soluspay.cashq.MainActivity" />
+        <activity android:name="net.soluspay.cashq.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="web.soluspay.net"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="cashq.app"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="net.soluspay.cashq.CheckoutActivity"
             android:label="Confirm" />

@@ -6,7 +6,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -31,13 +32,11 @@ import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
 import net.soluspay.cashq.model.EBSResponse;
 import net.soluspay.cashq.utils.Globals;
-import net.soluspay.cashq.utils.IPINBlockGenerator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
-import java.util.HashMap;
 import java.util.Objects;
 
 import butterknife.BindView;

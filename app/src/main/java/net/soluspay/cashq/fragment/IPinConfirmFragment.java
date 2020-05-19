@@ -6,23 +6,21 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.gndi_sd.szzt.R;
-import com.google.common.base.Joiner;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -34,18 +32,15 @@ import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
 import net.soluspay.cashq.model.EBSResponse;
 import net.soluspay.cashq.utils.Globals;
-import net.soluspay.cashq.utils.IPINBlockGenerator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
-import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Optional;
 import butterknife.Unbinder;
 
 /**
@@ -106,7 +101,7 @@ public class IPinConfirmFragment extends Fragment {
             e.printStackTrace();
         }
 
-        Log.i("my request", String.valueOf(object.toString()));
+        Log.i("my request", object.toString());
 
         AndroidNetworking.post(request.serverUrl() + Constants.CONFIRM_IPIN)
                 .addJSONObjectBody(object) // posting java object

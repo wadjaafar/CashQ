@@ -1,8 +1,9 @@
 package net.soluspay.cashq;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.gndi_sd.szzt.R;
 

@@ -1,23 +1,24 @@
 package net.soluspay.cashq;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import java.util.ArrayList;
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.gndi_sd.szzt.R;
+import com.google.android.material.tabs.TabLayout;
 
 import net.soluspay.cashq.fragment.ComingSoonFragment;
 import net.soluspay.cashq.fragment.PurchaseFragment;
 import net.soluspay.cashq.utils.CardDBManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PurchaseActivity extends AppCompatActivity {
 

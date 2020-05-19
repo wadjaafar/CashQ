@@ -3,21 +3,22 @@ package net.soluspay.cashq.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+
 import com.gndi_sd.szzt.R;
 
 import net.soluspay.cashq.BalanceInquiryActivity;
+import net.soluspay.cashq.BillersActivity;
 import net.soluspay.cashq.E15Activity;
 import net.soluspay.cashq.ElectricityActivity;
 import net.soluspay.cashq.FundsTransferActivity;
 import net.soluspay.cashq.IPinActivity;
 import net.soluspay.cashq.QRPayActivity;
-import net.soluspay.cashq.ServicePayment;
 import net.soluspay.cashq.TelecomActivity;
 
 import butterknife.BindView;
@@ -53,8 +54,10 @@ public class MainFragment extends Fragment {
     @BindView(R.id.view_e15)
     ConstraintLayout viewE15;
 
-    @BindView(R.id.view_purchase)
-    ConstraintLayout viewPurchase;
+
+    @BindView(R.id.view_billers)
+    ConstraintLayout viewBillers;
+
 
     public MainFragment() {
         // Required empty public constructor
@@ -76,14 +79,11 @@ public class MainFragment extends Fragment {
     }
 
 
-    @OnClick({R.id.view_qr_payment, R.id.view_balance, R.id.view_purchase, R.id.view_transfer, R.id.view_telecom, R.id.view_electricity, R.id.view_e15, R.id.request_ipin})
+    @OnClick({R.id.view_qr_payment, R.id.view_balance, R.id.view_transfer, R.id.view_telecom, R.id.view_electricity, R.id.view_e15, R.id.request_ipin, R.id.view_billers})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.view_balance:
                 startActivity(new Intent(getActivity(), BalanceInquiryActivity.class));
-                break;
-            case R.id.view_purchase:
-                startActivity(new Intent(getActivity(), ServicePayment.class));
                 break;
             case R.id.view_transfer:
                 startActivity(new Intent(getActivity(), FundsTransferActivity.class));
@@ -103,6 +103,9 @@ public class MainFragment extends Fragment {
                 break;
             case R.id.request_ipin:
                 startActivity(new Intent(getActivity(), IPinActivity.class));
+                break;
+            case R.id.view_billers:
+                startActivity(new Intent(getActivity(), BillersActivity.class));
                 break;
         }
     }

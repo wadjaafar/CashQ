@@ -3,35 +3,27 @@ package net.soluspay.cashq;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.gndi_sd.szzt.R;
 import com.google.common.base.Splitter;
-import com.google.gson.JsonObject;
 
 import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSResponse;
 import net.soluspay.cashq.utils.Globals;
-import net.soluspay.cashq.utils.MessageManager;
-
-import org.json.JSONObject;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -306,6 +298,16 @@ public class ResultActivity extends AppCompatActivity {
                     addRow("Fees", String.valueOf(ebsResponse.getIssuerTranFee()));
                     addRow("Card Number", ebsResponse.getPAN());
                     addRow("Date", ebsResponse.getTranDateTime());
+                    break;
+
+                case "billers":
+//                    paymentInfo = Splitter.on("/").withKeyValueSeparator("=").split(ebsResponse.getPaymentInfo());
+//                    addRow("Amount", String.valueOf(ebsResponse.getTranAmount()));
+                    addRow("Currency", ebsResponse.getTranCurrency());
+                    addRow("Fees", String.valueOf(ebsResponse.getIssuerTranFee()));
+                    addRow("Card Number", ebsResponse.getPAN());
+                    addRow("Date", ebsResponse.getTranDateTime());
+                    addRow("From Account", ebsResponse.getFromAccount());
                     break;
 
             }

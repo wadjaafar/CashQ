@@ -6,7 +6,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +15,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -42,7 +43,6 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -113,7 +113,7 @@ public class TelecomTopUpFragment extends Fragment {
             e.printStackTrace();
         }
 
-        Log.i("my request", String.valueOf(object.toString()));
+        Log.i("my request", object.toString());
 
         AndroidNetworking.post(request.serverUrl() + Constants.BILL_PAYMENT)
                 .addJSONObjectBody(object) // posting java object

@@ -32,6 +32,7 @@ public class EBSResponse implements Serializable {
     private String pubKeyValue;
     private String tranCurrency;
     private String paymentInfo;
+    private String fromAccount;
 
     private String message;
     private String code;
@@ -193,6 +194,13 @@ public class EBSResponse implements Serializable {
         }
     }
 
+    public String getFromAccount() {
+        return fromAccount;
+    }
+
+    public void setFromAccount(String fromAccount) {
+        this.fromAccount = fromAccount;
+    }
 }
 
 

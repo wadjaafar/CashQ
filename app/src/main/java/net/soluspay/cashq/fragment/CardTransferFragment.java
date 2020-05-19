@@ -6,8 +6,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,13 +14,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.gndi_sd.szzt.R;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
 import net.soluspay.cashq.CardDialog;
 import net.soluspay.cashq.Constants;
-import com.gndi_sd.szzt.R;
 import net.soluspay.cashq.ResultActivity;
 import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
@@ -30,10 +34,6 @@ import net.soluspay.cashq.model.EBSResponse;
 import net.soluspay.cashq.utils.CardDBManager;
 import net.soluspay.cashq.utils.Globals;
 import net.soluspay.cashq.utils.IPINBlockGenerator;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;

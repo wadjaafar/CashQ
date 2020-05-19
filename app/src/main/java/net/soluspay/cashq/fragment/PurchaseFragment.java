@@ -2,7 +2,6 @@ package net.soluspay.cashq.fragment;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +9,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import net.soluspay.cashq.CardDialog;
-import net.soluspay.cashq.model.Card;
+import androidx.fragment.app.Fragment;
 
 import com.gndi_sd.szzt.R;
 
+import net.soluspay.cashq.CardDialog;
+import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.utils.Globals;
 
 import butterknife.BindView;

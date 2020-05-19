@@ -13,13 +13,14 @@ import androidx.viewpager.widget.ViewPager;
 import com.gndi_sd.szzt.R;
 import com.google.android.material.tabs.TabLayout;
 
-import net.soluspay.cashq.fragment.MoheArabInquiryFragment;
-import net.soluspay.cashq.fragment.MoheArabPaymentFragment;
+import net.soluspay.cashq.fragment.CovidFragment;
+import net.soluspay.cashq.fragment.SupportSudanFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MOHEArabActivity extends AppCompatActivity {
+public class BillersActivity extends AppCompatActivity {
+
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
@@ -28,11 +29,9 @@ public class MOHEArabActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mohearab);
+        setContentView(R.layout.activity_billers);
+        setTitle("Support Sudan");
         getSupportActionBar().setElevation(0);
-        setTitle("MOHE Arab");
-        //toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -41,20 +40,27 @@ public class MOHEArabActivity extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        MOHEArabActivity.ViewPagerAdapter adapter = new MOHEArabActivity.ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new MoheArabInquiryFragment(), "Inquiry");
-        adapter.addFragment(new MoheArabPaymentFragment(), "Payment");
+        BillersActivity.ViewPagerAdapter adapter = new BillersActivity.ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new CovidFragment(), "Covid19 Support");
+        adapter.addFragment(new SupportSudanFragment(), "Support Sudan");
         viewPager.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        onBackPressed();
+        return true;
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager) {
+        ViewPagerAdapter(FragmentManager manager) {
             super(manager);
         }
 
@@ -68,7 +74,7 @@ public class MOHEArabActivity extends AppCompatActivity {
             return mFragmentList.size();
         }
 
-        public void addFragment(Fragment fragment, String title) {
+        void addFragment(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
@@ -79,10 +85,4 @@ public class MOHEArabActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem menuItem)
-    {
-        onBackPressed();
-        return true;
-    }
 }

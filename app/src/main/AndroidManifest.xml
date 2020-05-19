@@ -13,7 +13,6 @@
 
     <uses-feature android:name="android.hardware.camera" />
 
-
     <application
         android:name="net.soluspay.cashq.utils.MyApplication"
         android:allowBackup="false"
@@ -23,11 +22,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="HardcodedDebugMode">
+        <activity android:name="net.soluspay.cashq.BillersActivity"></activity>
         <activity android:name="net.soluspay.cashq.ServicePayment" />
         <activity android:name="net.soluspay.cashq.AddCardActivity" />
         <activity android:name="net.soluspay.cashq.SignUpActivity" />
         <activity android:name="net.soluspay.cashq.CardActivity" />
-
         <activity android:name="net.soluspay.cashq.WorkingKeyActivity" />
         <activity
             android:name="net.soluspay.cashq.SettingsActivity"
@@ -35,7 +34,7 @@
         <activity
             android:name="net.soluspay.cashq.ComingSoonActivity"
             android:label="Coming Soon" />
-        <activity android:name="net.soluspay.cashq.BalanceInquiryActivity"></activity>
+        <activity android:name="net.soluspay.cashq.BalanceInquiryActivity" />
         <activity android:name="net.soluspay.cashq.MOHEArabActivity" />
         <activity android:name="net.soluspay.cashq.MOHEActivity" />
         <activity android:name="net.soluspay.cashq.EducationActivity" />

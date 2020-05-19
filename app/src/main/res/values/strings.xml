@@ -68,6 +68,7 @@
     <string name="expiration_date">expiration date</string>
     <string name="pan_prompt">Enter PAN</string>
     <string name="ipin_management1">IPIN Management</string>
+    <string name="amount_prompt">Enter amount</string>
     <string-array name="pref_example_list_titles">
         <item>Always</item>
         <item>When possible</item>

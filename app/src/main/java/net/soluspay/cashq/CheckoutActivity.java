@@ -3,8 +3,6 @@ package net.soluspay.cashq;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,14 +10,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.gndi_sd.szzt.R;
 
 import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.Service;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -76,7 +77,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
     @OnClick(R.id.confirm)
     public void onViewClicked() {
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         AlertDialog alertDialog = new AlertDialog.Builder(CheckoutActivity.this).create();
         alertDialog.setTitle("Success");
         alertDialog.setMessage("Successful Transaction");

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EDEDED">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/dashboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:src="@drawable/logo" />
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -66,7 +66,7 @@
                 android:layout_weight="0.5"
                 android:orientation="horizontal">
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/view_balance"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
@@ -108,10 +108,10 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_bill_icon" />
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/view_transfer"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
@@ -153,7 +153,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_card_transfer" />
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
 
@@ -164,7 +164,7 @@
                 android:layout_weight="0.5"
                 android:orientation="horizontal">
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/view_telecom"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
@@ -206,9 +206,9 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_telecom_icon" />
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/view_electricity"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
@@ -250,7 +250,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_electricity" />
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             <!--
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/view_qr_payment"
@@ -304,52 +304,9 @@
                 android:layout_below="@+id/new_inquery_lin"
                 android:layout_weight="0.5"
                 android:orientation="horizontal">
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/view_purchase"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/layout_bok"
-                    android:orientation="vertical"
-                    android:padding="3dp">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/latosemibold"
-                        android:gravity="center"
-                        android:padding="2dp"
-                        android:text="@string/support_sudan"
-                        android:textAllCaps="true"
-                        android:textSize="12dp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/image_voucher" />
-
-                    <ImageView
-                        android:id="@+id/image_voucher"
-                        android:layout_width="45dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="24dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="fitXY"
-                        android:tint="@color/colorPrimary"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_donate"
-                        />
-
-                </android.support.constraint.ConstraintLayout>
-
-                <android.support.constraint.ConstraintLayout
+                <!--                E15 view-->
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/view_e15"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
@@ -392,7 +349,52 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_e15" />
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--                Billers view-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/view_billers"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/layout_bok"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/latosemibold"
+                        android:gravity="center"
+                        android:padding="2dp"
+                        android:text="@string/support_sudan"
+                        android:textAllCaps="true"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/image_billers" />
+
+                    <ImageView
+                        android:id="@+id/image_billers"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="24dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:tint="@color/colorPrimary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_donate" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
 
@@ -403,7 +405,7 @@
                 android:layout_weight="0.5"
                 android:orientation="horizontal">
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/view_qr_payment"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
@@ -445,9 +447,9 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/image_qr_payment" />
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/request_ipin"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
@@ -491,7 +493,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/ipin_image" />
 
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
 
@@ -500,4 +502,4 @@
 
     </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

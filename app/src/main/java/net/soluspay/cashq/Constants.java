@@ -18,6 +18,7 @@ public class Constants {
     public static final String QR_REFUND = "qr_refund";
     public static final String REFRESH_TOKEN = "refresh";
     public static final String CONTRIBUTE_SUDAN = "0010060207";
+    public static final String COVID19 = "0010060212";
     public static final String START_IPIN = "generate_ipin";
     public static final String CONFIRM_IPIN = "complete_ipin";
 

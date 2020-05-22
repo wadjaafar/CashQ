@@ -89,7 +89,7 @@ public class SignInActivity extends AppCompatActivity {
                     editor.putString("token", token);
                     editor.putString("username", username);
                     editor.putString("email", email);
-                    editor.commit();
+                    editor.apply();
                     progressDialog.dismiss();
                     startActivity(new Intent(SignInActivity.this, MainActivity.class));
                     finish();

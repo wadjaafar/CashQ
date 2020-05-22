@@ -2,6 +2,8 @@ package net.soluspay.cashq.model;
 
 import java.io.Serializable;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -52,6 +54,12 @@ public class EBSResponse implements Serializable {
 
     public HashMap<String, Double> getBalance() {
         return balance;
+    }
+
+    public String getAvailableBalance() {
+        NumberFormat formatter = new DecimalFormat("#0.00");
+        return formatter.format(this.getBalance().get("available"));
+
     }
 
     public String getPaymentInfo() {

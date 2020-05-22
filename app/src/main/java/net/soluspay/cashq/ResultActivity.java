@@ -1,6 +1,8 @@
 package net.soluspay.cashq;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -55,6 +57,11 @@ public class ResultActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         Intent intent = getIntent();
         ebsResponse = (EBSResponse) intent.getSerializableExtra("response");
+        // get sp here and save it
+        SharedPreferences sp = getSharedPreferences("result", Activity.MODE_PRIVATE);
+        // how can we debug shared preferences...
+        sp.edit().putString("balance", ebsResponse.getAvailableBalance()).apply();
+
         card = (Card) intent.getSerializableExtra("card");
         response.setText(Globals.serviceName);
         message.setText(ebsResponse.getResponseMessage());

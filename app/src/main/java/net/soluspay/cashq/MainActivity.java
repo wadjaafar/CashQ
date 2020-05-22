@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();
                 editor.clear();
-                editor.commit();
+                editor.apply();
                 intent = new Intent(MainActivity.this, SignInActivity.class);
                 startActivity(intent);
                 finish();

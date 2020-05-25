@@ -45,6 +45,15 @@ public class CardDBManager {
         return cursor;
     }
 
+    public Cursor getAll() {
+        String[] columns = new String[]{CardDBHelper._ID, CardDBHelper.PAN, CardDBHelper.EXPDATE, CardDBHelper.NAME};
+        Cursor cursor = database.query(CardDBHelper.TABLE_NAME, columns, null, null, null, null, "count desc");
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
     public int update(long _id, String pan, String expdate, String name) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(CardDBHelper.PAN, pan);
@@ -71,3 +80,5 @@ public class CardDBManager {
     }
 
 }
+
+

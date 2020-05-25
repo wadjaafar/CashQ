@@ -60,8 +60,6 @@ public class MainFragment extends Fragment {
     @BindView(R.id.view_billers)
     ConstraintLayout viewBillers;
 
-    @BindView(R.id.dashboard)
-    ConstraintLayout viewDashboard;
 
     public MainFragment() {
         // Required empty public constructor
@@ -73,16 +71,21 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+        updateDashboard(rootView);
+
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    private void updateDashboard(View rootView) {
         SharedPreferences sp = getActivity().getSharedPreferences("result", Activity.MODE_PRIVATE);
         // how can we debug shared preferences...
         String b = sp.getString("balance", "");
 
         TextView tv = rootView.findViewById(R.id.dashboardBalance);
-        tv.setText(b + " $");
+        tv.setText(b);
         tv.invalidate();
-
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
     }
 
     @Override

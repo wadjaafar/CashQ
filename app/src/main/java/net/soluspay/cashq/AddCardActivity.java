@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -45,10 +46,11 @@ public class AddCardActivity extends AppCompatActivity {
     TextView textView;
     @BindView(R.id.exp_date)
     TextView expDate;
+    @BindView(R.id.checkBox)
+    CheckBox checkBox;
 
     private String date;
 
-    CardDBManager dbManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,69 +65,98 @@ public class AddCardActivity extends AppCompatActivity {
 
     public void addCard() {
 
-        final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(this, "Loading", "Please wait...", false, false);
-        EBSRequest request = new EBSRequest();
 
-        SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);
-        String token = sp.getString("token", null);
+        CardDBManager dbManager;
+        dbManager = new CardDBManager(this);
+        dbManager.open();
 
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("pan", pan.getText().toString());
-            jsonObject.put("name", cardName.getText().toString());
-            jsonObject.put("exp_date", date);
-        } catch (JSONException e) {
-            e.printStackTrace();
+        if (checkBox.isChecked()) {
+            final ProgressDialog progressDialog;
+            progressDialog = ProgressDialog.show(this, "Loading", "Please wait...", false, false);
+            EBSRequest request = new EBSRequest();
+
+            SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);
+            String token = sp.getString("token", null);
+
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("pan", pan.getText().toString());
+                jsonObject.put("name", cardName.getText().toString());
+                jsonObject.put("exp_date", date);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            AndroidNetworking.post(request.serverUrl() + Constants.ADD_CARD)
+                    .addJSONObjectBody(jsonObject)
+                    .setTag("test")
+                    .setPriority(Priority.MEDIUM)
+                    .addHeaders("Authorization", token)
+                    .build().getAsJSONObject(new JSONObjectRequestListener() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    // do anything with response
+
+                    // successful response
+                    toDb(dbManager, pan.getText().toString(), expDate.getText().toString(), cardName.getText().toString());
+
+                    progressDialog.dismiss();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(AddCardActivity.this);
+                    builder.setTitle("Successful")
+                            .setMessage("Your card has been added successfully")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", (dialog, id) -> {
+                                //do things
+                                finish();
+                            });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+
+                }
+
+                @Override
+                public void onError(ANError error) {
+                    // handle error
+                    Log.i("Add Card", error.getErrorBody());
+                    progressDialog.dismiss();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(AddCardActivity.this);
+                    builder.setTitle("Failed")
+                            .setMessage("Something went wrong")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", (dialog, id) -> {
+                                //do things
+                            });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                    Log.i("MESSAGE", error.getErrorBody());
+                }
+            });
+        } else {
+//            String pan
+            toDb(dbManager, pan.getText().toString(), expDate.getText().toString(), cardName.getText().toString());
+            AlertDialog.Builder builder = new AlertDialog.Builder(AddCardActivity.this);
+            builder.setTitle("Successful")
+                    .setMessage("Your card has been added successfully")
+                    .setCancelable(false)
+                    .setPositiveButton("OK", (dialog, id) -> {
+                        //do things
+                        finish();
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
         }
-
-        AndroidNetworking.post(request.serverUrl() + Constants.ADD_CARD)
-                .addJSONObjectBody(jsonObject)
-                .setTag("test")
-                .setPriority(Priority.MEDIUM)
-                .addHeaders("Authorization", token)
-                .build().getAsJSONObject(new JSONObjectRequestListener() {
-            @Override
-            public void onResponse(JSONObject response) {
-                // do anything with response
-
-                progressDialog.dismiss();
-                AlertDialog.Builder builder = new AlertDialog.Builder(AddCardActivity.this);
-                builder.setTitle("Successful")
-                        .setMessage("Your card has been added successfully")
-                        .setCancelable(false)
-                        .setPositiveButton("OK", (dialog, id) -> {
-                            //do things
-                            finish();
-                        });
-                AlertDialog alert = builder.create();
-                alert.show();
-
-            }
-
-            @Override
-            public void onError(ANError error) {
-                // handle error
-                Log.i("Add Card", error.getErrorBody());
-                progressDialog.dismiss();
-                AlertDialog.Builder builder = new AlertDialog.Builder(AddCardActivity.this);
-                builder.setTitle("Failed")
-                        .setMessage("Something went wrong")
-                        .setCancelable(false)
-                        .setPositiveButton("OK", (dialog, id) -> {
-                            //do things
-                        });
-                AlertDialog alert = builder.create();
-                alert.show();
-                Log.i("MESSAGE", error.getErrorBody());
-            }
-        });
+        // save to the local db
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         onBackPressed();
         return true;
+    }
+
+    private void toDb(CardDBManager dbManager, String pan, String expDate, String name) {
+        dbManager.insert(pan, expDate, name);
+        dbManager.close();
     }
 
     public void pickDate() {

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -39,6 +40,10 @@ public class CardActivity extends AppCompatActivity {
 
     @BindView(R.id.fab)
     FloatingActionButton fab;
+
+    @BindView(R.id.sync)
+    FloatingActionButton sync;
+
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     List<Card> cards;
@@ -57,11 +62,13 @@ public class CardActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         dbManager = new CardDBManager(this);
         dbManager.open();
-        getCards();
+        getCardsOffline();
 
     }
 
     public void getCards() {
+        // this should fetch results locally *FIRST* and then opt-in to
+        // remote updates
 
         final ProgressDialog progressDialog;
         progressDialog = ProgressDialog.show(this, "Loading", "Please wait...", false, false);
@@ -80,11 +87,11 @@ public class CardActivity extends AppCompatActivity {
                 // do anything with response
                 Log.i("MESSAGE", response.toString());
                 // remove the old db FIXME
-                dbManager.deleteAll();
+                dbManager.deleteAll(); // this is where we fuck up...
 
                 try {
                     JSONArray cardArray = response.getJSONArray("cards");
-                    cards = new ArrayList<>();
+                    cards = new ArrayList<Card>();
                     for (int i = 0; i < cardArray.length(); i++) {
                         String name = cardArray.getJSONObject(i).getString("name");
                         String pan = cardArray.getJSONObject(i).getString("pan");
@@ -123,10 +130,40 @@ public class CardActivity extends AppCompatActivity {
         });
     }
 
+
+    public void getCardsOffline() {
+        // this should fetch results locally *FIRST* and then opt-in to
+        // remote updates
+
+        Cursor cursor = dbManager.fetch();
+
+        cards = new ArrayList<Card>();
+        for (int i = 0; i < cursor.getCount(); i++) {
+            int id = cursor.getInt(cursor.getColumnIndex("_id"));
+            String pan = cursor.getString(cursor.getColumnIndex("pan"));
+            String expDate = cursor.getString(cursor.getColumnIndex("expdate"));
+            String name = cursor.getString(cursor.getColumnIndex("name"));
+            cards.add(new Card(id, name, pan, expDate));
+            cursor.moveToNext();
+
+
+        }
+        //creating recyclerview adapter
+
+        CardAdapter adapter = new CardAdapter(getApplicationContext(), cards);
+        //setting adapter to recyclerview
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+        dbManager.getAll();
+
+    }
+
+
     @Override
     protected void onResume() {
         super.onResume();
-        getCards();
+//        getCards();
     }
 
     @Override
@@ -139,4 +176,11 @@ public class CardActivity extends AppCompatActivity {
     public void onViewClicked() {
         startActivity(new Intent(CardActivity.this, AddCardActivity.class));
     }
+
+    @OnClick(R.id.sync)
+    public void onSyncClicked() {
+        getCards();
+    }
+
+
 }

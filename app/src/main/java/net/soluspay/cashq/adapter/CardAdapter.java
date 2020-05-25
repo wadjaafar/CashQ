@@ -49,10 +49,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         holder.name.setText(card.getName());
         holder.pan.setText(card.getPan());
         holder.expDate.setText(card.getExpDate());
-        holder.logo.setImageResource(R.drawable.logo_white);
+        holder.logo.setImageResource(R.drawable.logo_white); // you can set a logo here. VERY interesting
         holder.radioButton.setChecked(position == mSelectedItem);
-
-
     }
 
     public Card getItem(int position) {

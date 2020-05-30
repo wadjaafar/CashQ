@@ -37,6 +37,7 @@ import com.microsoft.appcenter.crashes.Crashes;
 import net.soluspay.cashq.fragment.MainFragment;
 import net.soluspay.cashq.model.EBSRequest;
 import net.soluspay.cashq.model.EBSResponse;
+import net.soluspay.cashq.utils.CardDBManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -204,12 +205,19 @@ public class MainActivity extends AppCompatActivity {
             case R.id.logout:
                 // on-long press activity
 
+                // Should delete the local data as well...
+
                 SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();
                 editor.clear();
                 editor.apply();
                 // very dirty code
                 getSharedPreferences("result", Activity.MODE_PRIVATE).edit().clear().apply();
+
+                CardDBManager dbmanager = new CardDBManager(this);
+                dbmanager.open();
+                dbmanager.deleteAll();
+
                 intent = new Intent(MainActivity.this, SignInActivity.class);
                 startActivity(intent);
                 finish();

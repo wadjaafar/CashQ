@@ -39,6 +39,8 @@ public class SignInActivity extends AppCompatActivity {
     Button signin;
     @BindView(R.id.signup)
     Button signup;
+    @BindView(R.id.button)
+    Button offline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +112,7 @@ public class SignInActivity extends AppCompatActivity {
         });
     }
 
-    @OnClick({R.id.signin, R.id.signup})
+    @OnClick({R.id.signin, R.id.signup, R.id.button})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.signin:
@@ -126,8 +128,7 @@ public class SignInActivity extends AppCompatActivity {
                     error = true;
                     password.setError("Password cannot be empty");
                 }
-                if(!error)
-                {
+                if (!error) {
                     signIn();
                 } else {
                     //manage error case here
@@ -136,6 +137,10 @@ public class SignInActivity extends AppCompatActivity {
             case R.id.signup:
                 startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
                 break;
+            case R.id.button:
+                // TODO check on refreshing cards for isOffline==1 and disable it accordingly
+                getSharedPreferences("credentials", Activity.MODE_PRIVATE).edit().putInt("isOffline", 1).apply();
+                startActivity(new Intent(SignInActivity.this, MainActivity.class));
         }
     }
 }

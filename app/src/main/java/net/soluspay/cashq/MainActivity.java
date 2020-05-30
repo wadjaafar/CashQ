@@ -163,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onError(ANError error) {
                         // handle error
                         EBSResponse response = error.getErrorAsObject(EBSResponse.class);
+                        Log.d("no internet", error.toString());
                         Log.i("Working Key Error", String.valueOf(error.getErrorBody()));
                         //Toast.makeText(getApplicationContext(), error.getErrorCode(), Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
@@ -179,12 +180,13 @@ public class MainActivity extends AppCompatActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+
     public void selectDrawerItem(MenuItem item) {
 
         Intent intent;
         Fragment fragment = null;
         Class fragmentClass = null;
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.home:
                 fragmentClass = MainFragment.class;
                 break;
@@ -200,10 +202,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.logout:
+                // on-long press activity
+
                 SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();
                 editor.clear();
                 editor.apply();
+                // very dirty code
+                getSharedPreferences("result", Activity.MODE_PRIVATE).edit().clear().apply();
                 intent = new Intent(MainActivity.this, SignInActivity.class);
                 startActivity(intent);
                 finish();
@@ -211,22 +217,6 @@ public class MainActivity extends AppCompatActivity {
             default:
                 fragmentClass = MainFragment.class;
         }
-
-        try {
-            fragment = (Fragment) fragmentClass.newInstance();
-            // Insert the fragment by replacing any existing fragment
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment, fragment).commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        // Highlight the selected item has been done by NavigationView
-        item.setChecked(true);
-        // Set action bar title
-        //setTitle(item.getTitle());
-        // Close the navigation drawer
-        drawerLayout.closeDrawers();
 
     }
 
@@ -236,7 +226,6 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
     }
-
 
 
     // this function handles auth retry on onRestart method

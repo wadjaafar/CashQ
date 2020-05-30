@@ -3,6 +3,7 @@ package net.soluspay.cashq;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -64,7 +65,6 @@ public class AddCardActivity extends AppCompatActivity {
     }
 
     public void addCard() {
-
 
         CardDBManager dbManager;
         dbManager = new CardDBManager(this);
@@ -141,6 +141,7 @@ public class AddCardActivity extends AppCompatActivity {
                     .setPositiveButton("OK", (dialog, id) -> {
                         //do things
                         finish();
+                        navigateUpTo(new Intent(AddCardActivity.this, CardActivity.class));
                     });
             AlertDialog alert = builder.create();
             alert.show();

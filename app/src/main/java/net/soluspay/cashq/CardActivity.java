@@ -145,8 +145,6 @@ public class CardActivity extends AppCompatActivity {
             String name = cursor.getString(cursor.getColumnIndex("name"));
             cards.add(new Card(id, name, pan, expDate));
             cursor.moveToNext();
-
-
         }
         //creating recyclerview adapter
 

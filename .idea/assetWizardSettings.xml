@@ -39,6 +39,7 @@
                                                 <entry key="color" value="000000" />
                                                 <entry key="imagePath" value="C:\Users\MSI\Downloads\ebdaa-app_logo.png" />
                                                 <entry key="opacityPercent" value="60" />
+                                                <entry key="paddingPercent" value="-10" />
                                               </map>
                                             </option>
                                           </PersistentState>

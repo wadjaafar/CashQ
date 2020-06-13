@@ -49,7 +49,7 @@ public class IPinAdapter extends RecyclerView.Adapter<IPinAdapter.CardViewHolder
         holder.name.setText(card.getName());
         holder.pan.setText(card.getPan());
         holder.expDate.setText(card.getExpDate());
-        holder.logo.setImageResource(R.drawable.logo_white);
+        holder.logo.setImageResource(R.drawable.ebdaa_logo_dark);
         holder.radioButton.setChecked(position == mSelectedItem);
 
 

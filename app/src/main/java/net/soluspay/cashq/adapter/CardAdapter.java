@@ -51,30 +51,12 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
         //binding the data with the viewholder views
         // how to deal with rtl
-        Locale current = ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration()).get(0);
-        Log.i("locale", "the current locale is: " + current.toString());
-        if (current.toString().equals("ar_SA")) {
-            holder.name.setTextLocale(current);
-            holder.pan.setTextLocale(current);
 
-            holder.expDate.setTextLocale(current);
-            holder.name.setText("بطاقة كاشك");
-            holder.name.setTextLocale(current);
-//            holder.name.setText(card.getName());
-            holder.pan.setText(card.getPan());
-            holder.expDate.setText(card.getExpDate());
-            holder.logo.setImageResource(R.drawable.logo_white); // you can set a logo here. VERY interesting
-            holder.radioButton.setChecked(position == mSelectedItem);
-            return;
-        }
-        holder.name.setTextLocale(current);
-        holder.pan.setTextLocale(current);
-        holder.expDate.setTextLocale(current);
 
         holder.name.setText(card.getName());
         holder.pan.setText(card.getPan());
         holder.expDate.setText(card.getExpDate());
-        holder.logo.setImageResource(R.drawable.logo_white); // you can set a logo here. VERY interesting
+        holder.logo.setImageResource(R.drawable.ebdaa_logo_dark); // you can set a logo here. VERY interesting
         holder.radioButton.setChecked(position == mSelectedItem);
     }
 

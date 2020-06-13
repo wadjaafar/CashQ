@@ -25,6 +25,20 @@
                                               <map>
                                                 <entry key="color" value="000000" />
                                                 <entry key="imagePath" value="C:\Users\MSI\AppData\Local\Temp\ic_android_black_24dp.xml" />
+                                                <entry key="opacityPercent" value="80" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="image">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="000000" />
+                                                <entry key="imagePath" value="C:\Users\MSI\Downloads\ebdaa-app_logo.png" />
+                                                <entry key="opacityPercent" value="60" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -56,7 +70,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="theme" value="HOLO_DARK" />
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="C:\Users\MSI\Downloads\ebdaa-app_logo.png" />
+                                      <entry key="outputName" value="ebdaa_logo_holo_dark" />
                                       <entry key="themeColor" value="ffffff" />
                                     </map>
                                   </option>
@@ -86,7 +102,7 @@
                                               <map>
                                                 <entry key="color" value="000000" />
                                                 <entry key="imagePath" value="C:\Users\MSI\Downloads\ebdaa-logo.PNG" />
-                                                <entry key="scalingPercent" value="80" />
+                                                <entry key="scalingPercent" value="84" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -120,9 +136,6 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="backgroundLayerName" value="ic_launcher_logo_background_ebdaa" />
-                                      <entry key="foregroundLayerName" value="ic_launcher_logo_foreground_ebdaa" />
                                       <entry key="outputName" value="ic_launcher_logo" />
                                     </map>
                                   </option>
@@ -292,6 +305,11 @@
                                 </PersistentState>
                               </value>
                             </entry>
+                          </map>
+                        </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>

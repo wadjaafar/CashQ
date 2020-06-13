@@ -98,7 +98,7 @@ public class AddCardActivity extends AppCompatActivity {
                     // do anything with response
 
                     // successful response
-                    toDb(dbManager, pan.getText().toString(), expDate.getText().toString(), cardName.getText().toString());
+                    toDb(dbManager, pan.getText().toString(), date, cardName.getText().toString());
 
                     progressDialog.dismiss();
                     AlertDialog.Builder builder = new AlertDialog.Builder(AddCardActivity.this);
@@ -133,7 +133,7 @@ public class AddCardActivity extends AppCompatActivity {
             });
         } else {
 //            String pan
-            toDb(dbManager, pan.getText().toString(), expDate.getText().toString(), cardName.getText().toString());
+            toDb(dbManager, pan.getText().toString(), date, cardName.getText().toString());
             AlertDialog.Builder builder = new AlertDialog.Builder(AddCardActivity.this);
             builder.setTitle("Successful")
                     .setMessage("Your card has been added successfully")

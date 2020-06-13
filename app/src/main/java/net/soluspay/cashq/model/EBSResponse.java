@@ -1,5 +1,7 @@
 package net.soluspay.cashq.model;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.DecimalFormat;

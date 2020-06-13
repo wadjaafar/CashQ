@@ -1,6 +1,7 @@
 package net.soluspay.cashq;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -36,7 +37,14 @@ public class ScanCodeActivity extends AppCompatActivity implements ZXingScannerV
 
     @Override
     public void handleResult(Result rawResult) {
-
+        Toast.makeText(this, "Contents = " + rawResult.getText() +", Format = " + rawResult.getBarcodeFormat().toString(), Toast.LENGTH_LONG).show();
+//        position=rawResult.getText();
+//        formt=rawResult.getBarcodeFormat().toString();
+        Intent intent=new Intent();
+        intent.putExtra("data", rawResult.getText());
+//        intent.putExtra("Format",formt);
+        setResult(RESULT_OK,intent);
+        finish();
     }
 
     @Override

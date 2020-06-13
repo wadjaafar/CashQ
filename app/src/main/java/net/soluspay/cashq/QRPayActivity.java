@@ -174,8 +174,27 @@ public class QRPayActivity extends AppCompatActivity {
 
     @OnClick(R.id.qr_image)
     public void onQrImageClicked() {
-        startActivity(new Intent(QRPayActivity.this, ScanCodeActivity.class));
+        startActivityForResult(new Intent(QRPayActivity.this, ScanCodeActivity.class), 1);
     }
+
+    void parseQR(){
+    // use this function to parse the QR (https://github.com/adonese/qr)
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                Log.i("intent", data.getStringExtra("data"));
+                merchant.setText(data.getStringExtra("data"));
+            }
+        }
+    }
+
+
 
     @OnClick(R.id.proceed)
     public void onProceedClicked() {

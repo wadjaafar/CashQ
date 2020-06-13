@@ -3,15 +3,15 @@
 
     <group>
 
-        <item android:id="@+id/home" android:title="Home" android:icon="@drawable/ic_home_black_24dp"/>
-        <item android:id="@+id/cards" android:title="Cards" android:icon="@drawable/ic_card" android:iconTint="@color/darkGray"/>
-        <item android:id="@+id/services" android:title="Profile" android:icon="@drawable/ic_person_black_24dp" android:iconTint="@color/darkGray"/>
+        <item android:id="@+id/home" android:title="@string/main_home" android:icon="@drawable/ic_home_black_24dp"/>
+        <item android:id="@+id/cards" android:title="@string/main_cards" android:icon="@drawable/ic_card" android:iconTint="@color/darkGray"/>
+        <item android:id="@+id/services" android:title="@string/main_profile" android:icon="@drawable/ic_person_black_24dp" android:iconTint="@color/darkGray"/>
         <!--
         <item android:id="@+id/ipin_change" android:title="iPIN Change" android:icon="@drawable/ic_lock" android:iconTint="@color/darkGray"/>
         -->
 
-        <item android:id="@+id/settings" android:title="Settings" android:icon="@drawable/ic_settings_black_24dp"/>
-        <item android:id="@+id/logout" android:title="Logout" android:icon="@drawable/ic_exit_to_app_black_24dp"/>
+        <item android:id="@+id/settings" android:title="@string/main_settings" android:icon="@drawable/ic_settings_black_24dp"/>
+        <item android:id="@+id/logout" android:title="@string/main_logout" android:icon="@drawable/ic_exit_to_app_black_24dp"/>
         <item android:id="@+id/ipin_side" android:title="@string/ipin_management" android:icon="@drawable/ic_lock"/>
 
     </group>

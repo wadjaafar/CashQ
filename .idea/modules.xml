@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cashq.iml" filepath="$PROJECT_DIR$/cashq.iml" group="cashq" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/cashq-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/cashq-app.iml" group="cashq/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cashq-ebdaa.iml" filepath="$PROJECT_DIR$/.idea/modules/cashq-ebdaa.iml" group="cashq-ebdaa" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/cashq-ebdaa-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/cashq-ebdaa-app.iml" group="cashq-ebdaa/app" />
     </modules>
   </component>
 </project>

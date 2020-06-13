@@ -79,7 +79,7 @@ public class E15InquiryFragment extends Fragment {
     public void e15Inquiry(final Card card) {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(getActivity(), "E15 Bill Inquiry", "Please wait...", false, false);
+        progressDialog = ProgressDialog.show(getActivity(), "E15 Bill Inquiry", getResources().getText(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getActivity().getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
@@ -147,7 +147,7 @@ public class E15InquiryFragment extends Fragment {
                         // handle error
                         Log.i("Purchase Error", String.valueOf(error.getErrorBody()));
                         if (error.getErrorCode() == 504) {
-                            Toast.makeText(getActivity(), "Unable to connect to host", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getResources().getText(R.string.connection_timed_out), Toast.LENGTH_SHORT).show();
                         }
                         Gson gson = new Gson();
                         Type type = new TypeToken<EBSResponse>() {

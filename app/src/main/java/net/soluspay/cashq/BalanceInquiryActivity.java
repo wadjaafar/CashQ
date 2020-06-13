@@ -46,8 +46,8 @@ public class BalanceInquiryActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("Balance Inquiry");
-        Globals.serviceName = "Balance Inquiry";
+        setTitle(getResources().getText(R.string.balance_service));
+        Globals.serviceName = getResources().getText(R.string.balance_service).toString();
         Globals.service = "balance";
         dbManager = new CardDBManager(this);
         dbManager.open();
@@ -81,7 +81,7 @@ public class BalanceInquiryActivity extends AppCompatActivity {
     public void getBalance(final Card card){
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(this, "Balance Inquiry", "Please wait...",false, false);
+        progressDialog = ProgressDialog.show(this, "Balance Inquiry", getResources().getText(R.string.loading_wait),false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
@@ -140,7 +140,7 @@ public class BalanceInquiryActivity extends AppCompatActivity {
                         // handle error
                         Log.i("Purchase Error", String.valueOf(error.getErrorBody()));
                         if (error.getErrorCode() == 504){
-                            Toast.makeText(getApplicationContext(), "Unable to connect to host", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getResources().getText(R.string.connection_timed_out), Toast.LENGTH_SHORT).show();
                         }
                         Gson gson = new Gson();
                         Type type = new TypeToken<EBSResponse>() {

@@ -78,7 +78,7 @@ public class QRPayActivity extends AppCompatActivity {
     public void purchaseElectricity(final Card card) {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(this, "QR Payment", "Please wait...", false, false);
+        progressDialog = ProgressDialog.show(this, "QR Payment", getResources().getText(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
@@ -147,7 +147,7 @@ public class QRPayActivity extends AppCompatActivity {
                         // handle error
                         Log.i("Purchase Error", String.valueOf(error.getErrorBody()));
                         if (error.getErrorCode() == 504) {
-                            Toast.makeText(getApplicationContext(), "Unable to connect to host", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getResources().getText(R.string.connection_timed_out), Toast.LENGTH_SHORT).show();
                         }
                         Gson gson = new Gson();
                         Type type = new TypeToken<EBSResponse>() {
@@ -174,8 +174,27 @@ public class QRPayActivity extends AppCompatActivity {
 
     @OnClick(R.id.qr_image)
     public void onQrImageClicked() {
-        startActivity(new Intent(QRPayActivity.this, ScanCodeActivity.class));
+        startActivityForResult(new Intent(QRPayActivity.this, ScanCodeActivity.class), 1);
     }
+
+    void parseQR(){
+    // use this function to parse the QR (https://github.com/adonese/qr)
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                Log.i("intent", data.getStringExtra("data"));
+                merchant.setText(data.getStringExtra("data"));
+            }
+        }
+    }
+
+
 
     @OnClick(R.id.proceed)
     public void onProceedClicked() {

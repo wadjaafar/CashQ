@@ -90,7 +90,7 @@ public class PinChangeActivity extends AppCompatActivity {
     public void changePin(final Card card) {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(this, "Pin Change", "Please wait...", false, false);
+        progressDialog = ProgressDialog.show(this, "Pin Change", getResources().getText(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
@@ -152,7 +152,7 @@ public class PinChangeActivity extends AppCompatActivity {
                         // handle error
                         Log.i("Pin Change Error", String.valueOf(error.getErrorBody()));
                         if (error.getErrorCode() == 504){
-                            Toast.makeText(getApplicationContext(), "Unable to connect to host", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getResources().getText(R.string.connection_timed_out), Toast.LENGTH_SHORT).show();
                         }
                         Gson gson = new Gson();
                         Type type = new TypeToken<EBSResponse>() {

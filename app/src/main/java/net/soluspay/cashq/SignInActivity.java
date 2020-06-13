@@ -59,7 +59,7 @@ public class SignInActivity extends AppCompatActivity {
     public void signIn() {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(this, "Sign In", "Please wait...", false, false);
+        progressDialog = ProgressDialog.show(this, "Sign In", getResources().getText(R.string.loading_wait), false, false);
 
         EBSRequest request = new EBSRequest();
 

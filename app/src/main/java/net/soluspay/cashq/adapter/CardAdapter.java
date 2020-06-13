@@ -1,6 +1,8 @@
 package net.soluspay.cashq.adapter;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import androidx.core.os.ConfigurationCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gndi_sd.szzt.R;
@@ -15,6 +18,7 @@ import com.gndi_sd.szzt.R;
 import net.soluspay.cashq.model.Card;
 
 import java.util.List;
+import java.util.Locale;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
 
@@ -46,6 +50,27 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         Card card = cardList.get(position);
 
         //binding the data with the viewholder views
+        // how to deal with rtl
+        Locale current = ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration()).get(0);
+        Log.i("locale", "the current locale is: " + current.toString());
+        if (current.toString().equals("ar_SA")) {
+            holder.name.setTextLocale(current);
+            holder.pan.setTextLocale(current);
+
+            holder.expDate.setTextLocale(current);
+            holder.name.setText("بطاقة كاشك");
+            holder.name.setTextLocale(current);
+//            holder.name.setText(card.getName());
+            holder.pan.setText(card.getPan());
+            holder.expDate.setText(card.getExpDate());
+            holder.logo.setImageResource(R.drawable.logo_white); // you can set a logo here. VERY interesting
+            holder.radioButton.setChecked(position == mSelectedItem);
+            return;
+        }
+        holder.name.setTextLocale(current);
+        holder.pan.setTextLocale(current);
+        holder.expDate.setTextLocale(current);
+
         holder.name.setText(card.getName());
         holder.pan.setText(card.getPan());
         holder.expDate.setText(card.getExpDate());

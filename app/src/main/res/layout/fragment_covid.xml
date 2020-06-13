@@ -32,7 +32,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edittext_background"
-            android:drawableLeft="@drawable/ic_amount"
+            android:drawableStart="@drawable/ic_amount"
             android:drawablePadding="10dp"
             android:drawableTint="@color/darkGray"
             android:fontFamily="@font/latosemibold"

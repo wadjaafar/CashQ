@@ -57,7 +57,7 @@ public class CardActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("My Cards");
+        setTitle(getString(R.string.my_cards_title));
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         dbManager = new CardDBManager(this);
@@ -71,7 +71,7 @@ public class CardActivity extends AppCompatActivity {
         // remote updates
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(this, "Loading", "Please wait...", false, false);
+        progressDialog = ProgressDialog.show(this, getResources().getText(R.string.loading), getResources().getText(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);

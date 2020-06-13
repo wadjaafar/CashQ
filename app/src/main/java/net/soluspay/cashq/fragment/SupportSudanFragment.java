@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,14 +15,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.gndi_sd.szzt.R;
-import com.google.common.base.Joiner;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -32,7 +30,6 @@ import net.soluspay.cashq.ResultActivity;
 import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
 import net.soluspay.cashq.model.EBSResponse;
-import net.soluspay.cashq.utils.CardDBManager;
 import net.soluspay.cashq.utils.Globals;
 import net.soluspay.cashq.utils.IPINBlockGenerator;
 
@@ -40,7 +37,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
-import java.util.LinkedHashMap;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,64 +47,40 @@ import butterknife.Unbinder;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class E15PaymentFragment extends Fragment {
+public class SupportSudanFragment extends Fragment {
 
 
-    @BindView(R.id.invoice)
-    EditText invoice;
     @BindView(R.id.amount)
     EditText amount;
+
     @BindView(R.id.proceed)
     Button proceed;
     Unbinder unbinder;
-    @BindView(R.id.phone)
-    EditText phone;
 
-    CardDBManager db;
 
-    public E15PaymentFragment() {
+    private String serviceName, receipt;
+
+    public SupportSudanFragment() {
         // Required empty public constructor
     }
 
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        db = new CardDBManager(this.getActivity());
-        db.open();
-
-        View view = inflater.inflate(R.layout.fragment_e15_payment, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        Globals.service = "e15_payment";
-        return view;
-    }
-
-    public void e15Payment(final Card card) {
+    public void topUp(final Card card) {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(getActivity(), "E15 Bill Payment", getResources().getText(R.string.loading_wait), false, false);
+        progressDialog = ProgressDialog.show(getActivity(), serviceName, getResources().getText(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
-        SharedPreferences sp = getActivity().getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
+        SharedPreferences sp = Objects.requireNonNull(getActivity()).getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
         String key = sp.getString("public_key", "");
         Log.i("Public Key", card.getIpin());
+
+
         String encryptedIPIN = new IPINBlockGenerator().getIPINBlock(card.getIpin(), key, request.getUuid());
-
-        LinkedHashMap<String, String> map = new LinkedHashMap<>();
-        map.put("SERVICEID", "6");
-        map.put("INVOICENUMBER", invoice.getText().toString());
-        map.put("PHONENUMBER", phone.getText().toString());
-
-        String paymentInfo = Joiner.on("/").withKeyValueSeparator("=").join(map);
-
-        request.setPayeeId("0010050001");
-        request.setPaymentInfo(paymentInfo);
-        request.setTranAmount(Float.parseFloat(amount.getText().toString()));
-        request.setTranCurrencyCode("SDG");
         request.setPan(card.getPan());
         request.setExpDate(card.getExpDate());
-        request.setIPIN(encryptedIPIN);
+        request.setIpin(encryptedIPIN);
+        request.setServiceProviderId(Constants.CONTRIBUTE_SUDAN);
+        request.setTranAmount(Float.parseFloat(amount.getText().toString()));
 
         Gson gson = new GsonBuilder().create();
         String json = gson.toJson(request);
@@ -119,7 +92,9 @@ public class E15PaymentFragment extends Fragment {
             e.printStackTrace();
         }
 
-        AndroidNetworking.post(request.serverUrl() + Constants.BILL_PAYMENT)
+        Log.i("my request", object.toString());
+
+        AndroidNetworking.post(request.serverUrl() + Constants.PURCHASE)
                 .addJSONObjectBody(object) // posting java object
                 .setTag("test")
                 .setPriority(Priority.MEDIUM)
@@ -181,6 +156,18 @@ public class E15PaymentFragment extends Fragment {
     }
 
     @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_covid, container, false);
+        unbinder = ButterKnife.bind(this, view);
+        Globals.service = "billers";
+        serviceName = "Support Sudan";
+        receipt = "billers";
+        return view;
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
@@ -190,43 +177,22 @@ public class E15PaymentFragment extends Fragment {
     public void onViewClicked() {
         boolean error = false;
 
-        if(invoice.getText().toString().isEmpty())
-        {
-            error = true;
-            invoice.setError("Invoice Number cannot be empty");
-        }
-        if(phone.getText().toString().isEmpty())
-        {
-            error = true;
-            phone.setError("Phone Number cannot be empty");
-        }
-        if(phone.getText().toString().length() != 10)
-        {
-            error = true;
-            phone.setError("Enter a valid phone number");
-        }
         if(amount.getText().toString().isEmpty())
         {
             error = true;
-            amount.setError("Amount cannot be empty");
+            amount.setError("Enter a valid amount");
         }
+
         if(!error)
         {
-            Globals.service = "e15Payment";
-            Globals.serviceName = "E15 Bill Payment";
+            Globals.serviceName = serviceName;
+            Globals.service = "billers";
+            Globals.service = receipt;
             CardDialog dialog = CardDialog.newInstance();
-            dialog.setCallback(new CardDialog.Callback() {
-                @Override
-                public void onActionClick(Card card) {
-                    e15Payment(card);
-                    db.open();
-                    db.updateCount(card.getPan());
-                }
-
-            });
+            dialog.setCallback(this::topUp);
             Bundle args = new Bundle();
-            args.putString("service", "E15 Bill Payment");
-            args.putString("amount", amount.getText().toString() + " SDG");
+            args.putString("service", serviceName);
+
             dialog.setArguments(args);
             dialog.show(getActivity().getSupportFragmentManager(), "tag");
         } else {

@@ -57,7 +57,7 @@ public class SignUpActivity extends AppCompatActivity {
     public void signUp() {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(this, "Sign Up", "Please wait...", false, false);
+        progressDialog = ProgressDialog.show(this, "Sign Up", getResources().getText(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
         JSONObject jsonObject = new JSONObject();
@@ -86,7 +86,7 @@ public class SignUpActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                 builder.setTitle("Successful")
-                        .setMessage("You have been registered successfully")
+                        .setMessage(R.string.sign_up_success_message)
                         .setCancelable(false)
                         .setPositiveButton("OK", (dialog, id) -> {
                             //do things

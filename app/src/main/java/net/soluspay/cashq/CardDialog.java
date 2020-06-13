@@ -124,6 +124,7 @@ public class CardDialog extends DialogFragment {
 
         Bundle args = getArguments();
 
+        // this is nullable interface. Let's avoid this thing in the future
         String service = args.getString("service");
         String amount = args.getString("amount");
 
@@ -155,10 +156,8 @@ public class CardDialog extends DialogFragment {
 
     @OnClick({R.id.fullscreen_dialog_close})
     public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.fullscreen_dialog_close:
-                getActivity().finish();
-                break;
+        if (view.getId() == R.id.fullscreen_dialog_close) {
+            getActivity().finish();
         }
     }
 
@@ -173,6 +172,7 @@ public class CardDialog extends DialogFragment {
 
     }
 
+    // Maybe add a prompt here if cards were empty? To notify the user to submit a card
     public List<Card> getAllCards() {
 
         // sorting orders
@@ -184,6 +184,7 @@ public class CardDialog extends DialogFragment {
 
         Cursor cursor = dbManager.fetch();
         // Traversing through all rows and adding to list
+        // nice do while
         if (cursor.moveToFirst()) {
 
             do {
@@ -208,7 +209,7 @@ public class CardDialog extends DialogFragment {
     public void getCards() {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(getActivity(), "Loading", "Please wait...", false, false);
+        progressDialog = ProgressDialog.show(getActivity(), getResources().getText(R.string.loading), getResources().getText(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getActivity().getSharedPreferences("credentials", Activity.MODE_PRIVATE);

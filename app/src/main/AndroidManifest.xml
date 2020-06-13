@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="HardcodedDebugMode">
-        <activity android:name="net.soluspay.cashq.BillersActivity"></activity>
+        <activity android:name="net.soluspay.cashq.BillersActivity"/>
         <activity android:name="net.soluspay.cashq.ServicePayment" />
         <activity android:name="net.soluspay.cashq.AddCardActivity" />
         <activity android:name="net.soluspay.cashq.SignUpActivity" />

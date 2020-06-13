@@ -52,7 +52,7 @@ public class ResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
-        setTitle("Result");
+        setTitle(getString(R.string.result_word));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
         Intent intent = getIntent();
@@ -60,14 +60,15 @@ public class ResultActivity extends AppCompatActivity {
         // get sp here and save it
         SharedPreferences sp = getSharedPreferences("result", Activity.MODE_PRIVATE);
         // how can we debug shared preferences...
-        sp.edit().putString("balance", ebsResponse.getAvailableBalance()).apply();
+
 
         card = (Card) intent.getSerializableExtra("card");
         response.setText(Globals.serviceName);
         message.setText(ebsResponse.getResponseMessage());
         if (ebsResponse.getResponseStatus().equals("Successful")) {
+            sp.edit().putString("balance", ebsResponse.getAvailableBalance()).apply();
             image.setImageResource(R.drawable.ic_success);
-            Log.d(" ServiceNmae " , Globals.service);
+            Log.d(" ServiceName " , Globals.service);
             Map<String, String> paymentInfo;
             switch (Globals.service) {
                 case "purchase":
@@ -76,6 +77,7 @@ public class ResultActivity extends AppCompatActivity {
                     addRow("Fees", String.valueOf(ebsResponse.getIssuerTranFee()));
                     addRow("Card Number", ebsResponse.getPAN());
                     addRow("Date", ebsResponse.getTranDateTime());
+                    addRow("To account", ebsResponse.getToAccount());
                     break;
                 case "electricity":
                     addRow("Token", ebsResponse.getBillInfo().get("token"));

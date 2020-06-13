@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
     public void getPublicKey() {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(this, "Loading", "Please wait...",false, false);
+        progressDialog = ProgressDialog.show(this, getResources().getText(R.string.loading), getResources().getText(R.string.loading_wait),false, false);
         EBSRequest request = new EBSRequest();
         Gson gson = new GsonBuilder().create();
         String json = gson.toJson(request);
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = sp.edit();
                                 editor.putString("public_key", result.getPubKeyValue());
                                 editor.commit();
-                                Toast.makeText(getApplicationContext(), "Key downloaded successfully ", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), R.string.key_downloaded, Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

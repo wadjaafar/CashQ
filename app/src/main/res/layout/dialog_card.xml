@@ -29,7 +29,8 @@
                 android:layout_marginStart="8dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="8dp"
-                android:src="@drawable/ic_close_white_24dp" />
+                android:src="@drawable/ic_close_white_24dp"
+                android:contentDescription="@string/card_alt" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -37,7 +38,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="8dp"
                 android:layout_toEndOf="@id/fullscreen_dialog_close"
-                android:text="Confirm"
+                android:text="@string/confirm"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -62,7 +63,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/latosemibold"
             android:gravity="center"
-            android:text="Service"
+            android:text="@string/service"
             android:textAllCaps="true"
             android:textColor="@color/darkGray"
             android:textSize="18sp"
@@ -78,7 +79,7 @@
             android:layout_marginTop="56dp"
             android:fontFamily="@font/latosemibold"
             android:gravity="center"
-            android:text="0.00 SDG"
+            android:text="@string/initial_amount"
             android:textAllCaps="true"
             android:textColor="@color/darkGray"
             android:textSize="22sp"
@@ -106,10 +107,11 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/edittext_background"
-        android:drawableLeft="@drawable/ic_lock"
+        android:drawableStart="@drawable/ic_lock"
         android:drawablePadding="10dp"
         android:fontFamily="@font/latosemibold"
-        android:hint="iPIN"
+        android:textAlignment="viewStart"
+        android:hint="@string/ipin"
         android:inputType="numberPassword"
         android:maxLength="4"
         android:padding="20dp"
@@ -131,7 +133,7 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/button_background"
         android:fontFamily="@font/latosemibold"
-        android:text="Confirm"
+        android:text="@string/confirm"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

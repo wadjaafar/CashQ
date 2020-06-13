@@ -68,7 +68,8 @@ public class IPinConfirmFragment extends Fragment {
     Unbinder unbinder;
 
 
-    private String payeeId, serviceName, receipt;
+    private String serviceName;
+    private String receipt;
 
     public IPinConfirmFragment() {
         // Required empty public constructor
@@ -77,7 +78,7 @@ public class IPinConfirmFragment extends Fragment {
     public void topUp(final Card card) {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(getActivity(), serviceName, "Please wait...", false, false);
+        progressDialog = ProgressDialog.show(getActivity(), serviceName, getResources().getText(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getActivity().getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
@@ -140,7 +141,7 @@ public class IPinConfirmFragment extends Fragment {
                         // handle error
                         Log.i("Purchase Error", String.valueOf(error.getErrorBody()));
                         if (error.getErrorCode() == 504) {
-                            Toast.makeText(getActivity(), "Unable to connect to host", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), R.string.connection_timed_out, Toast.LENGTH_SHORT).show();
                         }
                         Gson gson = new Gson();
                         Type type = new TypeToken<EBSResponse>() {
@@ -171,9 +172,9 @@ public class IPinConfirmFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ipin_verify, container, false);
         unbinder = ButterKnife.bind(this, view);
         Globals.service = "telecom_topup";
-        serviceName = "Zain Top-up";
+        serviceName = getString(R.string.zain_top_up_service);
         receipt = "zainTopup";
-        payeeId = "0010010001";
+        String payeeId = "0010010001";
         return view;
     }
 
@@ -190,7 +191,7 @@ public class IPinConfirmFragment extends Fragment {
         if(pan.getText().toString().isEmpty())
         {
             error = true;
-            pan.setError("Enter a phone number");
+            pan.setError(getString(R.string.enter_phone_prompt));
         }
 //        if(pan.getText().toString().length() != 16 || pan.getText().toString().length() != 19)
 //        {
@@ -200,7 +201,7 @@ public class IPinConfirmFragment extends Fragment {
         if(exp_date.getText().toString().isEmpty())
         {
             error = true;
-            exp_date.setError("Amount cannot be empty");
+            exp_date.setError(getString(R.string.enter_amount_prompt));
         }
         if(!error)
         {

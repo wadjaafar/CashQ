@@ -155,5 +155,6 @@
     <string name="service">Service</string>
     <string name="initial_amount">0.00 SDG</string>
     <string name="card_holder">Card Holder</string>
+    <string name="languages">Switch Language</string>
 
 </resources>

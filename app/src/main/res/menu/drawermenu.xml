@@ -10,7 +10,8 @@
         <item android:id="@+id/ipin_change" android:title="iPIN Change" android:icon="@drawable/ic_lock" android:iconTint="@color/darkGray"/>
         -->
 
-        <item android:id="@+id/settings" android:title="@string/main_settings" android:icon="@drawable/ic_settings_black_24dp"/>
+<!--        <item android:id="@+id/settings" android:title="@string/main_settings" android:icon="@drawable/ic_settings_black_24dp"/>-->
+        <item android:id="@+id/language" android:title="@string/languages" android:icon="@drawable/ic_language"/>
         <item android:id="@+id/logout" android:title="@string/main_logout" android:icon="@drawable/ic_exit_to_app_black_24dp"/>
         <item android:id="@+id/ipin_side" android:title="@string/ipin_management" android:icon="@drawable/ic_lock"/>
 

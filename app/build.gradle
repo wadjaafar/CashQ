@@ -22,7 +22,7 @@ android {
     }
     compileSdkVersion 29
     defaultConfig {
-        applicationId "net.soluspay.cashq"
+        applicationId "net.soluspay.ebdaa"
         minSdkVersion 22
         targetSdkVersion 29
         versionCode 21

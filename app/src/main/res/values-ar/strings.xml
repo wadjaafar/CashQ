@@ -145,12 +145,13 @@
     <string name="sign_up_success_message">تم التسجيل</string>
     <string name="merchant_id">رقم التاجر</string>
     <string name="result_word">النتيجة</string>
-    <string name="connection_timed_out">Unable to connect to host</string>
-    <string name="zain_top_up_service">Zain Top-up</string>
-    <string name="enter_phone_prompt">Enter a phone number</string>
-    <string name="enter_amount_prompt">Amount cannot be empty</string>
-    <string name="service">Service</string>
+    <string name="connection_timed_out">لا يمكن الوصول للمخدّم</string>
+    <string name="zain_top_up_service">شحن رصيد زين</string>
+    <string name="enter_phone_prompt">ادخل رقم تلفون</string>
+    <string name="enter_amount_prompt">المبلغ لا يكون خالي</string>
+    <string name="service">خدمة</string>
     <string name="initial_amount">0.00 SDG</string>
-    <string name="card_holder">Card Holder</string>
+    <string name="card_holder">حامل البطاقة</string>
+    <string name="languages">تبديل اللغة</string>
 
 </resources>

@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -152,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                                 SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sp.edit();
                                 editor.putString("public_key", result.getPubKeyValue());
-                                editor.commit();
+                                editor.apply();
                                 Toast.makeText(getApplicationContext(), R.string.key_downloaded, Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -195,7 +196,8 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(MainActivity.this, CardActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.settings:
+            case R.id.language: // settings
+                startActivity(new Intent(Settings.ACTION_LOCALE_SETTINGS));
                 break;
             case R.id.ipin_side:
                 intent = new Intent(MainActivity.this, IPinActivity.class);

@@ -334,8 +334,8 @@
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="autoMirrored" value="true" />
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_user_secret" />
-                            <entry key="sourceFile" value="D:\Games\Font Awesome Pro 5.10.2 [FULL]\fontawesome-pro-5.10.2-desktop\svgs\light\user-secret.svg" />
+                            <entry key="outputName" value="ic_language" />
+                            <entry key="sourceFile" value="D:\Games\Font Awesome Pro 5.10.2 [FULL]\fontawesome-pro-5.10.2-desktop\svgs\light\language.svg" />
                           </map>
                         </option>
                       </PersistentState>

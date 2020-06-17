@@ -272,7 +272,7 @@ public class MoheArabInquiryFragment extends Fragment {
         if(!error)
         {
             Globals.service = "moheArabInquiry";
-            Globals.serviceName = "MOHE Arab Bill Inquiry";
+            Globals.serviceName = getString(R.string.mohe_arab_inquiry_title);
             CardDialog dialog = CardDialog.newInstance();
             dialog.setCallback(new CardDialog.Callback() {
                 @Override

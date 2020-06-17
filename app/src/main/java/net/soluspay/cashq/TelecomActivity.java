@@ -31,7 +31,7 @@ public class TelecomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_telecom);
-        setTitle("Telecom");
+        setTitle(getString(R.string.telecom_service));
         getSupportActionBar().setElevation(0);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -46,9 +46,9 @@ public class TelecomActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         TelecomActivity.ViewPagerAdapter adapter = new TelecomActivity.ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new TelecomTopUpFragment(), "Top-Up");
-        adapter.addFragment(new TelecomInquiryFragment(), "Bill Inquiry");
-        adapter.addFragment(new TelecomPaymentFragment(), "Bill Payment");
+        adapter.addFragment(new TelecomTopUpFragment(), getString(R.string.top_up_title));
+        adapter.addFragment(new TelecomInquiryFragment(), getString(R.string.bill_inquiry_title));
+        adapter.addFragment(new TelecomPaymentFragment(), getString(R.string.bill_payment_title));
         viewPager.setAdapter(adapter);
     }
 

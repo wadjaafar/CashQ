@@ -85,7 +85,7 @@ public class SignUpActivity extends AppCompatActivity {
                 // do anything with response
                 progressDialog.dismiss();
                 AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
-                builder.setTitle("Successful")
+                builder.setTitle(getString(R.string.success))
                         .setMessage(R.string.sign_up_success_message)
                         .setCancelable(false)
                         .setPositiveButton("OK", (dialog, id) -> {
@@ -105,7 +105,7 @@ public class SignUpActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                 EBSResponse response = error.getErrorAsObject(EBSResponse.class);
-                builder.setTitle("Failed")
+                builder.setTitle(getString(R.string.failure))
                         .setMessage("There is an error: " + response.getCode())
 //                        .setMessage(error.getResponse().message())
 

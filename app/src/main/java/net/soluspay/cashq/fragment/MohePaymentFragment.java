@@ -286,7 +286,7 @@ public class MohePaymentFragment extends Fragment {
         if(!error)
         {
             Globals.service = "mohePayment";
-            Globals.serviceName = "MOHE Bill Payment";
+            Globals.serviceName = getString(R.string.mohe_bill_payment_title);
             CardDialog dialog = CardDialog.newInstance();
             dialog.setCallback(new CardDialog.Callback() {
                 @Override

@@ -56,7 +56,7 @@ public class ElectricityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_electricity);
         ButterKnife.bind(this);
-        setTitle("Electricity");
+        setTitle(getString(R.string.electricity_service));
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Globals.service = "electricity";
@@ -180,7 +180,7 @@ public class ElectricityActivity extends AppCompatActivity {
         }
         if(!error)
         {
-            Globals.serviceName = "Purchase Electricity";
+            Globals.serviceName = getString(R.string.purchase_electricity);
             CardDialog dialog = CardDialog.newInstance();
             dialog.setCallback(new CardDialog.Callback() {
                 @Override

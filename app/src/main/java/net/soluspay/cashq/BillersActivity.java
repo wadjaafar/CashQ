@@ -30,7 +30,7 @@ public class BillersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_billers);
-        setTitle("Support Sudan");
+        setTitle(getString(R.string.support_sudan));
         getSupportActionBar().setElevation(0);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -45,8 +45,8 @@ public class BillersActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         BillersActivity.ViewPagerAdapter adapter = new BillersActivity.ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new CovidFragment(), "Covid19 Support");
-        adapter.addFragment(new SupportSudanFragment(), "Support Sudan");
+        adapter.addFragment(new CovidFragment(), getString(R.string.covid_19_title));
+        adapter.addFragment(new SupportSudanFragment(), getString(R.string.support_sudan_title));
         viewPager.setAdapter(adapter);
     }
 

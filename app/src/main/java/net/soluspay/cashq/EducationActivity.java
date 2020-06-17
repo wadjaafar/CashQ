@@ -26,7 +26,7 @@ public class EducationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_education);
         ButterKnife.bind(this);
         getSupportActionBar().setElevation(0);
-        setTitle("Education");
+        setTitle(getString(R.string.education_title));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 

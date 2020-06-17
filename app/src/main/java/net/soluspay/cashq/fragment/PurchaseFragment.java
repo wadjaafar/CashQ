@@ -46,7 +46,7 @@ public class PurchaseFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_purchase, container, false);
         unbinder = ButterKnife.bind(this, view);
-        Globals.serviceName = "Purchase";
+        Globals.serviceName = getString(R.string.purchase_title);
         return view;
     }
 

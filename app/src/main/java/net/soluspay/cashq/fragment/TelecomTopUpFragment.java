@@ -187,7 +187,7 @@ public class TelecomTopUpFragment extends Fragment {
         unbinder = ButterKnife.bind(this, view);
         Globals.service = "telecom_topup";
         radioZain.setChecked(true);
-        serviceName = "Zain Top-up";
+        serviceName = getString(R.string.zain_top_up_result); // hehehe that was a fucking bug
         receipt = "zainTopup";
         payeeId = "0010010001";
 
@@ -196,17 +196,17 @@ public class TelecomTopUpFragment extends Fragment {
             switch (checkedId) {
                 case R.id.radio_zain:
                     payeeId = "0010010001";
-                    serviceName = "Zain Top-up";
+                    serviceName = getString(R.string.zain_top_up_result);
                     receipt = "zainTopup";
                     break;
                 case R.id.radio_sudani:
                     payeeId = "0010010005";
-                    serviceName = "Sudani Top-up";
+                    serviceName = getString(R.string.sudani_top_up_result);
                     receipt = "sudaniTopup";
                     break;
                 case R.id.radio_mtn:
                     payeeId = "0010010003";
-                    serviceName = "MTN Top-up";
+                    serviceName = getString(R.string.mtn_top_up_result);
                     receipt = "mtnTopup";
                     break;
             }
@@ -227,17 +227,17 @@ public class TelecomTopUpFragment extends Fragment {
         if(phone.getText().toString().isEmpty())
         {
             error = true;
-            phone.setError("Enter a phone number");
+            phone.setError(getString(R.string.enter_phone_prompt));
         }
         if(phone.getText().toString().length() != 10)
         {
             error = true;
-            phone.setError("Enter a valid phone number");
+            phone.setError(getString(R.string.wrong_phone_number_error));
         }
         if(amount.getText().toString().isEmpty())
         {
             error = true;
-            amount.setError("Amount cannot be empty");
+            amount.setError(getString(R.string.empty_amount_error));
         }
         if(!error)
         {

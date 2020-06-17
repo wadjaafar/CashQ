@@ -62,8 +62,8 @@ public class BalanceInquiryActivity extends AppCompatActivity {
 
         });
         Bundle args = new Bundle();
-        args.putString("service", "Balance Inquiry");
-        args.putString("amount",  "0 SDG");
+        args.putString("service", getString(R.string.balance_inquiry));
+        args.putString("amount",  getString(R.string.initial_amount));
 
         dialog.setArguments(args);
         dialog.show(getSupportFragmentManager(), "tag");
@@ -81,7 +81,7 @@ public class BalanceInquiryActivity extends AppCompatActivity {
     public void getBalance(final Card card){
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(this, "Balance Inquiry", getResources().getText(R.string.loading_wait),false, false);
+        progressDialog = ProgressDialog.show(this, getString(R.string.balance_inquiry), getResources().getText(R.string.loading_wait),false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);

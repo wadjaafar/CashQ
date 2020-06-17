@@ -58,8 +58,8 @@ public class PinChangeActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("iPIN Change");
-        Globals.serviceName = "Pin Change";
+        setTitle(getString(R.string.pin_change));
+        Globals.serviceName = getString(R.string.pin_change);
         CardDialog dialog = CardDialog.newInstance();
         CardDBManager db = new CardDBManager(this);
         db.open();

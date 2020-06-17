@@ -50,9 +50,9 @@
                     android:id="@+id/radio_zain"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="24dp"
+                    android:layout_marginEnd="24dp"
                     android:fontFamily="@font/latosemibold"
-                    android:text="ZAIN" />
+                    android:text="@string/zain_biller" />
 
                 <RadioButton
                     android:id="@+id/radio_sudani"
@@ -60,14 +60,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="24dp"
                     android:fontFamily="@font/latosemibold"
-                    android:text="SUDANI" />
+                    android:text="@string/sudani_biller_name" />
 
                 <RadioButton
                     android:id="@+id/radio_mtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/latosemibold"
-                    android:text="MTN" />
+                    android:text="@string/mtn_biller_name" />
 
 
             </RadioGroup>
@@ -82,11 +82,11 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edittext_background"
-            android:drawableLeft="@drawable/ic_phone"
+            android:drawableStart="@drawable/ic_phone"
             android:drawablePadding="10dp"
             android:drawableTint="@color/darkGray"
             android:fontFamily="@font/latosemibold"
-            android:hint="PHONE"
+            android:hint="@string/phone_caps"
             android:maxLength="10"
             android:inputType="number"
             android:padding="20dp"
@@ -108,7 +108,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/button_background"
-            android:text="PROCEED"
+            android:text="@string/proceed"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

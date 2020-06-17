@@ -44,8 +44,8 @@ public class E15Activity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         E15Activity.ViewPagerAdapter adapter = new E15Activity.ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new E15InquiryFragment(), "Bill Inquiry");
-        adapter.addFragment(new E15PaymentFragment(), "Bill Payment");
+        adapter.addFragment(new E15InquiryFragment(), getString(R.string.bill_inquiry_title));
+        adapter.addFragment(new E15PaymentFragment(), getString(R.string.bill_payment_title));
         viewPager.setAdapter(adapter);
     }
 

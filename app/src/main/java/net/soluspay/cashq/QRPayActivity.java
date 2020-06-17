@@ -60,7 +60,7 @@ public class QRPayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrpay);
         ButterKnife.bind(this);
-        setTitle("QR Payment");
+        setTitle(getString(R.string.qr_pay_service));
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Globals.service = "qrpay";
@@ -209,7 +209,7 @@ public class QRPayActivity extends AppCompatActivity {
             amount.setError("Amount cannot be empty");
         }
         if (!error) {
-            Globals.serviceName = "QR Payment";
+            Globals.serviceName = getString(R.string.qr_pay_service);
             CardDialog dialog = CardDialog.newInstance();
             dialog.setCallback(new CardDialog.Callback() {
                 @Override

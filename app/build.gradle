@@ -25,8 +25,8 @@ android {
         applicationId "net.soluspay.ebdaa"
         minSdkVersion 22
         targetSdkVersion 29
-        versionCode 21
-        versionName '2.8-alpha'
+        versionCode 24
+        versionName '0.9-nightly'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

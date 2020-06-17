@@ -53,7 +53,7 @@ public class ServicePayment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_payment);
         ButterKnife.bind(this);
-        setTitle("Service Payment");
+        setTitle(getString(R.string.service_payment_title));
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -173,7 +173,7 @@ public class ServicePayment extends AppCompatActivity {
         if(!error)
         {
             Globals.service = "purchase";
-            Globals.serviceName = "Service Payment - Support Sudan"; // change name to support Sudan
+            Globals.serviceName = getString(R.string.support_sudan_view); // change name to support Sudan
             CardDialog dialog = CardDialog.newInstance();
             dialog.setCallback(this::purchaseElectricity);
             Bundle args = new Bundle();

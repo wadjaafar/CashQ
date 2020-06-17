@@ -34,7 +34,7 @@ public class BillPaymentActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("Bill Payment");
+        setTitle(getString(R.string.bill_payment_title));
 
     }
 

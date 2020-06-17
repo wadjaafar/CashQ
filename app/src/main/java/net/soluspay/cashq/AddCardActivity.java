@@ -60,7 +60,7 @@ public class AddCardActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("Add New Card");
+        setTitle(getString(R.string.add_new_card_prompt));
 
     }
 
@@ -102,7 +102,7 @@ public class AddCardActivity extends AppCompatActivity {
 
                     progressDialog.dismiss();
                     AlertDialog.Builder builder = new AlertDialog.Builder(AddCardActivity.this);
-                    builder.setTitle("Successful")
+                    builder.setTitle(getString(R.string.success))
                             .setMessage("Your card has been added successfully")
                             .setCancelable(false)
                             .setPositiveButton("OK", (dialog, id) -> {
@@ -120,7 +120,7 @@ public class AddCardActivity extends AppCompatActivity {
                     Log.i("Add Card", error.getErrorBody());
                     progressDialog.dismiss();
                     AlertDialog.Builder builder = new AlertDialog.Builder(AddCardActivity.this);
-                    builder.setTitle("Failed")
+                    builder.setTitle(getString(R.string.failure))
                             .setMessage("Something went wrong")
                             .setCancelable(false)
                             .setPositiveButton("OK", (dialog, id) -> {
@@ -135,7 +135,7 @@ public class AddCardActivity extends AppCompatActivity {
 //            String pan
             toDb(dbManager, pan.getText().toString(), date, cardName.getText().toString());
             AlertDialog.Builder builder = new AlertDialog.Builder(AddCardActivity.this);
-            builder.setTitle("Successful")
+            builder.setTitle(getString(R.string.success))
                     .setMessage("Your card has been added successfully")
                     .setCancelable(false)
                     .setPositiveButton("OK", (dialog, id) -> {

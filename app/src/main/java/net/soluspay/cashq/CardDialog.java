@@ -1,8 +1,11 @@
 package net.soluspay.cashq;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
@@ -19,6 +22,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -72,7 +77,7 @@ public class CardDialog extends DialogFragment {
 
 
     private Callback callback;
-    private Card card, selectedCard;
+    private Card card;
     CardAdapter adapter;
 
     private static final String TAG = "ZTDEMO";
@@ -99,6 +104,20 @@ public class CardDialog extends DialogFragment {
         setStyle(DialogFragment.STYLE_NORMAL, R.style.FullscreenDialogTheme);
 
     }
+
+
+//    @Override
+//    public Dialog onCreateDialog(Bundle savedInstanceState) {
+//        return new Dialog(getActivity(), getTheme()){
+//            @Override
+//            public void onBackPressed() {
+////                getActivity().finish();
+//                getActivity().finishActivity(getId());
+//                dismiss();
+//            }
+//        };
+//    }
+
 
     @Nullable
     @Override
@@ -136,7 +155,7 @@ public class CardDialog extends DialogFragment {
     @OnClick(R.id.confirm)
     public void onViewClicked() {
 
-        selectedCard = adapter.getItem(adapter.mSelectedItem);
+        Card selectedCard = adapter.getItem(adapter.mSelectedItem);
         selectedCard.setIpin(pin.getText().toString());
         if (isNetworkAvailable()) {
             callback.onActionClick(selectedCard);
@@ -270,7 +289,6 @@ public class CardDialog extends DialogFragment {
     public void onStop() {
         super.onStop();
     }
-
 
 }
 

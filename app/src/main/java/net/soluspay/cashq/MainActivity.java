@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
             getPublicKey();
         } else {
             new AlertDialog.Builder(this)
-                    .setTitle("No Internet Connection")
-                    .setMessage("Please check your internet connection and try again.")
+                    .setTitle(R.string.no_internet)
+                    .setMessage(R.string.no_internet_message)
 
                     // Specifying a listener allows you to take an action before dismissing the dialog.
                     // The dialog is automatically dismissed when a dialog button is clicked.

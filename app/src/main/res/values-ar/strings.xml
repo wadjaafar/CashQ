@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pay Yes! بنك الإبداع</string>
+    <string name="app_name">بنك الإبداع</string>
     <string name="open">افتح</string>
     <string name="close">اغلاق</string>
 
@@ -213,5 +213,8 @@
     <string name="e15_payment_result">دفع أورنيك-15</string>
     <string name="e15_inquiry_result">استعلام عن أورنيك-15</string>
     <string name="service_result">Service</string>
+    <string name="actionbar_name">بنك الإبداع - Pay Yes!</string>
+    <string name="promotion">side_promotion</string>
+    <string name="powerd_by_itqan">Powerd by ITQAN</string>
 
 </resources>

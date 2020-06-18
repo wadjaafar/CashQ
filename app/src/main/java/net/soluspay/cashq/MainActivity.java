@@ -49,7 +49,6 @@ import java.lang.reflect.Type;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
     FragmentManager fragmentManager = getSupportFragmentManager();
 
@@ -59,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(getString(R.string.actionbar_name));
         setContentView(R.layout.activity_main);
 
         // Adding Azure Stats (remind me to send you the link / invitation later
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         String email = sp.getString("email", "");
         username.setText(name);
         emailtext.setText(email);
-        drawerLayout = findViewById(R.id.drawer);
+        DrawerLayout drawerLayout = findViewById(R.id.drawer);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();

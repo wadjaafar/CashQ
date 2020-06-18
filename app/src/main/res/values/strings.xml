@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ebdaa Bank-Pay Yes!</string>
+    <string name="app_name">Ebdaa Bank</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
 
@@ -216,5 +216,8 @@
     <string name="e15_payment_result">E15 Bill Payment</string>
     <string name="e15_inquiry_result">E15 Bill Inquiry</string>
     <string name="service_result">Service</string>
+    <string name="actionbar_name">Ebdaa Bank - Pay Yes!</string>
+    <string name="promotion">side_promotion</string>
+    <string name="powerd_by_itqan">Powerd by ITQAN</string>
 
 </resources>

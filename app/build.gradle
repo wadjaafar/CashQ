@@ -25,8 +25,8 @@ android {
         applicationId "net.soluspay.cashq"
         minSdkVersion 22
         targetSdkVersion 29
-        versionCode 21
-        versionName '2.8-alpha'
+        versionCode 23
+        versionName '2.10-launcher'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -77,7 +77,7 @@ dependencies {
     //annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
     implementation 'org.apache.commons:commons-lang3:3.0'
     implementation 'com.github.dewinjm:monthyear-picker:1.0.1'
-    implementation 'com.google.android.gms:play-services-vision:20.0.0'
+    implementation 'com.google.android.gms:play-services-vision:20.1.0'
     implementation 'me.dm7.barcodescanner:zxing:1.9.13'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

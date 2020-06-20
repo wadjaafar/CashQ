@@ -43,6 +43,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -136,7 +137,7 @@ public class CardDialog extends DialogFragment {
     @OnClick(R.id.confirm)
     public void onViewClicked() {
 
-        selectedCard = adapter.getItem(adapter.mSelectedItem);
+        selectedCard = Objects.requireNonNull(adapter.getItem(adapter.mSelectedItem));
         selectedCard.setIpin(pin.getText().toString());
         if (isNetworkAvailable()) {
             callback.onActionClick(selectedCard);
@@ -157,7 +158,7 @@ public class CardDialog extends DialogFragment {
     @OnClick({R.id.fullscreen_dialog_close})
     public void onViewClicked(View view) {
         if (view.getId() == R.id.fullscreen_dialog_close) {
-            getActivity().finish();
+            Objects.requireNonNull(getActivity()).finish();
         }
     }
 

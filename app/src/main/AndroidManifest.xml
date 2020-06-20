@@ -5,10 +5,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.CLOUDPOS_MSR" />
-    <uses-permission android:name="android.permission.CLOUDPOS_PRINTER" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera" />
@@ -22,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="HardcodedDebugMode">
-        <activity android:name="net.soluspay.cashq.BillersActivity"></activity>
+        <activity android:name="net.soluspay.cashq.AboutActivity"></activity>
+        <activity android:name="net.soluspay.cashq.BillersActivity" />
         <activity android:name="net.soluspay.cashq.ServicePayment" />
         <activity android:name="net.soluspay.cashq.AddCardActivity" />
         <activity android:name="net.soluspay.cashq.SignUpActivity" />
@@ -83,6 +80,10 @@
             android:label="Confirm" />
         <activity android:name="net.soluspay.cashq.ResultActivity" />
         <activity android:name="net.soluspay.cashq.SignInActivity">
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

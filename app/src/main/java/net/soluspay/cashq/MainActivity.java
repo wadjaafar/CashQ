@@ -201,6 +201,10 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(MainActivity.this, IPinActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.about:
+                intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
+                break;
 
             case R.id.logout:
                 // on-long press activity

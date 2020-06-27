@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="HardcodedDebugMode">
-        <activity android:name="net.soluspay.cashq.AboutActivity"></activity>
+        <activity android:name="net.soluspay.cashq.AboutActivity"/>
         <activity android:name="net.soluspay.cashq.BillersActivity" />
         <activity android:name="net.soluspay.cashq.ServicePayment" />
         <activity android:name="net.soluspay.cashq.AddCardActivity" />
@@ -94,6 +94,7 @@
         <activity android:name="net.soluspay.cashq.QRPayActivity" />
         <activity android:name="net.soluspay.cashq.ScanCodeActivity" />
         <activity android:name="net.soluspay.cashq.IPinActivity" />
+        <activity android:name="net.soluspay.cashq.EditCardActivity" />
     </application>
 
 </manifest>

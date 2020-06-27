@@ -20,11 +20,11 @@ public class CardDBHelper extends SQLiteOpenHelper {
     static final String DB_NAME = "CASHQ_CARDS.DB";
 
     // database version
-    static final int DB_VERSION = 4;
+    static final int DB_VERSION = 5;
 
     // Creating table query
     private static final String CREATE_TABLE = "create table " + TABLE_NAME + "(" + _ID
-            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PAN + " TEXT NOT NULL, " + EXPDATE + " TEXT NOT NULL, " + NAME + " TEXT NOT NULL, " +
+            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PAN + " TEXT NOT NULL unique, " + EXPDATE + " TEXT NOT NULL, " + NAME + " TEXT NOT NULL, " +
              COUNT + " Integer DEFAULT 0)";
 
     public CardDBHelper(Context context) {

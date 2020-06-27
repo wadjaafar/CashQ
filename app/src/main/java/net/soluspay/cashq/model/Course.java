@@ -44,7 +44,7 @@ public class Course {
     public boolean equals(Object obj) {
         if(obj instanceof Course){
             Course c = (Course) obj;
-            if(c.getDescription().equals(description) && c.getId()==id ) return true;
+            return c.getDescription().equals(description) && c.getId() == id;
         }
 
         return false;

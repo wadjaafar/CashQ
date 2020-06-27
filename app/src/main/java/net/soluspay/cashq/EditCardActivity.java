@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -35,7 +36,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AddCardActivity extends AppCompatActivity {
+public class EditCardActivity extends AppCompatActivity {
 
     @BindView(R.id.pan)
     EditText pan;
@@ -43,6 +44,8 @@ public class AddCardActivity extends AppCompatActivity {
     EditText cardName;
     @BindView(R.id.save)
     Button save;
+    @BindView(R.id.delete)
+    Button delete;
     @BindView(R.id.textView)
     TextView textView;
     @BindView(R.id.exp_date)
@@ -51,6 +54,8 @@ public class AddCardActivity extends AppCompatActivity {
     CheckBox checkBox;
 
     private String date;
+    CardDBManager dbManager;
+
 
 
     @Override
@@ -59,8 +64,12 @@ public class AddCardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_card);
         ButterKnife.bind(this);
         getSupportActionBar().setElevation(0);
+        dbManager = new CardDBManager(this);
+        dbManager.open();
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         checkIntent();
+        delete.setVisibility(View.VISIBLE);
         setTitle("Add New Card");
 
     }
@@ -79,10 +88,6 @@ public class AddCardActivity extends AppCompatActivity {
     }
 
     public void addCard() {
-
-        CardDBManager dbManager;
-        dbManager = new CardDBManager(this);
-        dbManager.open();
 
         if (checkBox.isChecked()) {
             final ProgressDialog progressDialog;
@@ -112,10 +117,10 @@ public class AddCardActivity extends AppCompatActivity {
                     // do anything with response
 
                     // successful response
-                    toDb(dbManager, pan.getText().toString(), date, cardName.getText().toString());
+                    toDb(dbManager, getFromIntent("pan"), pan.getText().toString(), date, cardName.getText().toString());
 
                     progressDialog.dismiss();
-                    AlertDialog.Builder builder = new AlertDialog.Builder(AddCardActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(EditCardActivity.this);
                     builder.setTitle("Successful")
                             .setMessage("Your card has been added successfully")
                             .setCancelable(false)
@@ -133,7 +138,7 @@ public class AddCardActivity extends AppCompatActivity {
                     // handle error
                     Log.i("Add Card", error.getErrorBody());
                     progressDialog.dismiss();
-                    AlertDialog.Builder builder = new AlertDialog.Builder(AddCardActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(EditCardActivity.this);
                     builder.setTitle("Failed")
                             .setMessage("Something went wrong")
                             .setCancelable(false)
@@ -147,15 +152,15 @@ public class AddCardActivity extends AppCompatActivity {
             });
         } else {
 //            String pan
-            toDb(dbManager, pan.getText().toString(), date, cardName.getText().toString());
-            AlertDialog.Builder builder = new AlertDialog.Builder(AddCardActivity.this);
+            toDb(dbManager, getFromIntent("pan"), pan.getText().toString(), date, cardName.getText().toString());
+            AlertDialog.Builder builder = new AlertDialog.Builder(EditCardActivity.this);
             builder.setTitle("Successful")
                     .setMessage("Your card has been added successfully")
                     .setCancelable(false)
                     .setPositiveButton("OK", (dialog, id) -> {
                         //do things
                         finish();
-                        navigateUpTo(new Intent(AddCardActivity.this, CardActivity.class));
+                        navigateUpTo(new Intent(EditCardActivity.this, CardActivity.class));
                     });
             AlertDialog alert = builder.create();
             alert.show();
@@ -169,9 +174,9 @@ public class AddCardActivity extends AppCompatActivity {
         return true;
     }
 
-    private void toDb(CardDBManager dbManager, String pan, String expDate, String name) {
+    private void toDb(CardDBManager dbManager, String key, String pan, String expDate, String name) {
         Log.i("add_card_db", "the data is: " + expDate);
-        dbManager.insert(pan, expDate, name);
+        dbManager.replace(key, pan, expDate, name);
         dbManager.close();
     }
 
@@ -240,5 +245,23 @@ public class AddCardActivity extends AppCompatActivity {
     @OnClick(R.id.exp_date)
     public void onViewClicked() {
         pickDate();
+    }
+
+    @OnClick(R.id.delete)
+    public void onDeleteClicked(){
+        dbManager.delete(getFromIntent("pan"));
+        AlertDialog.Builder builder = new AlertDialog.Builder(EditCardActivity.this);
+        builder.setTitle("Successful")
+                .setMessage("Your card has been added successfully")
+                .setCancelable(false)
+                .setPositiveButton("OK", (dialog, id) -> {
+                    //do things
+                    finish();
+                    navigateUpTo(new Intent(EditCardActivity.this, CardActivity.class));
+                });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+
     }
 }

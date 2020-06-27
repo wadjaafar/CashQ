@@ -1,6 +1,9 @@
 package net.soluspay.cashq.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gndi_sd.szzt.R;
 
+import net.soluspay.cashq.AddCardActivity;
+import net.soluspay.cashq.CardActivity;
+import net.soluspay.cashq.EditCardActivity;
 import net.soluspay.cashq.model.Card;
 
 import java.util.List;
@@ -92,10 +98,19 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
                 @Override
                 public boolean onLongClick(View v) {
+                    Context ctx = v.getContext();
+                    Intent intent = new Intent(ctx, EditCardActivity.class);
+                    intent.putExtra("pan", pan.getText());
+                    intent.putExtra("name", name.getText());
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                    ctx.startActivity(intent);
+                    Log.i("long_click", "on long clicked is used");
                     return false;
                 }
             };
 
+            radioButton.setOnLongClickListener(longClickListener);
             itemView.setOnLongClickListener(longClickListener);
 
         }

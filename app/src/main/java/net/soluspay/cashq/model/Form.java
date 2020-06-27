@@ -53,7 +53,7 @@ public class Form {
     public boolean equals(Object obj) {
         if(obj instanceof Form){
             Form f = (Form) obj;
-            if(f.getAdmissionType().equals(admissionType) && f.getFees()==fees) return true;
+            return f.getAdmissionType().equals(admissionType) && f.getFees() == fees;
         }
 
         return false;

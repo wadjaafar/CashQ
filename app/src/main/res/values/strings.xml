@@ -109,5 +109,6 @@
     <string-array name="multi_select_list_preference_default_value" />
     <string name="shortcut_balance_title">Balance</string>
     <string name="about">About &amp; Privacy</string>
+    <string name="delete">Delete</string>
 
 </resources>

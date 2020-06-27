@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 public class CardDBManager {
 
@@ -34,6 +35,15 @@ public class CardDBManager {
         contentValues.put(CardDBHelper.EXPDATE, expdate);
         contentValues.put(CardDBHelper.NAME, name);
         database.insert(CardDBHelper.TABLE_NAME, null, contentValues);
+    }
+
+    public void replace(String key, String pan, String expdate, String name) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(CardDBHelper.PAN, pan);
+        contentValues.put(CardDBHelper.EXPDATE, expdate);
+        contentValues.put(CardDBHelper.NAME, name);
+        Log.i("sql_replace", "the value of pan is: " + pan);
+        database.update(CardDBHelper.TABLE_NAME, contentValues, "pan=?", new String[]{key});
     }
 
     public Cursor fetch() {
@@ -70,8 +80,8 @@ public class CardDBManager {
     }
 
 
-    public void delete(long _id) {
-        database.delete(CardDBHelper.TABLE_NAME, CardDBHelper._ID + "=" + _id, null);
+    public void delete(String pan) {
+        database.execSQL("delete from cards where pan = ?", new String[]{pan});
     }
 
     public void deleteAll() {

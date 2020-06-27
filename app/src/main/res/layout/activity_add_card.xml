@@ -5,6 +5,25 @@
     android:layout_height="match_parent">
 
 
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/darkGray"
+        android:background="@drawable/button_background"
+        android:text="@string/delete"
+        android:visibility="invisible"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox"
+        app:layout_editor_absoluteY="400dp" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"

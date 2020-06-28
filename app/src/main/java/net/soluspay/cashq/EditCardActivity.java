@@ -70,7 +70,7 @@ public class EditCardActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         checkIntent();
         delete.setVisibility(View.VISIBLE);
-        setTitle("Add New Card");
+        setTitle(getString(R.string.add_edit_card));
 
     }
 
@@ -219,23 +219,24 @@ public class EditCardActivity extends AppCompatActivity {
     @OnClick(R.id.save)
     public void onSaveClicked() {
         boolean error = false;
-        if(pan.getText().toString().isEmpty())
-        {
+        if (pan.getText().toString().isEmpty()) {
             error = true;
             pan.setError("Enter a card number");
         }
-        if(!(pan.getText().toString().length() == 16 || pan.getText().toString().length() == 19))
-        {
+        if (!(pan.getText().toString().length() == 16 || pan.getText().toString().length() == 19)) {
             error = true;
             pan.setError("Enter a valid card number");
         }
-        if(cardName.getText().toString().isEmpty())
-        {
+        if (!expDate.getText().toString().contains("/")) {
+            error = true;
+            expDate.setError("Expiration date cannot be empty");
+        }
+        if (cardName.getText().toString().isEmpty()) {
             error = true;
             cardName.setError("Card name cannot be empty");
         }
-        if(!error)
-        {
+
+        if (!error) {
             addCard();
         } else {
             //manage error case here
@@ -252,7 +253,7 @@ public class EditCardActivity extends AppCompatActivity {
         dbManager.delete(getFromIntent("pan"));
         AlertDialog.Builder builder = new AlertDialog.Builder(EditCardActivity.this);
         builder.setTitle("Successful")
-                .setMessage("Your card has been added successfully")
+                .setMessage(R.string.deletion_message)
                 .setCancelable(false)
                 .setPositiveButton("OK", (dialog, id) -> {
                     //do things

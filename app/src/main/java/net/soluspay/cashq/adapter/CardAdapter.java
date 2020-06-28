@@ -2,7 +2,6 @@ package net.soluspay.cashq.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gndi_sd.szzt.R;
 
-import net.soluspay.cashq.AddCardActivity;
-import net.soluspay.cashq.CardActivity;
 import net.soluspay.cashq.EditCardActivity;
 import net.soluspay.cashq.model.Card;
 
@@ -112,6 +109,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
             radioButton.setOnLongClickListener(longClickListener);
             itemView.setOnLongClickListener(longClickListener);
+
 
         }
     }

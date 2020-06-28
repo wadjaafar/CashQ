@@ -110,5 +110,7 @@
     <string name="shortcut_balance_title">Balance</string>
     <string name="about">About &amp; Privacy</string>
     <string name="delete">Delete</string>
+    <string name="deletion_message">Your card has been added successfully</string>
+    <string name="add_edit_card">Add / Edit New Card</string>
 
 </resources>

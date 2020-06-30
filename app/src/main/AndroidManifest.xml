@@ -79,7 +79,9 @@
             android:name="net.soluspay.cashq.CheckoutActivity"
             android:label="Confirm" />
         <activity android:name="net.soluspay.cashq.ResultActivity" />
-        <activity android:name="net.soluspay.cashq.SignInActivity">
+        <activity
+            android:name="net.soluspay.cashq.SignInActivity"
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />

@@ -112,5 +112,7 @@
     <string name="delete">Delete</string>
     <string name="deletion_message">Your card has been added successfully</string>
     <string name="add_edit_card">Add / Edit New Card</string>
+    <string name="loading">This works!</string>
+    <string name="card_null_error">Make sure to add cards first</string>
 
 </resources>

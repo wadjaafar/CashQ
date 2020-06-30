@@ -137,7 +137,13 @@ public class CardDialog extends DialogFragment {
     @OnClick(R.id.confirm)
     public void onViewClicked() {
 
+        //FIXME what to do when the adapter returns an empty card
+        if (adapter.getItemCount() < 1) {
+            Toast.makeText(getActivity(), R.string.card_null_error, Toast.LENGTH_SHORT).show();
+            return;
+        }
         selectedCard = Objects.requireNonNull(adapter.getItem(adapter.mSelectedItem));
+
         selectedCard.setIpin(pin.getText().toString());
         if (isNetworkAvailable()) {
             callback.onActionClick(selectedCard);

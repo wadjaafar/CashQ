@@ -66,9 +66,15 @@ public class ResultActivity extends AppCompatActivity {
         response.setText(Globals.serviceName);
         message.setText(ebsResponse.getResponseMessage());
         if (ebsResponse.getResponseStatus().equals("Successful")) {
-            sp.edit().putString("balance", ebsResponse.getAvailableBalance()).apply();
+
+            try {
+                sp.edit().putString("balance", ebsResponse.getAvailableBalance()).apply();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
             image.setImageResource(R.drawable.ic_success);
-            Log.d(" ServiceNmae " , Globals.service);
+            Log.d(" ServiceNmae ", Globals.service);
             Map<String, String> paymentInfo;
             switch (Globals.service) {
                 case "purchase":

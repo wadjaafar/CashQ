@@ -114,6 +114,7 @@ public class CardDialog extends DialogFragment {
         adapter = new CardAdapter(getActivity(), cardList);
         //setting adapter to recyclerview
         recyclerView.setAdapter(adapter);
+
         adapter.notifyDataSetChanged();
         return view;
     }

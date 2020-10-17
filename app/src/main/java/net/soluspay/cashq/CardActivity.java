@@ -8,6 +8,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -47,6 +49,9 @@ public class CardActivity extends AppCompatActivity {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     List<Card> cards;
+
+    @BindView(R.id.empty_view)
+    TextView emptyView;
 
     CardDBManager dbManager;
 
@@ -146,14 +151,20 @@ public class CardActivity extends AppCompatActivity {
             cards.add(new Card(id, name, pan, expDate));
             cursor.moveToNext();
         }
-        //creating recyclerview adapter
+        if (!cards.isEmpty()) {
+            //creating recyclerview adapter
 
-        CardAdapter adapter = new CardAdapter(getApplicationContext(), cards);
-        //setting adapter to recyclerview
-        recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+            CardAdapter adapter = new CardAdapter(getApplicationContext(), cards);
+            //setting adapter to recyclerview
+            recyclerView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
 
-        dbManager.getAll();
+            dbManager.getAll();
+
+        }
+        else {
+            emptyView.setVisibility(View.VISIBLE);
+        }
 
     }
 

@@ -74,7 +74,7 @@ public class CardTransferFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_card_transfer, container, false);
         unbinder = ButterKnife.bind(this, view);
-        Globals.serviceName = "Card Transfer";
+        Globals.serviceName = getString(R.string.card_transfer_service);
         return view;
     }
 

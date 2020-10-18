@@ -79,7 +79,7 @@ public class CheckoutActivity extends AppCompatActivity {
     public void onViewClicked() {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         AlertDialog alertDialog = new AlertDialog.Builder(CheckoutActivity.this).create();
-        alertDialog.setTitle("Success");
+        alertDialog.setTitle(getString(R.string.success));
         alertDialog.setMessage("Successful Transaction");
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Print",
                 new DialogInterface.OnClickListener() {

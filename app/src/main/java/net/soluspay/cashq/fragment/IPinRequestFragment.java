@@ -165,7 +165,7 @@ public class IPinRequestFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ipin, container, false);
         unbinder = ButterKnife.bind(this, view);
         Globals.service = "telecom_topup";
-        serviceName = "iPIN Generation";
+        serviceName = getString(R.string.ipin_generation_service);
         receipt = "zainTopup";
         return view;
     }
@@ -183,7 +183,7 @@ public class IPinRequestFragment extends Fragment {
         if(pan.getText().toString().isEmpty())
         {
             error = true;
-            pan.setError("Enter a phone number");
+            pan.setError(getString(R.string.pan_prompt));
         }
 //        if(pan.getText().toString().length() != 16 || pan.getText().toString().length() != 19)
 //        {
@@ -193,7 +193,7 @@ public class IPinRequestFragment extends Fragment {
         if(exp_date.getText().toString().isEmpty())
         {
             error = true;
-            exp_date.setError("Amount cannot be empty");
+            exp_date.setError(getString(R.string.empty_expdate_error));
         }
         if(!error)
         {

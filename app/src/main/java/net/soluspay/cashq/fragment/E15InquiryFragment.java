@@ -79,7 +79,7 @@ public class E15InquiryFragment extends Fragment {
     public void e15Inquiry(final Card card) {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(getActivity(), "E15 Bill Inquiry", "Please wait...", false, false);
+        progressDialog = ProgressDialog.show(getActivity(), getString(R.string.e15_bill_inquiry), getResources().getText(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getActivity().getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
@@ -87,6 +87,7 @@ public class E15InquiryFragment extends Fragment {
         Log.i("Public Key", card.getIpin());
         String encryptedIPIN = new IPINBlockGenerator().getIPINBlock(card.getIpin(), key, request.getUuid());
 
+        //TODO this is scary AF!
         LinkedHashMap<String, String> map = new LinkedHashMap<>();
         map.put("SERVICEID", "2");
         map.put("INVOICENUMBER", invoice.getText().toString());
@@ -147,7 +148,7 @@ public class E15InquiryFragment extends Fragment {
                         // handle error
                         Log.i("Purchase Error", String.valueOf(error.getErrorBody()));
                         if (error.getErrorCode() == 504) {
-                            Toast.makeText(getActivity(), "Unable to connect to host", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getResources().getText(R.string.connection_timed_out), Toast.LENGTH_SHORT).show();
                         }
                         Gson gson = new Gson();
                         Type type = new TypeToken<EBSResponse>() {
@@ -184,22 +185,22 @@ public class E15InquiryFragment extends Fragment {
         if(invoice.getText().toString().isEmpty())
         {
             error = true;
-            invoice.setError("Invoice Number cannot be empty");
+            invoice.setError(getString(R.string.invoice_number_error_message));
         }
         if(phone.getText().toString().isEmpty())
         {
             error = true;
-            phone.setError("Phone Number cannot be empty");
+            phone.setError(getString(R.string.empty_phone_number_error));
         }
         if(phone.getText().toString().length() != 10)
         {
             error = true;
-            phone.setError("Enter a valid phone number");
+            phone.setError(getString(R.string.valid_phone_number));
         }
         if(!error)
         {
             Globals.service = "e15Inquiry";
-            Globals.serviceName = "E15 Bill Inquiry";
+            Globals.serviceName = getString(R.string.e15_inquiry_result);
             CardDialog dialog = CardDialog.newInstance();
             dialog.setCallback(new CardDialog.Callback() {
                 @Override

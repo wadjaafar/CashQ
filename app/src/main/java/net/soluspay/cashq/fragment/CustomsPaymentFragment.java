@@ -205,7 +205,7 @@ public class CustomsPaymentFragment extends Fragment {
         }
         if(!error)
         {
-            Globals.serviceName = "Customs Bill Payment";
+            Globals.serviceName = getString(R.string.customs_bill_payment);
             Globals.service = "customsPayment";
             CardDialog dialog = CardDialog.newInstance();
             dialog.setCallback(new CardDialog.Callback() {

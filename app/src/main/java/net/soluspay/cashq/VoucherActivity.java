@@ -28,7 +28,7 @@ public class VoucherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voucher);
-        setTitle("Voucher");
+        setTitle(getString(R.string.voucher_title));
         getSupportActionBar().setElevation(0);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

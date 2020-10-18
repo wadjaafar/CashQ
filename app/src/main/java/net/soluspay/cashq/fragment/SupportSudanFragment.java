@@ -162,7 +162,7 @@ public class SupportSudanFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_covid, container, false);
         unbinder = ButterKnife.bind(this, view);
         Globals.service = "billers";
-        serviceName = "Support Sudan";
+        serviceName = getString(R.string.support_sudan);
         receipt = "billers";
         return view;
     }
@@ -180,7 +180,7 @@ public class SupportSudanFragment extends Fragment {
         if(amount.getText().toString().isEmpty())
         {
             error = true;
-            amount.setError("Enter a valid amount");
+            amount.setError(getString(R.string.amount_prompt));
         }
 
         if(!error)

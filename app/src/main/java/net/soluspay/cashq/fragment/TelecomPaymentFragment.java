@@ -91,24 +91,24 @@ public class TelecomPaymentFragment extends Fragment {
         unbinder = ButterKnife.bind(this, view);
         Globals.service = "telecom_payment";
         radioZain.setChecked(true);
-        serviceName = "Zain Bill Payment";
+        serviceName = getString(R.string.zain_bill_payment_service);
         payeeId = "0010010002";
         receipt = "zainPayment";
         radio.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
                 case R.id.radio_zain:
                     payeeId = "0010010002";
-                    serviceName = "Zain Bill Payment";
+                    serviceName = getString(R.string.zain_bill_payment_service);
                     receipt = "zainPayment";
                     break;
                 case R.id.radio_sudani:
                     payeeId = "0010010006";
-                    serviceName = "Sudani Bill Payment";
+                    serviceName = getString(R.string.sudani_bill_payment_service);
                     receipt = "sudaniPayment";
                     break;
                 case R.id.radio_mtn:
                     payeeId = "0010010004";
-                    serviceName = "MTN Bill Payment";
+                    serviceName = getString(R.string.mtn_bill_payment_service);
                     receipt = "mtnPayment";
                     break;
             }
@@ -223,16 +223,16 @@ public class TelecomPaymentFragment extends Fragment {
 
         if (phone.getText().toString().isEmpty()) {
             error = true;
-            phone.setError("Enter a phone number");
+            phone.setError(getString(R.string.enter_phone_prompt));
         }
         if(phone.getText().toString().length() != 10)
         {
             error = true;
-            phone.setError("Enter a valid phone number");
+            phone.setError(getString(R.string.invalid_phone_error));
         }
         if (amount.getText().toString().isEmpty()) {
             error = true;
-            amount.setError("Amount cannot be empty");
+            amount.setError(getString(R.string.empty_amount_error));
         }
         if (!error) {
             Globals.service = receipt;
@@ -248,7 +248,7 @@ public class TelecomPaymentFragment extends Fragment {
             });
             Bundle args = new Bundle();
             args.putString("service", serviceName);
-            args.putString("amount", amount.getText().toString() + " SDG");
+            args.putString("amount", amount.getText().toString() + getString(R.string.currency_string));
             dialog.setArguments(args);
             dialog.show(getActivity().getSupportFragmentManager(), "tag");
         } else {

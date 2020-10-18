@@ -32,7 +32,7 @@ public class PurchaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase);
         getSupportActionBar().setElevation(0);
-        setTitle("Purchase");
+        setTitle(getString(R.string.purchase_title));
 
         dbManager = new CardDBManager(this);
         dbManager.open();
@@ -50,7 +50,7 @@ public class PurchaseActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new PurchaseFragment(), "Purchase");
+        adapter.addFragment(new PurchaseFragment(), getString(R.string.purchase_title));
         adapter.addFragment(new ComingSoonFragment(), "Purchase With Cashback");
         viewPager.setAdapter(adapter);
     }

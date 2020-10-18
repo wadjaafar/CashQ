@@ -44,8 +44,8 @@ public class CustomsActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         CustomsActivity.ViewPagerAdapter adapter = new CustomsActivity.ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new CustomsInquiryFragment(), "Bill Inquiry");
-        adapter.addFragment(new CustomsPaymentFragment(), "Bill Payment");
+        adapter.addFragment(new CustomsInquiryFragment(), getString(R.string.bill_inquiry_title));
+        adapter.addFragment(new CustomsPaymentFragment(), getString(R.string.bill_payment_title));
         viewPager.setAdapter(adapter);
     }
 

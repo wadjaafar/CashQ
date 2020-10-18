@@ -60,22 +60,8 @@ public class AddCardActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        checkIntent();
-        setTitle("Add New Card");
+        setTitle(getString(R.string.add_new_card_prompt));
 
-    }
-
-    //checkIntent sets *this* view values given an intent. It is a string
-    // so the null will be just an empty string. Go is really smart btw.
-    public void checkIntent(){
-        String value = getFromIntent("pan");
-        pan.setText(value);
-        cardName.setText(getFromIntent("name"));
-    }
-
-    // helper function to get values from intent
-    String getFromIntent(String key) {
-        return getIntent().getStringExtra(key);
     }
 
     public void addCard() {
@@ -86,7 +72,7 @@ public class AddCardActivity extends AppCompatActivity {
 
         if (checkBox.isChecked()) {
             final ProgressDialog progressDialog;
-            progressDialog = ProgressDialog.show(this, "Loading", "Please wait...", false, false);
+            progressDialog = ProgressDialog.show(this, getResources().getText(R.string.loading), getResources().getText(R.string.loading_wait), false, false);
             EBSRequest request = new EBSRequest();
 
             SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);
@@ -116,7 +102,7 @@ public class AddCardActivity extends AppCompatActivity {
 
                     progressDialog.dismiss();
                     AlertDialog.Builder builder = new AlertDialog.Builder(AddCardActivity.this);
-                    builder.setTitle("Successful")
+                    builder.setTitle(getString(R.string.success))
                             .setMessage("Your card has been added successfully")
                             .setCancelable(false)
                             .setPositiveButton("OK", (dialog, id) -> {
@@ -134,7 +120,7 @@ public class AddCardActivity extends AppCompatActivity {
                     Log.i("Add Card", error.getErrorBody());
                     progressDialog.dismiss();
                     AlertDialog.Builder builder = new AlertDialog.Builder(AddCardActivity.this);
-                    builder.setTitle("Failed")
+                    builder.setTitle(getString(R.string.failure))
                             .setMessage("Something went wrong")
                             .setCancelable(false)
                             .setPositiveButton("OK", (dialog, id) -> {
@@ -149,7 +135,7 @@ public class AddCardActivity extends AppCompatActivity {
 //            String pan
             toDb(dbManager, pan.getText().toString(), date, cardName.getText().toString());
             AlertDialog.Builder builder = new AlertDialog.Builder(AddCardActivity.this);
-            builder.setTitle("Successful")
+            builder.setTitle(getString(R.string.success))
                     .setMessage("Your card has been added successfully")
                     .setCancelable(false)
                     .setPositiveButton("OK", (dialog, id) -> {
@@ -170,7 +156,6 @@ public class AddCardActivity extends AppCompatActivity {
     }
 
     private void toDb(CardDBManager dbManager, String pan, String expDate, String name) {
-        Log.i("add_card_db", "the data is: " + expDate);
         dbManager.insert(pan, expDate, name);
         dbManager.close();
     }

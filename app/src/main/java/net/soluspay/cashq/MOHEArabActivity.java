@@ -30,7 +30,7 @@ public class MOHEArabActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mohearab);
         getSupportActionBar().setElevation(0);
-        setTitle("MOHE Arab");
+        setTitle(getString(R.string.mohe_arab_title));
         //toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
@@ -45,8 +45,8 @@ public class MOHEArabActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         MOHEArabActivity.ViewPagerAdapter adapter = new MOHEArabActivity.ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new MoheArabInquiryFragment(), "Inquiry");
-        adapter.addFragment(new MoheArabPaymentFragment(), "Payment");
+        adapter.addFragment(new MoheArabInquiryFragment(), getString(R.string.bill_inquiry_title));
+        adapter.addFragment(new MoheArabPaymentFragment(), getString(R.string.bill_payment_title));
         viewPager.setAdapter(adapter);
     }
 

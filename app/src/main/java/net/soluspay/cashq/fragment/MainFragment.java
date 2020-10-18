@@ -72,21 +72,21 @@ public class MainFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        updateDashboard(rootView);
+//        updateDashboard(rootView);
 
         unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
 
-    private void updateDashboard(View rootView) {
-        SharedPreferences sp = getActivity().getSharedPreferences("result", Activity.MODE_PRIVATE);
-        // how can we debug shared preferences...
-        String b = sp.getString("balance", "");
-
-        TextView tv = rootView.findViewById(R.id.dashboardBalance);
-        tv.setText(b);
-        tv.invalidate();
-    }
+//    private void updateDashboard(View rootView) {
+//        SharedPreferences sp = getActivity().getSharedPreferences("result", Activity.MODE_PRIVATE);
+//        // how can we debug shared preferences...
+//        String b = sp.getString("balance", "");
+//
+//        TextView tv = rootView.findViewById(R.id.dashboardBalance);
+//        tv.setText(b);
+//        tv.invalidate();
+//    }
 
     @Override
     public void onDestroyView() {

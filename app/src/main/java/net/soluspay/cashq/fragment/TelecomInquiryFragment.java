@@ -95,17 +95,17 @@ public class TelecomInquiryFragment extends Fragment {
             switch (checkedId) {
                 case R.id.radio_zain:
                     payeeId = "0010010002";
-                    serviceName = "Zain Bill Inquiry";
+                    serviceName = getString(R.string.zain_inquiry_service);
                     receipt = "zainInquiry";
                     break;
                 case R.id.radio_sudani:
                     payeeId = "0010010006";
-                    serviceName = "Sudani Bill Inquiry";
+                    serviceName = getString(R.string.sudani_inquiry_service);
                     receipt = "sudaniInquiry";
                     break;
                 case R.id.radio_mtn:
                     payeeId = "0010010004";
-                    serviceName = "MTN Bill Inquiry";
+                    serviceName = getString(R.string.mtn_inquiry_service);;
                     receipt = "mtnInquiry";
                     break;
             }
@@ -218,12 +218,12 @@ public class TelecomInquiryFragment extends Fragment {
 
         if (phone.getText().toString().isEmpty()) {
             error = true;
-            phone.setError("Enter a phone number");
+            phone.setError(getString(R.string.enter_phone_prompt));
         }
         if(phone.getText().toString().length() != 10)
         {
             error = true;
-            phone.setError("Enter a valid phone number");
+            phone.setError(getString(R.string.amount_prompt));
         }
         if (!error) {
             Globals.service = receipt;

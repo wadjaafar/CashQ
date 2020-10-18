@@ -30,7 +30,7 @@ public class IPinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_telecom);
-        setTitle("IPin Generation");
+        setTitle(getString(R.string.ipin_generation_service));
         getSupportActionBar().setElevation(0);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -45,8 +45,8 @@ public class IPinActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         IPinActivity.ViewPagerAdapter adapter = new IPinActivity.ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new IPinRequestFragment(), "Generate new IPin");
-        adapter.addFragment(new IPinConfirmFragment(), "Confirm");
+        adapter.addFragment(new IPinRequestFragment(), getString(R.string.generate_new_ipin));
+        adapter.addFragment(new IPinConfirmFragment(), getString(R.string.confirm));
         viewPager.setAdapter(adapter);
     }
 

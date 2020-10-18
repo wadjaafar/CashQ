@@ -193,27 +193,27 @@ public class E15PaymentFragment extends Fragment {
         if(invoice.getText().toString().isEmpty())
         {
             error = true;
-            invoice.setError("Invoice Number cannot be empty");
+            invoice.setError(getString(R.string.invoice_number_error_message));
         }
         if(phone.getText().toString().isEmpty())
         {
             error = true;
-            phone.setError("Phone Number cannot be empty");
+            phone.setError(getString(R.string.empty_phone_number_error));
         }
         if(phone.getText().toString().length() != 10)
         {
             error = true;
-            phone.setError("Enter a valid phone number");
+            phone.setError(getString(R.string.wrong_phone_number_error));
         }
         if(amount.getText().toString().isEmpty())
         {
             error = true;
-            amount.setError("Amount cannot be empty");
+            amount.setError(getString(R.string.empty_amount_error));
         }
         if(!error)
         {
             Globals.service = "e15Payment";
-            Globals.serviceName = "E15 Bill Payment";
+            Globals.serviceName = getString(R.string.e15_payment_result);
             CardDialog dialog = CardDialog.newInstance();
             dialog.setCallback(new CardDialog.Callback() {
                 @Override

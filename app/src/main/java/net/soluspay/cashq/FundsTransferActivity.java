@@ -29,7 +29,7 @@ public class FundsTransferActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_funds_transfer);
         getSupportActionBar().setElevation(0);
-        setTitle("Funds Transfer");
+        setTitle(getString(R.string.funds_transfer));
         //toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
@@ -44,7 +44,7 @@ public class FundsTransferActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         FundsTransferActivity.ViewPagerAdapter adapter = new FundsTransferActivity.ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new CardTransferFragment(), "Card Transfer");
+        adapter.addFragment(new CardTransferFragment(), getString(R.string.card_transfer_title));
         //adapter.addFragment(new AccountTransferFragment(), "Account Transfer");
         viewPager.setAdapter(adapter);
     }

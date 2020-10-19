@@ -33,7 +33,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edittext_background"
-            android:drawableLeft="@drawable/ic_phone"
+            android:drawableStart="@drawable/ic_card"
             android:drawablePadding="10dp"
             android:drawableTint="@color/darkGray"
             android:fontFamily="@font/latosemibold"
@@ -58,7 +58,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edittext_background"
-            android:drawableLeft="@drawable/ic_monetization_on_black_24dp"
+            android:drawableStart="@drawable/ic_info"
             android:drawablePadding="10dp"
 
             android:fontFamily="@font/latosemibold"
@@ -82,7 +82,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edittext_background"
-            android:drawableLeft="@drawable/ic_phone"
+            android:drawableStart="@drawable/ic_phone"
             android:drawablePadding="10dp"
             android:drawableTint="@color/darkGray"
             android:fontFamily="@font/latosemibold"
@@ -92,11 +92,16 @@
             android:maxLength="10"
             android:textColorHint="#606060"
             android:textSize="14sp"
+            android:textAlignment="viewStart"
+            android:textDirection="locale"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/exp_date"
-            app:layout_editor_absoluteY="300dp" />
+            app:layout_editor_absoluteY="300dp"
+
+            />
 <!--otp-->
         <EditText
             android:id="@+id/otp"
@@ -106,7 +111,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edittext_background"
-            android:drawableLeft="@drawable/ic_phone"
+            android:drawableStart="@drawable/ic_padlock"
             android:drawablePadding="10dp"
             android:drawableTint="@color/darkGray"
             android:fontFamily="@font/latosemibold"
@@ -131,7 +136,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edittext_background"
-            android:drawableLeft="@drawable/ic_phone"
+            android:drawableStart="@drawable/ic_lock"
             android:drawablePadding="10dp"
             android:drawableTint="@color/darkGray"
             android:fontFamily="@font/latosemibold"

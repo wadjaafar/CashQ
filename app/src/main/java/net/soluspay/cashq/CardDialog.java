@@ -217,7 +217,7 @@ public class CardDialog extends DialogFragment {
     public void getCards() {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(getActivity(), "Loading", "Please wait...", false, false);
+        progressDialog = ProgressDialog.show(getActivity(), getString(R.string.loading), getString(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getActivity().getSharedPreferences("credentials", Activity.MODE_PRIVATE);

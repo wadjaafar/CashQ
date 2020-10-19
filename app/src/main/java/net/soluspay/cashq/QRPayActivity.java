@@ -78,7 +78,7 @@ public class QRPayActivity extends AppCompatActivity {
     public void purchaseElectricity(final Card card) {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(this, "QR Payment", "Please wait...", false, false);
+        progressDialog = ProgressDialog.show(this, "QR Payment", getString(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);

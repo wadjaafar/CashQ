@@ -86,7 +86,7 @@ public class E15PaymentFragment extends Fragment {
     public void e15Payment(final Card card) {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(getActivity(), "E15 Bill Payment", "Please wait...", false, false);
+        progressDialog = ProgressDialog.show(getActivity(), "E15 Bill Payment", getString(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getActivity().getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);

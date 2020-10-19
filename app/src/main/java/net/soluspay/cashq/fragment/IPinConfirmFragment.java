@@ -77,7 +77,7 @@ public class IPinConfirmFragment extends Fragment {
     public void topUp(final Card card) {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(getActivity(), serviceName, "Please wait...", false, false);
+        progressDialog = ProgressDialog.show(getActivity(), serviceName, getString(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getActivity().getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);

@@ -91,7 +91,7 @@ public class PurchaseFragment extends Fragment {
 //    public void makePurchase(final Card card){
 //
 //        final ProgressDialog progressDialog;
-//        progressDialog = ProgressDialog.show(getActivity(), "Purchase", "Please wait...",false, false);
+//        progressDialog = ProgressDialog.show(getActivity(), "Purchase", getString(R.string.loading_wait),false, false);
 //        EBSRequest request = new EBSRequest();
 //
 //        SharedPreferences sp = getActivity().getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);

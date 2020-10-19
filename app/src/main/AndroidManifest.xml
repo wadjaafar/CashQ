@@ -76,7 +76,7 @@
         </activity>
         <activity
             android:name="net.soluspay.cashq.CheckoutActivity"
-            android:label="Confirm" />
+            android:label="@string/confirm" />
         <activity android:name="net.soluspay.cashq.ResultActivity" />
         <activity
             android:name="net.soluspay.cashq.SignInActivity"

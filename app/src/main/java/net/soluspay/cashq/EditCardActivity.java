@@ -91,7 +91,7 @@ public class EditCardActivity extends AppCompatActivity {
 
         if (checkBox.isChecked()) {
             final ProgressDialog progressDialog;
-            progressDialog = ProgressDialog.show(this, "Loading", "Please wait...", false, false);
+            progressDialog = ProgressDialog.show(this, getString(R.string.loading), getString(R.string.loading_wait), false, false);
             EBSRequest request = new EBSRequest();
 
             SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);

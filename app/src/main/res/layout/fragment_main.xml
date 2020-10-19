@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EDEDED">
@@ -21,35 +20,33 @@
 
 
         <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="145dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            android:src="@drawable/ebdaa_logo"
+            android:adjustViewBounds="true"
+            android:src="@drawable/logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            android:visibility="visible" />
 
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="134dp"
-            android:layout_height="61dp"
-            android:text="Pay Yes!"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="35sp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toTopOf="@+id/imageView5"
-            app:layout_constraintVertical_bias="0.431" />
+            android:id="@+id/dashboardBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/dash_balance"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -102,7 +99,7 @@
                         android:padding="2dp"
                         android:text="@string/balance_inquiry"
                         android:textAllCaps="true"
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -147,7 +144,7 @@
                         android:padding="2dp"
                         android:text="@string/funds_transfer"
                         android:textAllCaps="true"
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -200,7 +197,7 @@
                         android:padding="2dp"
                         android:text="@string/telecom_service"
                         android:textAllCaps="true"
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -244,7 +241,7 @@
                         android:padding="2dp"
                         android:text="@string/nec_service"
                         android:textAllCaps="true"
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -268,50 +265,50 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 <!--
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/view_qr_payment"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/layout_bok"
-                    android:orientation="vertical"
-                    android:padding="3dp">
-
-                    <TextView
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/view_qr_payment"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/latosemibold"
-                        android:gravity="center"
-                        android:padding="2dp"
-                        android:text="QR Pay"
-                        android:textAllCaps="true"
-                        android:textSize="12dp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/image_qr_payment" />
+                        android:layout_height="120dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/layout_bok"
+                        android:orientation="vertical"
+                        android:padding="3dp">
 
-                    <ImageView
-                        android:id="@+id/image_qr_payment"
-                        android:layout_width="45dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="24dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="fitXY"
-                        android:tint="@color/colorPrimary"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/image_qr" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/latosemibold"
+                            android:gravity="center"
+                            android:padding="2dp"
+                            android:text="QR Pay"
+                            android:textAllCaps="true"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/image_qr_payment" />
 
-                </android.support.constraint.ConstraintLayout>
--->
+                        <ImageView
+                            android:id="@+id/image_qr_payment"
+                            android:layout_width="45dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="24dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"
+                            android:tint="@color/colorPrimary"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/image_qr" />
+
+                    </android.support.constraint.ConstraintLayout>
+    -->
             </LinearLayout>
 
             <LinearLayout
@@ -343,7 +340,7 @@
                         android:padding="2dp"
                         android:text="@string/e15_service"
                         android:textAllCaps="true"
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -388,7 +385,7 @@
                         android:padding="2dp"
                         android:text="@string/support_sudan"
                         android:textAllCaps="true"
-                        android:textSize="12sp"
+                        android:textSize="12dp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -456,7 +453,7 @@
                         android:padding="2dp"
                         android:text="@string/qr_pay_service"
                         android:textAllCaps="true"
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -501,7 +498,7 @@
                         android:padding="2dp"
                         android:text="@string/ipin_management"
                         android:textAllCaps="true"
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -517,7 +514,5 @@
         </LinearLayout>
 
     </ScrollView>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

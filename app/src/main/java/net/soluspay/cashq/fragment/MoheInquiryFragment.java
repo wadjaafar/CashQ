@@ -167,7 +167,7 @@ public class MoheInquiryFragment extends Fragment {
     public void mohePayment(final Card card) {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(getActivity(), "MOHE Bill Inquiry", "Please wait...", false, false);
+        progressDialog = ProgressDialog.show(getActivity(), "MOHE Bill Inquiry", getString(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getActivity().getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);

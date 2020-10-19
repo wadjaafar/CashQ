@@ -105,7 +105,7 @@ public class TelecomInquiryFragment extends Fragment {
                     break;
                 case R.id.radio_mtn:
                     payeeId = "0010010004";
-                    serviceName = getString(R.string.mtn_inquiry_service);;
+                    serviceName = getString(R.string.mtn_inquiry_service);
                     receipt = "mtnInquiry";
                     break;
             }
@@ -116,7 +116,7 @@ public class TelecomInquiryFragment extends Fragment {
     public void telecomInquiry(final Card card) {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(getActivity(), serviceName, "Please wait...", false, false);
+        progressDialog = ProgressDialog.show(getActivity(), serviceName, getString(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getActivity().getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);

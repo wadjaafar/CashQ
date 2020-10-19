@@ -85,7 +85,7 @@ public class CustomsPaymentFragment extends Fragment {
     public void customPayment(final Card card) {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(getActivity(), "Customs Bill Payment", "Please wait...", false, false);
+        progressDialog = ProgressDialog.show(getActivity(), "Customs Bill Payment", getString(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getActivity().getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);

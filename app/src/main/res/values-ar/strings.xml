@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pay Yes! بنك الإبداع</string>
+    <string name="app_name">Cashq</string>
     <string name="open">افتح</string>
     <string name="close">اغلاق</string>
 
@@ -169,13 +169,13 @@
     <string name="phone_caps">الرقم</string>
     <string name="invoice_number_caps">رقم أورنيك-15</string>
     <string name="card_transfer_title">تحويل إلى بطاقة</string>
-    <string name="add_new_card_prompt">Add New Card</string>
-    <string name="templ">Successful</string>
-    <string name="success">Successful</string>
-    <string name="failure">Failed</string>
-    <string name="education_title">Education</string>
-    <string name="mohe_arab_title">MOHE Arab</string>
-    <string name="service_payment_title" >دفع خاص</string>
+    <string name="add_new_card_prompt">اضافة بطاقة جديدة</string>
+    <string name="templ">نجاح</string>
+    <string name="success">نجاح</string>
+    <string name="failure">فشلت العملية</string>
+    <string name="education_title">التعليم الجامعي</string>
+    <string name="mohe_arab_title">التعليم - شهادة عربية</string>
+    <string name="service_payment_title">دفع خاص</string>
     <string name="electricity_service">الكهرباء</string>
     <string name="ipin_generation_service">استخراج رقم الانترنت السري</string>
     <string name="mohe_sudan_title">التعليم العالي</string>
@@ -212,6 +212,14 @@
     <string name="empty_expdate_error">تاريخ انتهاء البطاقة لا يمكن ان يكون فارغ</string>
     <string name="e15_payment_result">دفع أورنيك-15</string>
     <string name="e15_inquiry_result">استعلام عن أورنيك-15</string>
-    <string name="service_result">Service</string>
+    <string name="service_result">خدمة</string>
+    <string name="delete">حذف البطاقة</string>
+    <string name="save_online_not_recommended">احفظ البطاقة في مخدماتنا (لا ينصح بها)</string>
+    <string name="about">عن كاشك!</string>
+    <string name="shortcut_balance_title">رصيدك البنكي</string>
+    <string name="add_edit_card">تعديل البطاقة</string>
+    <string name="card_null_error">لم تقم باضافة بطاقة بنكية</string>
+    <string name="deletion_message">حذف البطاقة</string>
+    <string name="dash_balance">الاسم</string>
 
 </resources>

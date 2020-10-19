@@ -67,7 +67,7 @@ public class ServicePayment extends AppCompatActivity {
     public void purchaseElectricity(final Card card){
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(this, "Purchasing", "Please wait...",false, false);
+        progressDialog = ProgressDialog.show(this, "Purchasing", getString(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
         SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);

@@ -1,18 +1,16 @@
 package net.soluspay.cashq;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.gndi_sd.szzt.R;
 
@@ -40,13 +38,14 @@ public class AboutActivity extends AppCompatActivity {
 
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
-        progressBar = ProgressDialog.show(AboutActivity.this, "Loading", "Please wait...");
-
+        progressBar = ProgressDialog.show(AboutActivity.this, getString(R.string.loading), getString(R.string.loading_wait));
+//        progressBar.show();
         webview.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
                 return true;
             }
+
 
             public void onPageFinished(WebView view, String url) {
                 if (progressBar.isShowing()) {
@@ -66,6 +65,7 @@ public class AboutActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
+        progressBar.show();
         webview.loadUrl("https://soluspay.net/privacy");
     }
 
@@ -75,5 +75,4 @@ public class AboutActivity extends AppCompatActivity {
         return true;
     }
 
-    }
-
+}

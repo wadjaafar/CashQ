@@ -224,5 +224,10 @@
     <string name="card_null_error">No card was added</string>
     <string name="deletion_message">Delete Card</string>
     <string name="dash_balance">Name</string>
+    <string name="sign_in">Sign In</string>
+    <string name="try_again">Try again</string>
+    <string name="username_empty_prompt">Username cannot be empty</string>
+    <string name="password_empty_prompt">Password cannot be empty</string>
+    <string name="form_errors">Required fields are missing</string>
 
 </resources>

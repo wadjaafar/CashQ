@@ -59,7 +59,7 @@ public class SignInActivity extends AppCompatActivity {
     public void signIn() {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(this, "Sign In", getString(R.string.loading_wait), false, false);
+        progressDialog = ProgressDialog.show(this, getString(R.string.sign_in), getString(R.string.loading_wait), false, false);
 
         EBSRequest request = new EBSRequest();
 
@@ -97,7 +97,7 @@ public class SignInActivity extends AppCompatActivity {
                     finish();
 
                 } catch (JSONException e) {
-
+                    //TODO catch errors and handle them here
                 }
 
             }
@@ -107,7 +107,7 @@ public class SignInActivity extends AppCompatActivity {
                 // handle error
                 progressDialog.dismiss();
                 Log.i("Response", error.getErrorBody());
-                Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.try_again, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -121,17 +121,18 @@ public class SignInActivity extends AppCompatActivity {
                 if(username.getText().toString().isEmpty())
                 {
                     error = true;
-                    username.setError("Username cannot be empty");
+                    username.setError(getString(R.string.username_empty_prompt));
                 }
                 if(password.getText().toString().isEmpty())
                 {
                     error = true;
-                    password.setError("Password cannot be empty");
+                    password.setError(getString(R.string.password_empty_prompt));
                 }
                 if (!error) {
                     signIn();
                 } else {
-                    //manage error case here
+                    Toast.makeText(getApplicationContext(), R.string.form_errors, Toast.LENGTH_SHORT).show();
+
                 }
                 break;
             case R.id.signup:

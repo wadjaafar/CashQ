@@ -222,9 +222,9 @@
     <string name="deletion_message">حذف البطاقة</string>
     <string name="dash_balance">الاسم</string>
     <string name="sign_in">تسجيل الدخول</string>
-    <string name="try_again">Try again</string>
-    <string name="username_empty_prompt">Username cannot be empty</string>
-    <string name="password_empty_prompt">Password cannot be empty</string>
-    <string name="form_errors">Required fields are missing</string>
+    <string name="try_again">حاول مرة آخرى</string>
+    <string name="username_empty_prompt">اسم المستخدم لا يمكن أن يكون فارغ</string>
+    <string name="password_empty_prompt">كلمة السر لا يمكن أن تكون فارغة</string>
+    <string name="form_errors">الحقول المطلوبة مفقودة</string>
 
 </resources>

@@ -229,5 +229,6 @@
     <string name="username_empty_prompt">Username cannot be empty</string>
     <string name="password_empty_prompt">Password cannot be empty</string>
     <string name="form_errors">Required fields are missing</string>
+    <string name="qr_more">QR Info</string>
 
 </resources>

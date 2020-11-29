@@ -21,5 +21,6 @@ public class Constants {
     public static final String COVID19 = "0010060212";
     public static final String START_IPIN = "generate_ipin";
     public static final String CONFIRM_IPIN = "complete_ipin";
+    public static final String QR_INFO = "https://qr.noebs.dev";
 
 }

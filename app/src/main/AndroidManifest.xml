@@ -96,6 +96,7 @@
         <activity android:name="net.soluspay.cashq.ScanCodeActivity" />
         <activity android:name="net.soluspay.cashq.IPinActivity" />
         <activity android:name="net.soluspay.cashq.EditCardActivity" />
+        <activity android:name="net.soluspay.cashq.QRWebview"/>
     </application>
 
 </manifest>

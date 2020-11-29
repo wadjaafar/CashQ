@@ -191,7 +191,7 @@ public class TelecomTopUpFragment extends Fragment {
         receipt = "zainTopup";
         payeeId = "0010010001";
 
-
+        //TODO(adonese) Automtically select radio button based on entererd mobile number (091x=> zain, 01x=> sudani, mtn)
         radio.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
                 case R.id.radio_zain:

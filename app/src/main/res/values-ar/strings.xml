@@ -226,5 +226,6 @@
     <string name="username_empty_prompt">اسم المستخدم لا يمكن أن يكون فارغ</string>
     <string name="password_empty_prompt">كلمة السر لا يمكن أن تكون فارغة</string>
     <string name="form_errors">الحقول المطلوبة مفقودة</string>
+    <string name="qr_more">QR Info</string>
 
 </resources>

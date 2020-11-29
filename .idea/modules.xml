@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/CashQ.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/CashQ.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StudioProjects-cashq.iml" filepath="$PROJECT_DIR$/.idea/modules/StudioProjects-cashq.iml" group="cashq" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cashq.iml" filepath="$PROJECT_DIR$/.idea/modules/cashq.iml" group="cashq" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/cashq-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/cashq-app.iml" group="cashq/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cashq.iml" filepath="$PROJECT_DIR$/.idea/modules/cashq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/cashq.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/cashq.app.iml" />
     </modules>
   </component>
 </project>

@@ -51,9 +51,13 @@ public class QRPayActivity extends AppCompatActivity {
     Button proceed;
     @BindView(R.id.qr_image)
     ImageButton qrImage;
+    @BindView(R.id.qr_more)
+    Button qr_more;
 
     String resultCode;
     CardDBManager db;
+
+    private String qrcode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,7 +181,7 @@ public class QRPayActivity extends AppCompatActivity {
         startActivityForResult(new Intent(QRPayActivity.this, ScanCodeActivity.class), 1);
     }
 
-    void parseQR(){
+    void showMoreQR(){
     // use this function to parse the QR (https://github.com/adonese/qr)
     }
 
@@ -189,12 +193,22 @@ public class QRPayActivity extends AppCompatActivity {
             // Make sure the request was successful
             if (resultCode == RESULT_OK) {
                 Log.i("intent", data.getStringExtra("data"));
+                // Parse QR here ...
+                qrcode = data.getStringExtra("data");
                 merchant.setText(data.getStringExtra("data"));
             }
         }
     }
 
-
+    @OnClick(R.id.qr_more)
+    public void onShowMore(){
+        Intent intent = new Intent(QRPayActivity.this, QRWebview.class);
+        intent.putExtra("qr", qrcode);
+        startActivity(intent);
+        // Really just show a webview here
+//        QRWebview;
+//        QRWebview("00020101021226410014A000000615000101065016640209123456789520499995303458540510.005802MY5909QRCSDNBHD6005BAHRI6105436506304BFCA");
+    }
 
     @OnClick(R.id.proceed)
     public void onProceedClicked() {

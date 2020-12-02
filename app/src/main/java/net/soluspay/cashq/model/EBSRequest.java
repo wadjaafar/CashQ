@@ -12,9 +12,9 @@ import java.util.UUID;
 
 public class EBSRequest implements Serializable {
 
-    private String uuid = generateUUID();
-    private String tranDateTime = getDate();
-    private String applicationId = "ACTSCon";
+    private final String uuid = generateUUID();
+    private final String tranDateTime = getDate();
+    private final String applicationId = "ACTSCon";
     private String pan, expDate, IPIN, newIPIN, otp, ipin, phoneNumber;
     private Float tranAmount;
     private String tranCurrencyCode;
@@ -23,6 +23,7 @@ public class EBSRequest implements Serializable {
     private String payeeId;
     private String paymentInfo;
     private String serviceProviderId;
+    private String merchantID;
 
 
     public void setServiceProviderId(String serviceProviderId) {
@@ -45,6 +46,10 @@ public class EBSRequest implements Serializable {
         this.IPIN = IPIN;
     }
 
+
+    public void setMerchantID(String id) {
+        this.merchantID = id;
+    }
 
 
     public void setNewIPIN(String newIPIN) {

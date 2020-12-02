@@ -18,8 +18,9 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.emv.qrcode.decoder.mpm.DecoderMpm;
+import com.emv.qrcode.model.mpm.MerchantPresentedMode;
 import com.gndi_sd.szzt.R;
-import com.google.common.base.Joiner;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -58,6 +59,7 @@ public class QRPayActivity extends AppCompatActivity {
     CardDBManager db;
 
     private String qrcode;
+    private String merchantId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,15 +93,13 @@ public class QRPayActivity extends AppCompatActivity {
         String encryptedIPIN = new IPINBlockGenerator().getIPINBlock(card.getIpin(), key, request.getUuid());
 
         HashMap<String, String> map = new HashMap<>();
-        map.put("METER", merchant.getText().toString());
 
-        String paymentInfo = Joiner.on("/").withKeyValueSeparator("=").join(map);
-
-        request.setPayeeId("0010020001");
-        request.setPaymentInfo(paymentInfo);
+        request.setPayeeId(merchantId);
+        request.setMerchantID(merchantId);
         request.setTranAmount(Float.parseFloat(amount.getText().toString()));
         request.setTranCurrencyCode("SDG");
         request.setPan(card.getPan());
+
         request.setExpDate(card.getExpDate());
         request.setIPIN(encryptedIPIN);
 
@@ -181,9 +181,6 @@ public class QRPayActivity extends AppCompatActivity {
         startActivityForResult(new Intent(QRPayActivity.this, ScanCodeActivity.class), 1);
     }
 
-    void showMoreQR(){
-    // use this function to parse the QR (https://github.com/adonese/qr)
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -195,7 +192,11 @@ public class QRPayActivity extends AppCompatActivity {
                 Log.i("intent", data.getStringExtra("data"));
                 // Parse QR here ...
                 qrcode = data.getStringExtra("data");
-                merchant.setText(data.getStringExtra("data"));
+//                merchant.setText(data.getStringExtra("data"));
+                final MerchantPresentedMode merchantPresentedMode = DecoderMpm.decode(qrcode, MerchantPresentedMode.class);
+                amount.setText(merchantPresentedMode.getTransactionAmount().getValue());
+                merchantId = getAccount(merchantPresentedMode.getMerchantAccountInformation().get("26").getValue().toString());
+                merchant.setText(merchantPresentedMode.getMerchantName().getValue() + " - " + merchantId);
             }
         }
     }
@@ -245,4 +246,41 @@ public class QRPayActivity extends AppCompatActivity {
             //manage error case here
         }
     }
+
+
+    private String getAccount(String payload) {
+        /*
+        2641
+        00 14 A0000006150001 acquirer id
+        01 06 501664 token
+        02 09 123456789 merchant id
+
+        00: something
+        01: another thing
+        02: merchant id
+         */
+        Log.i("payload debug-beginning", payload);
+//        QR qr = new Qr();
+
+        Log.i("payload debug", payload);
+        for (int i = 0; i < 2; i++) {
+            // get the idxPrefix third and 4th item
+            String idxPrefix;
+            payload = payload.substring(2);
+            Log.i("payload debug-no zeros", payload);
+            idxPrefix = payload.substring(0, 2);
+            Log.i("payload-idx", idxPrefix); // 14
+            int prefixLength = Integer.parseInt(idxPrefix);
+            String[] data = payload.split(payload.substring(0, prefixLength + 1));
+            Log.i("payload-zeroed" + i, data[0]);
+            payload = data[1];
+
+
+            Log.i("payload-aftermath" + i, payload); // A0000006150001
+        }
+        Log.i("payload-final", payload.substring(2));
+        return payload.substring(2);
+    }
 }
+
+

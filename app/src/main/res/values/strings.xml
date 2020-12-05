@@ -230,5 +230,6 @@
     <string name="password_empty_prompt">Password cannot be empty</string>
     <string name="form_errors">Required fields are missing</string>
     <string name="qr_more">QR Info</string>
+    <string name="quickpay">qPay</string>
 
 </resources>

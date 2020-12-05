@@ -24,8 +24,7 @@ public class ScanCodeActivity extends AppCompatActivity implements ZXingScannerV
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_GRANTED) {
             // Permission is already available, start camera preview
-            Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show();
-
+            Toast.makeText(this, "camera permission granted", Toast.LENGTH_SHORT).show();
 
         } else {
             // Permission is missing and must be requested.
@@ -37,13 +36,11 @@ public class ScanCodeActivity extends AppCompatActivity implements ZXingScannerV
 
     @Override
     public void handleResult(Result rawResult) {
-        Toast.makeText(this, "Contents = " + rawResult.getText() +", Format = " + rawResult.getBarcodeFormat().toString(), Toast.LENGTH_LONG).show();
-//        position=rawResult.getText();
-//        formt=rawResult.getBarcodeFormat().toString();
-        Intent intent=new Intent();
+//        Toast.makeText(this, "Contents = " + rawResult.getText() +", Format = " + rawResult.getBarcodeFormat().toString(), Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent();
         intent.putExtra("data", rawResult.getText());
-//        intent.putExtra("Format",formt);
-        setResult(RESULT_OK,intent);
+        setResult(RESULT_OK, intent);
         finish();
     }
 

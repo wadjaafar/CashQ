@@ -193,10 +193,16 @@ public class QRPayActivity extends AppCompatActivity {
                 // Parse QR here ...
                 qrcode = data.getStringExtra("data");
 //                merchant.setText(data.getStringExtra("data"));
-                final MerchantPresentedMode merchantPresentedMode = DecoderMpm.decode(qrcode, MerchantPresentedMode.class);
-                amount.setText(merchantPresentedMode.getTransactionAmount().getValue());
-                merchantId = getAccount(merchantPresentedMode.getMerchantAccountInformation().get("26").getValue().toString());
-                merchant.setText(merchantPresentedMode.getMerchantName().getValue() + " - " + merchantId);
+                try {
+
+                    final MerchantPresentedMode merchantPresentedMode = DecoderMpm.decode(qrcode, MerchantPresentedMode.class);
+                    amount.setText(merchantPresentedMode.getTransactionAmount().getValue());
+                    merchantId = getAccount(merchantPresentedMode.getMerchantAccountInformation().get("26").getValue().toString());
+                    merchant.setText(merchantPresentedMode.getMerchantName().getValue() + " - " + merchantId);
+
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "QR error", Toast.LENGTH_LONG).show();
+                }
             }
         }
     }

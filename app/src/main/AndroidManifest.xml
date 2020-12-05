@@ -17,7 +17,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="HardcodedDebugMode">
-        <activity android:name="net.soluspay.cashq.AboutActivity"/>
+        <service
+            android:name="net.soluspay.cashq.MyTileService"
+            android:icon="@drawable/image_qr"
+            android:label="@string/quickpay"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <activity android:name="net.soluspay.cashq.AboutActivity" />
         <activity android:name="net.soluspay.cashq.BillersActivity" />
         <activity android:name="net.soluspay.cashq.ServicePayment" />
         <activity android:name="net.soluspay.cashq.AddCardActivity" />

@@ -196,7 +196,9 @@ public class QRPayActivity extends AppCompatActivity {
                 try {
 
                     final MerchantPresentedMode merchantPresentedMode = DecoderMpm.decode(qrcode, MerchantPresentedMode.class);
-                    amount.setText(merchantPresentedMode.getTransactionAmount().getValue());
+                    if (merchantPresentedMode.getPointOfInitiationMethod().getValue().equals("12")) { //dynamic QR
+                        amount.setText(merchantPresentedMode.getTransactionAmount().getValue());
+                    }
                     merchantId = getAccount(merchantPresentedMode.getMerchantAccountInformation().get("26").getValue().toString());
                     merchant.setText(merchantPresentedMode.getMerchantName().getValue() + " - " + merchantId);
 

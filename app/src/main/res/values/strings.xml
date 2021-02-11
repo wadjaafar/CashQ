@@ -231,5 +231,7 @@
     <string name="form_errors">Required fields are missing</string>
     <string name="qr_more">QR Info</string>
     <string name="quickpay">qPay</string>
+    <string name="shortcut_qr">qPay QR</string>
+    <string name="shortcut_qr_details">Payment Via QR</string>
 
 </resources>

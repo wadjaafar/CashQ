@@ -95,6 +95,7 @@ public class E15InquiryFragment extends Fragment {
 
         String paymentInfo = Joiner.on("/").withKeyValueSeparator("=").join(map);
 
+
         request.setPayeeId("0010050001");
         request.setPaymentInfo(paymentInfo);
         request.setPan(card.getPan());

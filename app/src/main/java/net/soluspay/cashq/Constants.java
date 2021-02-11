@@ -6,7 +6,7 @@ public class Constants {
     public static final String GET_BALANCE = "balance";
     public static final String PURCHASE = "purchase";
     public static final String CARD_TRANSFER = "p2p";
-    public static final String ACCOUNT_TRANSFER = "";
+    public static final String ACCOUNT_TRANSFER = "account";
     public static final String CHANGE_IPIN = "ipin";
     public static final String SIGN_IN = "login";
     public static final String SIGN_UP = "register";

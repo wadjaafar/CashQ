@@ -81,9 +81,9 @@ public class IPinRequestFragment extends Fragment {
         Log.i("Public Key", card.getIpin());
 
 
-        request.setPan(card.getPan());
-        request.setExpDate(card.getExpDate());
-        request.setPhoneNumber(phone.getText().toString());
+        request.setPan("9222031700475436746");
+        request.setExpDate("2203");
+        request.setPhoneNumber("249925343834"); //FIXME
 
         Gson gson = new GsonBuilder().create();
         String json = gson.toJson(request);

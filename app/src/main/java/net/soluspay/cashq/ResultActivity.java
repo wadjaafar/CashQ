@@ -61,7 +61,6 @@ public class ResultActivity extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("result", Activity.MODE_PRIVATE);
         // how can we debug shared preferences...
 
-
         card = (Card) intent.getSerializableExtra("card");
         response.setText(Globals.serviceName);
         message.setText(ebsResponse.getResponseMessage());
@@ -86,6 +85,8 @@ public class ResultActivity extends AppCompatActivity {
                     addRow("To account", ebsResponse.getToAccount());
                     break;
                 case "electricity":
+                    addRow("1st Token", ebsResponse.getBillInfo().getOrDefault("extraToken1", ""));
+                    addRow("2nd Token", ebsResponse.getBillInfo().getOrDefault("extraToken2", ""));
                     addRow("Token", ebsResponse.getBillInfo().get("token"));
                     addRow("Units in Kwh", ebsResponse.getBillInfo().get("unitsInKWh"));
                     addRow("Amount", String.valueOf(ebsResponse.getTranAmount()));
@@ -339,7 +340,7 @@ public class ResultActivity extends AppCompatActivity {
         TextView textKey = new TextView(this);
         textKey.setText(key);
         textKey.setGravity(Gravity.LEFT);
-        textKey.setPadding(10, 10, 10, 10);
+        textKey.setPadding(10, 40, 10, 10);
         textKey.setTextSize(16.0f);
         textKey.setTypeface(Typeface.DEFAULT_BOLD);
         TextView textValue = new TextView(this);

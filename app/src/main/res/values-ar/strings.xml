@@ -228,5 +228,7 @@
     <string name="form_errors">الحقول المطلوبة مفقودة</string>
     <string name="qr_more">QR Info</string>
     <string name="quickpay">qPay</string>
+    <string name="shortcut_qr">qPay QR</string>
+    <string name="shortcut_qr_details">الدفع عن طريق ال QR</string>
 
 </resources>

@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.gndi_sd.szzt.R;
 import com.google.android.material.tabs.TabLayout;
 
+import net.soluspay.cashq.fragment.AccountTransferFragment;
 import net.soluspay.cashq.fragment.CardTransferFragment;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class FundsTransferActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         FundsTransferActivity.ViewPagerAdapter adapter = new FundsTransferActivity.ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new CardTransferFragment(), getString(R.string.card_transfer_title));
-        //adapter.addFragment(new AccountTransferFragment(), "Account Transfer");
+        adapter.addFragment(new AccountTransferFragment(), "Account Transfer");
         viewPager.setAdapter(adapter);
     }
 

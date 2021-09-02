@@ -136,8 +136,8 @@
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="autoMirrored" value="true" />
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_message_dots" />
-                            <entry key="sourceFile" value="D:\stuff\[FTUApps.com] - Font Awesome Pro v6 Alpha 2 (Win+Mac+Linux) Full Version\fontawesome6\pro\svgs\thin\message-dots.svg" />
+                            <entry key="outputName" value="ic_wallet" />
+                            <entry key="sourceFile" value="D:\stuff\[FTUApps.com] - Font Awesome Pro v6 Alpha 2 (Win+Mac+Linux) Full Version\fontawesome6\pro\svgs\thin\wallet.svg" />
                           </map>
                         </option>
                       </PersistentState>

@@ -158,10 +158,10 @@ public class GenerateCardFragment extends Fragment {
                             JSONObject obj = new JSONObject(error.getErrorBody());
                             result = gson.fromJson(obj.get("details").toString(), type);
                             Log.i("MY Error", result.getResponseMessage());
-                            Intent intent = new Intent(getActivity(), ResultActivity.class);
+                            Intent intent = new Intent(getActivity(), CardCompletionActivity.class);
                             intent.putExtra("uuid", request.getUuid());
                             intent.putExtra("phone", phone.getText().toString());
-                            intent.putExtra("card", card);
+
                             intent.putExtra("response", result);
                             startActivity(intent);
                             getActivity().finish();

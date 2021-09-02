@@ -83,8 +83,6 @@ public class MainActivity extends AppCompatActivity {
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
         }
-
-
         NavigationView navigationView = findViewById(R.id.mydrawer);
         username = navigationView.getHeaderView(0).findViewById(R.id.header_name);
         emailtext = navigationView.getHeaderView(0).findViewById(R.id.header_email);
@@ -105,8 +103,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
 
         });
-
-
         // ATTENTION: This was auto-generated to handle app links.
         Intent appLinkIntent = getIntent();
         String appLinkAction = appLinkIntent.getAction();
@@ -205,12 +201,9 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(MainActivity.this, AboutActivity.class);
                 startActivity(intent);
                 break;
-
             case R.id.logout:
                 // on-long press activity
-
                 // Should delete the local data as well...
-
                 SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();
                 editor.clear();
@@ -221,7 +214,6 @@ public class MainActivity extends AppCompatActivity {
                 CardDBManager dbmanager = new CardDBManager(this);
                 dbmanager.open();
                 dbmanager.deleteAll();
-
                 intent = new Intent(MainActivity.this, SignInActivity.class);
                 startActivity(intent);
                 finish();
@@ -267,8 +259,6 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     // either get "authorization" or "token"
                     String token = response.getString("authorization");
-
-
                     SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sp.edit();
                     editor.putString("token", token);
@@ -289,18 +279,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     private String getHeader() {
         SharedPreferences sp = getSharedPreferences("credentials", Activity.MODE_PRIVATE);
         return sp.getString("token", null);
     }
-
     @Override
     protected void onPause() {
         super.onPause();
 
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(toggle.onOptionsItemSelected(item))
@@ -308,6 +295,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }

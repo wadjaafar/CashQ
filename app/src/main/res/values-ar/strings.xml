@@ -236,5 +236,7 @@
     <string name="Vouchers">Voucher</string>
     <string name="add_a_new_card_to_cashq">Add a new card to CashQ</string>
     <string name="voucher_generation">Voucher Generation</string>
+    <string name="card_added_successfully">Card addedd successfully!</string>
+    <string name="Rety">Retry</string>
 
 </resources>

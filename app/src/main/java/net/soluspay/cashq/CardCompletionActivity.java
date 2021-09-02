@@ -1,6 +1,7 @@
 package net.soluspay.cashq;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -60,7 +61,7 @@ public class CardCompletionActivity extends AppCompatActivity {
     Button proceed;
     Unbinder unbinder;
 
-    CardDBManager db;
+    CardDBManager dbManager;
 
     private String payeeId, serviceName, receipt, uuid, phone;
 
@@ -73,6 +74,9 @@ public class CardCompletionActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         super.onCreate(savedInstanceState);
+
+        dbManager = new CardDBManager(this);
+        dbManager.open();
 
 
         setContentView(R.layout.fragment_card_completion);
@@ -132,6 +136,26 @@ public class CardCompletionActivity extends AppCompatActivity {
                                 result = gson.fromJson(response.get("ebs_response").toString(), type);
                                 Log.i("MY Response", response.toString());
 
+                                dbManager.insert(result.getPAN(), result.getExpDate(), "12");
+                                // redirect the user to their card!
+                                new AlertDialog.Builder(CardCompletionActivity.this)
+                                        .setTitle(R.string.card_added_successfully)
+                                        .setMessage(R.string.card_added_successfully)
+
+                                        // Specifying a listener allows you to take an action before dismissing the dialog.
+                                        // The dialog is automatically dismissed when a dialog button is clicked.
+                                        .setPositiveButton(R.string.Rety, (dialog, which) -> {
+                                            // Continue with delete operation
+                                            Intent intent = new Intent(CardCompletionActivity.this, CardActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        })
+
+                                        // A null listener allows the button to dismiss the dialog and take no further action.
+                                        // .setNegativeButton("Close", (dialog, which) -> android.os.Process.killProcess(android.os.Process.myPid()))
+                                        .setIcon(R.drawable.ic_wallet)
+                                        .show();
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -153,13 +177,25 @@ public class CardCompletionActivity extends AppCompatActivity {
                         try {
                             progressDialog.dismiss();
                             JSONObject obj = new JSONObject(error.getErrorBody());
-                            result = gson.fromJson(obj.get("details").toString(), type);
-                            Log.i("MY Error", result.getResponseMessage());
-                            Intent intent = new Intent(CardCompletionActivity.this, ResultActivity.class);
-                            intent.putExtra("response", result);
-                            intent.putExtra("card", card);
-                            startActivity(intent);
-                            finish();
+                            new AlertDialog.Builder(CardCompletionActivity.this)
+                                    .setTitle(R.string.card_added_successfully)
+                                    .setMessage(R.string.card_added_successfully)
+
+                                    // Specifying a listener allows you to take an action before dismissing the dialog.
+                                    // The dialog is automatically dismissed when a dialog button is clicked.
+                                    .setPositiveButton(R.string.Rety, (dialog, which) -> {
+                                        // Continue with delete operation
+                                        Intent intent = new Intent(CardCompletionActivity.this, CardActivity.class);
+
+                                        startActivity(intent);
+                                        finish();
+
+                                    })
+
+                                    // A null listener allows the button to dismiss the dialog and take no further action.
+//                    .setNegativeButton("Close", (dialog, which) -> android.os.Process.killProcess(android.os.Process.myPid()))
+                                    .setIcon(R.drawable.ic_wallet)
+                                    .show();
                         } catch (JSONException e) {
                             Toast.makeText(CardCompletionActivity.this, R.string.unexpected_error, Toast.LENGTH_LONG).show();
                             finish();

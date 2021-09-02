@@ -22,6 +22,7 @@ public class EBSResponse implements Serializable {
     private Integer systemTraceAuditNumber;
     private String clientId;
     private String PAN;
+    private String expDate;
     private Float tranAmount;
     private String EBSServiceName;
     private String workingKey;
@@ -37,6 +38,7 @@ public class EBSResponse implements Serializable {
     private String tranCurrency;
     private String paymentInfo;
     private String fromAccount;
+    private String financialInstitutionId;
 
     private String message;
     private String code;
@@ -210,6 +212,10 @@ public class EBSResponse implements Serializable {
 
     public void setFromAccount(String fromAccount) {
         this.fromAccount = fromAccount;
+    }
+
+    public String getExpDate() {
+        return expDate;
     }
 }
 

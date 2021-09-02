@@ -50,8 +50,6 @@
         <activity android:name="net.soluspay.cashq.MOHEActivity" />
         <activity android:name="net.soluspay.cashq.EducationActivity" />
         <activity android:name="net.soluspay.cashq.PinChangeActivity" />
-        <activity android:name="net.soluspay.cashq.CashOutActivity" />
-        <activity android:name="net.soluspay.cashq.CashInActivity" />
         <activity android:name="net.soluspay.cashq.VoucherActivity" />
         <activity android:name="net.soluspay.cashq.FundsTransferActivity" />
         <activity android:name="net.soluspay.cashq.TelecomActivity" />

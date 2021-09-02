@@ -1,5 +1,7 @@
 package net.soluspay.cashq.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.apache.http.client.utils.URIBuilder;
 
 import java.io.Serializable;
@@ -12,10 +14,15 @@ import java.util.UUID;
 
 public class EBSRequest implements Serializable {
 
+    @SerializedName("UUID")
     private final String uuid = generateUUID();
     private final String tranDateTime = getDate();
     private final String applicationId = "ACTSCon";
-    private String pan, expDate, IPIN, newIPIN, originalTranUUID, otp, ipin, phoneNo,  entityId, voucherNumber;
+
+    @SerializedName("PAN")
+    private String pan;
+
+    private String expDate, IPIN, newIPIN, originalTranUUID, otp, ipin, phoneNo,  entityId, voucherNumber;
     private Float tranAmount;
     private String tranCurrencyCode;
     private String toCard;

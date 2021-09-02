@@ -23,6 +23,7 @@ import net.soluspay.cashq.FundsTransferActivity;
 import net.soluspay.cashq.IPinActivity;
 import net.soluspay.cashq.QRPayActivity;
 import net.soluspay.cashq.TelecomActivity;
+import net.soluspay.cashq.VoucherActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,6 +61,9 @@ public class MainFragment extends Fragment {
     @BindView(R.id.view_billers)
     ConstraintLayout viewBillers;
 
+    @BindView(R.id.view_voucher)
+    ConstraintLayout viewVouchers;
+
 
     public MainFragment() {
         // Required empty public constructor
@@ -95,7 +99,8 @@ public class MainFragment extends Fragment {
     }
 
 
-    @OnClick({R.id.view_qr_payment, R.id.view_balance, R.id.view_transfer, R.id.view_telecom, R.id.view_electricity, R.id.view_e15, R.id.request_ipin, R.id.view_billers})
+    @OnClick({R.id.view_qr_payment, R.id.view_balance, R.id.view_transfer, R.id.view_telecom, R.id.view_electricity, R.id.view_e15, R.id.request_ipin,
+            R.id.view_billers, R.id.view_voucher})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.view_balance:
@@ -122,6 +127,9 @@ public class MainFragment extends Fragment {
                 break;
             case R.id.view_billers:
                 startActivity(new Intent(getActivity(), BillersActivity.class));
+                break;
+            case R.id.view_voucher:
+                startActivity(new Intent(getActivity(), VoucherActivity.class));
                 break;
         }
     }

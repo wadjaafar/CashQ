@@ -3,6 +3,7 @@ package net.soluspay.cashq;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
@@ -30,6 +31,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.gndi_sd.szzt.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import net.soluspay.cashq.adapter.CardAdapter;
 import net.soluspay.cashq.model.Card;
@@ -70,6 +72,9 @@ public class CardDialog extends DialogFragment {
     ImageButton fullscreenDialogClose;
     @BindView(R.id.service_name)
     TextView serviceName;
+
+    @BindView(R.id.card_issuance_fab)
+    FloatingActionButton fab;
 
 
     private Callback callback;
@@ -155,6 +160,15 @@ public class CardDialog extends DialogFragment {
 
 
     }
+
+
+    @OnClick(R.id.card_issuance_fab)
+    public void onIssuanceClicked() {
+        startActivity(new Intent(getContext(), CardIssuanceActivity.class));
+
+    }
+
+
 
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);

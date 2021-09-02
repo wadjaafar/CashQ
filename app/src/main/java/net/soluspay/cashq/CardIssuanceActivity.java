@@ -13,13 +13,17 @@ import androidx.viewpager.widget.ViewPager;
 import com.gndi_sd.szzt.R;
 import com.google.android.material.tabs.TabLayout;
 
-import net.soluspay.cashq.fragment.AccountTransferFragment;
-import net.soluspay.cashq.fragment.CardTransferFragment;
+import net.soluspay.cashq.fragment.CardCompletionFragment;
+import net.soluspay.cashq.fragment.GenerateCardFragment;
+import net.soluspay.cashq.fragment.TelecomInquiryFragment;
+import net.soluspay.cashq.fragment.TelecomPaymentFragment;
+import net.soluspay.cashq.fragment.TelecomTopUpFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FundsTransferActivity extends AppCompatActivity {
+public class CardIssuanceActivity extends AppCompatActivity {
+
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
@@ -28,11 +32,9 @@ public class FundsTransferActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_funds_transfer);
+        setContentView(R.layout.activity_card_issuance);
+        setTitle(getString(R.string.card_issuance_activity));
         getSupportActionBar().setElevation(0);
-        setTitle(getString(R.string.funds_transfer));
-        //toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -41,12 +43,13 @@ public class FundsTransferActivity extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        FundsTransferActivity.ViewPagerAdapter adapter = new FundsTransferActivity.ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new CardTransferFragment(), getString(R.string.card_transfer_title));
-        adapter.addFragment(new AccountTransferFragment(), getString(R.string.account_transfer_title));
+        CardIssuanceActivity.ViewPagerAdapter adapter = new CardIssuanceActivity.ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new GenerateCardFragment(), getString(R.string.generate_card));
+        adapter.addFragment(new CardCompletionFragment(), getString(R.string.generate_card_completion));
         viewPager.setAdapter(adapter);
     }
 
@@ -85,4 +88,5 @@ public class FundsTransferActivity extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+
 }

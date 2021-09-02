@@ -14,6 +14,7 @@ import com.gndi_sd.szzt.R;
 import com.google.android.material.tabs.TabLayout;
 
 import net.soluspay.cashq.fragment.ComingSoonFragment;
+import net.soluspay.cashq.fragment.VoucherGenerateFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,7 @@ public class VoucherActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         VoucherActivity.ViewPagerAdapter adapter = new VoucherActivity.ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new ComingSoonFragment(), "Generate");
+        adapter.addFragment(new VoucherGenerateFragment(), "Generate");
         adapter.addFragment(new ComingSoonFragment(), "Cash Out");
         viewPager.setAdapter(adapter);
     }

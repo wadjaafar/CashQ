@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/white"
         android:foregroundGravity="left|bottom"
@@ -55,6 +55,6 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:visibility="gone"
-        android:text="Add Cards" />
+        android:text="@string/add_cards" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

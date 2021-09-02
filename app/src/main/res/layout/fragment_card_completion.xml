@@ -1,9 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="net.soluspay.cashq.VoucherActivity">
+    android:layout_height="match_parent">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -16,7 +14,7 @@
             android:layout_width="250dp"
             android:layout_height="100dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="8dp"
             android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
@@ -25,49 +23,52 @@
 
 
         <EditText
-            android:id="@+id/amount"
+            android:id="@+id/otp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edittext_background"
-            android:drawableLeft="@drawable/ic_monetization_on_black_24dp"
+            android:drawableStart="@drawable/ic_message_dots"
+
             android:drawablePadding="10dp"
             android:drawableTint="@color/darkGray"
             android:fontFamily="@font/latosemibold"
-            android:hint="@string/amount_prompt"
-            android:inputType="number"
+            android:hint="@string/otp"
+            android:maxLength="10"
+            android:inputType="numberPassword"
             android:padding="20dp"
             android:textColorHint="#606060"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@id/imageView2"
             app:layout_editor_absoluteY="300dp" />
 
         <EditText
-            android:id="@+id/phone"
+            android:id="@+id/pin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edittext_background"
-            android:drawableLeft="@drawable/ic_phone"
+            android:drawableStart="@drawable/ic_lock"
             android:drawablePadding="10dp"
-
+            android:drawableTint="@color/darkGray"
             android:fontFamily="@font/latosemibold"
-            android:hint="@string/phone_number"
-            android:inputType="number"
+            android:hint="@string/ipin"
+            android:maxLength="10"
+            android:inputType="numberPassword"
             android:padding="20dp"
             android:textColorHint="#606060"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/amount"
+            app:layout_constraintTop_toBottomOf="@id/otp"
             app:layout_editor_absoluteY="300dp" />
 
 

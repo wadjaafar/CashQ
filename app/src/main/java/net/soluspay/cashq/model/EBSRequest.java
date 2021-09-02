@@ -15,7 +15,7 @@ public class EBSRequest implements Serializable {
     private final String uuid = generateUUID();
     private final String tranDateTime = getDate();
     private final String applicationId = "ACTSCon";
-    private String pan, expDate, IPIN, newIPIN, otp, ipin, phoneNumber;
+    private String pan, expDate, IPIN, newIPIN, originalTranUUID, otp, ipin, phoneNo,  entityId, voucherNumber;
     private Float tranAmount;
     private String tranCurrencyCode;
     private String toCard;
@@ -24,6 +24,11 @@ public class EBSRequest implements Serializable {
     private String paymentInfo;
     private String serviceProviderId;
     private String merchantID;
+
+    private final String entityType = "Phone No";
+    private final String entityGroup = "1";
+    private final String registrationType = "01";
+
 
 
     public void setServiceProviderId(String serviceProviderId) {
@@ -88,8 +93,7 @@ public class EBSRequest implements Serializable {
 
     public String generateUUID(){
         UUID uuid = UUID.randomUUID();
-        String randomUUIDString = uuid.toString();
-        return randomUUIDString;
+        return uuid.toString();
     }
 
     public String serverUrl(boolean development) {
@@ -145,11 +149,36 @@ public class EBSRequest implements Serializable {
         this.ipin = ipin;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhoneNo() {
+        return phoneNo;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+
+    public String getEntityId() {
+        return entityId;
+    }
+
+    public void setEntityId(String entityId) {
+        this.entityId = entityId;
+    }
+
+    public void setVoucherNumber(String voucherNumber) {
+        this.voucherNumber = voucherNumber;
+    }
+
+    public String getVoucherNumber() {
+        return voucherNumber;
+    }
+
+    public String getOriginalTranUUID() {
+        return originalTranUUID;
+    }
+
+    public void setOriginalTranUUID(String originalTranUUID) {
+        this.originalTranUUID = originalTranUUID;
     }
 }

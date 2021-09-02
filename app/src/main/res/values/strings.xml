@@ -231,5 +231,14 @@
     <string name="form_errors">Required fields are missing</string>
     <string name="qr_more">QR Info</string>
     <string name="quickpay">qPay</string>
+    <string name="generate_card">Generate Card</string>
+    <string name="generate_card_completion">Step 2: Card verification</string>
+    <string name="card_issuance_activity">Issue a new card</string>
+    <string name="enter_otp_prompt">Enter the 4 digits SMS code you received from 2999</string>
+    <string name="unexpected_error">App error</string>
+    <string name="account_transfer_title">Account Transfer</string>
+    <string name="Vouchers">Voucher</string>
+    <string name="add_a_new_card_to_cashq">Add a new card to CashQ</string>
+    <string name="voucher_generation">Voucher Generation</string>
 
 </resources>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -8,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="0dp"
         app:cardBackgroundColor="#5e35b1"
         app:cardCornerRadius="0dp"
         app:cardElevation="4dp"
@@ -62,7 +63,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/latosemibold"
             android:gravity="center"
-            android:text="Service"
+            android:text="@string/service"
             android:textAllCaps="true"
             android:textColor="@color/darkGray"
             android:textSize="18sp"
@@ -103,13 +104,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+
         android:layout_marginEnd="24dp"
         android:background="@drawable/edittext_background"
-        android:drawableLeft="@drawable/ic_lock"
+        android:drawableStart="@drawable/ic_lock"
         android:drawablePadding="10dp"
         android:fontFamily="@font/latosemibold"
-        android:hint="iPIN"
+        android:hint="@string/ipin"
         android:inputType="numberPassword"
         android:maxLength="4"
         android:padding="20dp"
@@ -126,17 +127,32 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/button_background"
         android:fontFamily="@font/latosemibold"
-        android:text="Confirm"
+        android:text="@string/confirm"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pin"
         app:layout_editor_absoluteY="500dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/card_issuance_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:contentDescription="@string/add_a_new_card_to_cashq"
+        android:focusable="true"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/confirm"
+        app:layout_constraintEnd_toEndOf="@+id/pin"
+        app:layout_constraintTop_toBottomOf="@+id/pin"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -114,12 +114,12 @@
                         android:layout_marginTop="24dp"
                         android:adjustViewBounds="true"
                         android:scaleType="fitXY"
-                        android:tint="@color/colorPrimary"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_bill_icon" />
+                        app:srcCompat="@drawable/ic_bill_icon"
+                        app:tint="@color/colorPrimary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -159,12 +159,12 @@
                         android:layout_marginTop="24dp"
                         android:adjustViewBounds="true"
                         android:scaleType="fitXY"
-                        android:tint="@color/colorPrimary"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_card_transfer" />
+                        app:srcCompat="@drawable/ic_card_transfer"
+                        app:tint="@color/colorPrimary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -212,12 +212,12 @@
                         android:layout_marginTop="24dp"
                         android:adjustViewBounds="true"
                         android:scaleType="fitXY"
-                        android:tint="@color/colorPrimary"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_telecom_icon" />
+                        app:srcCompat="@drawable/ic_telecom_icon"
+                        app:tint="@color/colorPrimary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -256,59 +256,15 @@
                         android:layout_marginTop="24dp"
                         android:adjustViewBounds="true"
                         android:scaleType="fitXY"
-                        android:tint="@color/colorPrimary"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_electricity" />
+                        app:srcCompat="@drawable/ic_electricity"
+                        app:tint="@color/colorPrimary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-                <!--
-                    <android.support.constraint.ConstraintLayout
-                        android:id="@+id/view_qr_payment"
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:layout_margin="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/layout_bok"
-                        android:orientation="vertical"
-                        android:padding="3dp">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="8dp"
-                            android:fontFamily="@font/latosemibold"
-                            android:gravity="center"
-                            android:padding="2dp"
-                            android:text="QR Pay"
-                            android:textAllCaps="true"
-                            android:textSize="12dp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/image_qr_payment" />
-
-                        <ImageView
-                            android:id="@+id/image_qr_payment"
-                            android:layout_width="45dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="24dp"
-                            android:adjustViewBounds="true"
-                            android:scaleType="fitXY"
-                            android:tint="@color/colorPrimary"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/image_qr" />
-
-                    </android.support.constraint.ConstraintLayout>
-    -->
             </LinearLayout>
 
             <LinearLayout
@@ -355,12 +311,12 @@
                         android:layout_marginTop="24dp"
                         android:adjustViewBounds="true"
                         android:scaleType="fitXY"
-                        android:tint="@color/colorPrimary"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_e15" />
+                        app:srcCompat="@drawable/ic_e15"
+                        app:tint="@color/colorPrimary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -385,7 +341,7 @@
                         android:padding="2dp"
                         android:text="@string/support_sudan"
                         android:textAllCaps="true"
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -400,12 +356,12 @@
                         android:layout_marginTop="24dp"
                         android:adjustViewBounds="true"
                         android:scaleType="fitXY"
-                        android:tint="@color/colorPrimary"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_donate" />
+                        app:srcCompat="@drawable/ic_donate"
+                        app:tint="@color/colorPrimary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -436,12 +392,12 @@
                         android:layout_marginTop="24dp"
                         android:adjustViewBounds="true"
                         android:scaleType="fitXY"
-                        android:tint="@color/colorPrimary"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/image_qr" />
+                        app:srcCompat="@drawable/image_qr"
+                        app:tint="@color/colorPrimary" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -481,12 +437,12 @@
                         android:layout_marginTop="24dp"
                         android:adjustViewBounds="true"
                         android:scaleType="fitXY"
-                        android:tint="@color/colorPrimary"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_credit_card" />
+                        app:srcCompat="@drawable/ic_credit_card"
+                        app:tint="@color/colorPrimary" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -509,6 +465,51 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/view_voucher"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/layout_bok"
+                android:orientation="vertical"
+                android:padding="3dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/latosemibold"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="@string/Vouchers"
+                    android:textAllCaps="true"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/image_voucher" />
+
+                <ImageView
+                    android:id="@+id/image_voucher"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="24dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_voucher_icon"
+                    app:tint="@color/colorPrimary" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </LinearLayout>

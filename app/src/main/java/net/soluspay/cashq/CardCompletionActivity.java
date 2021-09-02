@@ -1,5 +1,4 @@
-package net.soluspay.cashq.fragment;
-
+package net.soluspay.cashq;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -14,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.androidnetworking.AndroidNetworking;
@@ -25,19 +25,17 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import net.soluspay.cashq.CardDialog;
-import net.soluspay.cashq.Constants;
-import net.soluspay.cashq.ResultActivity;
 import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
 import net.soluspay.cashq.model.EBSResponse;
+import net.soluspay.cashq.utils.CardDBManager;
 import net.soluspay.cashq.utils.Globals;
+import net.soluspay.cashq.utils.IPINBlockGenerator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
-import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,44 +44,62 @@ import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
+ * Use the {@link CardCompletionActivity#newInstance} factory method to
+ * create an instance of this fragment.
  */
-public class IPinRequestFragment extends Fragment {
+public class CardCompletionActivity extends AppCompatActivity {
 
 
-    @BindView(R.id.pan)
-    EditText pan;
+    @BindView(R.id.otp)
+    EditText otp;
 
-    @BindView(R.id.exp_date)
-    EditText exp_date;
-
-    @BindView(R.id.phone)
-    EditText phone;
+    @BindView(R.id.pin)
+    EditText pin;
 
     @BindView(R.id.proceed)
     Button proceed;
     Unbinder unbinder;
 
+    CardDBManager db;
 
-    private String  serviceName, receipt;
+    private String payeeId, serviceName, receipt, uuid, phone;
 
-    public IPinRequestFragment() {
+    public CardCompletionActivity() {
         // Required empty public constructor
     }
 
-    public void topUp(final Card card) {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        super.onCreate(savedInstanceState);
+
+
+        setContentView(R.layout.fragment_card_completion);
+        setTitle("Card issuance");
+        ButterKnife.bind(this);
+        Intent intent = getIntent();
+        String uuid = (String) intent.getSerializableExtra("uuid");
+        String phone = (String) intent.getSerializableExtra("phone");
+        Globals.service = "register_card";
+        serviceName = "Card Issuance";
+
+    }
+
+    public void cardIssuance(final Card card) {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(getActivity(), serviceName, getString(R.string.loading_wait), false, false);
+        progressDialog = ProgressDialog.show(this, serviceName, getString(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
-        SharedPreferences sp = Objects.requireNonNull(getActivity()).getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
         String key = sp.getString("public_key", "");
-        Log.i("Public Key", card.getIpin());
 
-
-        request.setPan(card.getPan());
-        request.setExpDate(card.getExpDate());
-        request.setPhoneNo(phone.getText().toString());
+        String encryptedIPIN =  new IPINBlockGenerator().getIPINBlock(otp.getText().toString(),key, request.getUuid());
+        String encryptedOTP =  new IPINBlockGenerator().getIPINBlock(pin.getText().toString(),key, request.getUuid());
+        request.setOtp(encryptedOTP); // encrypt here man...
+        request.setIPIN(encryptedIPIN);
+        request.setOriginalTranUUID(uuid);
 
         Gson gson = new GsonBuilder().create();
         String json = gson.toJson(request);
@@ -95,9 +111,7 @@ public class IPinRequestFragment extends Fragment {
             e.printStackTrace();
         }
 
-        Log.i("my request", object.toString());
-
-        AndroidNetworking.post(request.serverUrl() + Constants.START_IPIN)
+        AndroidNetworking.post(request.serverUrl() + Constants.CARD_ISSUANCE)
                 .addJSONObjectBody(object) // posting java object
                 .setTag("test")
                 .setPriority(Priority.MEDIUM)
@@ -117,11 +131,7 @@ public class IPinRequestFragment extends Fragment {
                                 progressDialog.dismiss();
                                 result = gson.fromJson(response.get("ebs_response").toString(), type);
                                 Log.i("MY Response", response.toString());
-                                Intent intent = new Intent(getActivity(), ResultActivity.class);
-                                intent.putExtra("response", result);
-                                intent.putExtra("card", card);
-                                startActivity(intent);
-                                getActivity().finish();
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -134,7 +144,7 @@ public class IPinRequestFragment extends Fragment {
                         // handle error
                         Log.i("Purchase Error", String.valueOf(error.getErrorBody()));
                         if (error.getErrorCode() == 504) {
-                            Toast.makeText(getActivity(), "Unable to connect to host", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CardCompletionActivity.this, "Unable to connect to host", Toast.LENGTH_SHORT).show();
                         }
                         Gson gson = new Gson();
                         Type type = new TypeToken<EBSResponse>() {
@@ -145,12 +155,15 @@ public class IPinRequestFragment extends Fragment {
                             JSONObject obj = new JSONObject(error.getErrorBody());
                             result = gson.fromJson(obj.get("details").toString(), type);
                             Log.i("MY Error", result.getResponseMessage());
-                            Intent intent = new Intent(getActivity(), ResultActivity.class);
+                            Intent intent = new Intent(CardCompletionActivity.this, ResultActivity.class);
                             intent.putExtra("response", result);
                             intent.putExtra("card", card);
                             startActivity(intent);
-                            getActivity().finish();
+                            finish();
                         } catch (JSONException e) {
+                            Toast.makeText(CardCompletionActivity.this, R.string.unexpected_error, Toast.LENGTH_LONG).show();
+                            finish();
+
                             e.printStackTrace();
                         }
                     }
@@ -158,58 +171,38 @@ public class IPinRequestFragment extends Fragment {
 
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_ipin, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        Globals.service = "telecom_topup";
-        serviceName = getString(R.string.ipin_generation_service);
-        receipt = "zainTopup";
-        return view;
-    }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
 
     @OnClick(R.id.proceed)
     public void onViewClicked() {
         boolean error = false;
 
-        if(pan.getText().toString().isEmpty())
-        {
+        if (otp.getText().toString().isEmpty()) {
             error = true;
-            pan.setError(getString(R.string.pan_prompt));
+            otp.setError(getString(R.string.enter_otp_prompt));
         }
-//        if(pan.getText().toString().length() != 16 || pan.getText().toString().length() != 19)
-//        {
-//            error = true;
-//            pan.setError(getString(R.string.pan_length_validation));
-//        }
-        if(exp_date.getText().toString().isEmpty())
-        {
-            error = true;
-            exp_date.setError(getString(R.string.empty_expdate_error));
-        }
-        if(!error)
-        {
-            Globals.serviceName = serviceName;
-            Globals.service = "telecomTopup";
-            Globals.service = receipt;
-            CardDialog dialog = CardDialog.newInstance();
-            dialog.setCallback(this::topUp);
-            Bundle args = new Bundle();
-            args.putString("service", serviceName);
 
-            dialog.setArguments(args);
-            dialog.show(getActivity().getSupportFragmentManager(), "tag");
+        if (!error) {
+            Globals.service = receipt;
+            Globals.serviceName = serviceName;
+            cardIssuance(null);
+//            CardDialog dialog = CardDialog.newInstance();
+//            dialog.setCallback(new CardDialog.Callback() {
+//                @Override
+//                public void onActionClick(Card card) {
+//                    cardIssuance(card);
+//                    db.open();
+//                    db.updateCount(card.getPan());
+//                }
+//
+//            });
+//            Bundle args = new Bundle();
+//            args.putString("service", serviceName);
+//            args.putString("amount", "0 SDG");
+//            dialog.setArguments(args);
+//            dialog.show(getActivity().getSupportFragmentManager(), "tag");
         } else {
             //manage error case here
         }
-
     }
 }

@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
 
     <application
@@ -17,12 +18,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="HardcodedDebugMode">
+        <activity
+            android:name="net.soluspay.cashq.CardIssuanceActivity"
+            android:exported="true" />
+
         <service
             android:name="net.soluspay.cashq.MyTileService"
             android:icon="@drawable/image_qr"
             android:label="@string/quickpay"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -52,6 +56,7 @@
         <activity android:name="net.soluspay.cashq.FundsTransferActivity" />
         <activity android:name="net.soluspay.cashq.TelecomActivity" />
         <activity android:name="net.soluspay.cashq.ElectricityActivity" />
+        <activity android:name="net.soluspay.cashq.CardCompletionActivity" />
         <activity
             android:name="net.soluspay.cashq.CustomsActivity"
             android:label="@string/customs_title" />
@@ -107,7 +112,7 @@
         <activity android:name="net.soluspay.cashq.ScanCodeActivity" />
         <activity android:name="net.soluspay.cashq.IPinActivity" />
         <activity android:name="net.soluspay.cashq.EditCardActivity" />
-        <activity android:name="net.soluspay.cashq.QRWebview"/>
+        <activity android:name="net.soluspay.cashq.QRWebview" />
     </application>
 
 </manifest>

@@ -194,7 +194,7 @@ public class CardCompletionActivity extends AppCompatActivity {
 
                                     // A null listener allows the button to dismiss the dialog and take no further action.
 //                    .setNegativeButton("Close", (dialog, which) -> android.os.Process.killProcess(android.os.Process.myPid()))
-                                    .setIcon(R.drawable.ic_wallet)
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
                                     .show();
                         } catch (JSONException e) {
                             Toast.makeText(CardCompletionActivity.this, R.string.unexpected_error, Toast.LENGTH_LONG).show();

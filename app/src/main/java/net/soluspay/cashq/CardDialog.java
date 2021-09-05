@@ -73,10 +73,6 @@ public class CardDialog extends DialogFragment {
     @BindView(R.id.service_name)
     TextView serviceName;
 
-    @BindView(R.id.card_issuance_fab)
-    FloatingActionButton fab;
-
-
     private Callback callback;
     private Card card, selectedCard;
     CardAdapter adapter;
@@ -160,14 +156,6 @@ public class CardDialog extends DialogFragment {
 
 
     }
-
-
-    @OnClick(R.id.card_issuance_fab)
-    public void onIssuanceClicked() {
-        startActivity(new Intent(getContext(), CardIssuanceActivity.class));
-
-    }
-
 
 
     private boolean isNetworkAvailable() {

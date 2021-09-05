@@ -32,7 +32,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edittext_background"
-            android:drawableStart="@drawable/ic_phone"
+            android:drawableStart="@drawable/ic_card"
             android:drawablePadding="10dp"
             android:drawableTint="@color/darkGray"
             android:fontFamily="@font/latosemibold"
@@ -72,6 +72,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pan"
             app:layout_editor_absoluteY="300dp" />
+
+<!--        <EditText-->
+<!--            android:id="@+id/ipin"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:background="@drawable/edittext_background"-->
+<!--            android:drawableStart="@drawable/ic_lock"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:drawableTint="@color/darkGray"-->
+<!--            android:fontFamily="@font/latosemibold"-->
+<!--            android:hint="@string/phone_number"-->
+<!--            android:inputType="phone"-->
+<!--            android:padding="20dp"-->
+<!--            android:maxLength="12"-->
+<!--            android:textColorHint="#606060"-->
+<!--            android:textSize="14sp"-->
+<!--            android:textAlignment="viewStart"-->
+<!--            android:textDirection="locale"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.5"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/exp_date"-->
+<!--            app:layout_editor_absoluteY="300dp" />-->
 
         <!--        phone-->
         <EditText

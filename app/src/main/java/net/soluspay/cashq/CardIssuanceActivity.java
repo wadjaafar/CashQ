@@ -49,7 +49,7 @@ public class CardIssuanceActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         CardIssuanceActivity.ViewPagerAdapter adapter = new CardIssuanceActivity.ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new GenerateCardFragment(), getString(R.string.generate_card));
-        adapter.addFragment(new CardCompletionFragment(), getString(R.string.generate_card_completion));
+//        adapter.addFragment(new CardCompletionFragment(), getString(R.string.generate_card_completion));
         viewPager.setAdapter(adapter);
     }
 

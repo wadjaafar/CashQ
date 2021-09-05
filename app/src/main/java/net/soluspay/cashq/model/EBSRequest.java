@@ -22,7 +22,7 @@ public class EBSRequest implements Serializable {
     @SerializedName("PAN")
     private String pan;
 
-    private String expDate, IPIN, newIPIN, originalTranUUID, otp, ipin, phoneNo,  entityId, voucherNumber;
+    private String expDate, IPIN, newIPIN, originalTranUUID, otp, ipin,  entityId, voucherNumber;
     private Float tranAmount;
     private String tranCurrencyCode;
     private String toCard;
@@ -31,6 +31,13 @@ public class EBSRequest implements Serializable {
     private String paymentInfo;
     private String serviceProviderId;
     private String merchantID;
+
+    private String phoneNo;
+
+    private String phoneNumber;
+
+    @SerializedName("pan")
+    private String otherPan;
 
     private final String entityType = "Phone No";
     private final String entityGroup = "1";
@@ -187,5 +194,21 @@ public class EBSRequest implements Serializable {
 
     public void setOriginalTranUUID(String originalTranUUID) {
         this.originalTranUUID = originalTranUUID;
+    }
+
+    public String getOtherPan() {
+        return otherPan;
+    }
+
+    public void setOtherPan(String otherPan) {
+        this.otherPan = otherPan;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

@@ -7,11 +7,13 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -53,6 +55,7 @@ public class CardActivity extends AppCompatActivity {
     @BindView(R.id.empty_view)
     TextView emptyView;
 
+
     CardDBManager dbManager;
 
     @Override
@@ -62,13 +65,40 @@ public class CardActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("My Cards");
+        setTitle(getString(R.string.my_cards));
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         dbManager = new CardDBManager(this);
         dbManager.open();
         getCardsOffline();
+    }
 
+    public void showMenu(View v) {
+
+        PopupMenu popup = new PopupMenu(this, v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.popup_actions, popup.getMenu());
+        popup.show();
+
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.add_card:
+                        // should start an activity here
+                        Log.i("clicked", "clicked");
+                        startActivity(new Intent(CardActivity.this, AddCardActivity.class));
+                        return false;
+                    case R.id.generate_card:
+                        // should start the other activity
+                        Log.i("clicked", "clicked");
+                        startActivity(new Intent(CardActivity.this, CardIssuanceActivity.class));
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
     }
 
     public void getCards() {
@@ -175,16 +205,18 @@ public class CardActivity extends AppCompatActivity {
 //        getCards();
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         onBackPressed();
         return true;
     }
 
-    @OnClick(R.id.fab)
-    public void onViewClicked() {
-        startActivity(new Intent(CardActivity.this, AddCardActivity.class));
-    }
+//    @OnClick(R.id.fab)
+//    public void onViewClicked() {
+//        startActivity(new Intent(CardActivity.this, AddCardActivity.class));
+//    }
 
     @OnClick(R.id.sync)
     public void onSyncClicked() {

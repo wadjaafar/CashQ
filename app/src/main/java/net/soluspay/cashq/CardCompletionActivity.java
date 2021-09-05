@@ -74,11 +74,8 @@ public class CardCompletionActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         super.onCreate(savedInstanceState);
-
         dbManager = new CardDBManager(this);
         dbManager.open();
-
-
         setContentView(R.layout.fragment_card_completion);
         setTitle("Card issuance");
         ButterKnife.bind(this);
@@ -87,6 +84,7 @@ public class CardCompletionActivity extends AppCompatActivity {
         String phone = (String) intent.getSerializableExtra("phone");
         Globals.service = "register_card";
         serviceName = "Card Issuance";
+        receipt = "card_issuance";
 
     }
 

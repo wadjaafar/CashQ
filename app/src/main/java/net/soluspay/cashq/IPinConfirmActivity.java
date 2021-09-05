@@ -1,7 +1,8 @@
-package net.soluspay.cashq.fragment;
+package net.soluspay.cashq;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.androidnetworking.AndroidNetworking;
@@ -25,12 +27,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import net.soluspay.cashq.CardDialog;
-import net.soluspay.cashq.Constants;
-import net.soluspay.cashq.ResultActivity;
 import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
 import net.soluspay.cashq.model.EBSResponse;
+import net.soluspay.cashq.utils.CardDBManager;
 import net.soluspay.cashq.utils.Globals;
 import net.soluspay.cashq.utils.IPINBlockGenerator;
 
@@ -47,7 +47,7 @@ import butterknife.Unbinder;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class IPinConfirmFragment extends Fragment {
+public class IPinConfirmActivity extends AppCompatActivity {
 
 
 
@@ -60,9 +60,11 @@ public class IPinConfirmFragment extends Fragment {
     @BindView(R.id.otp)
     EditText otp;
 
-    @BindView(R.id.ipin2)
+    @BindView(R.id.ipin)
     EditText ipin;
 
+    @BindView(R.id.ipin2)
+    EditText ipin2;
 
     @BindView(R.id.proceed)
     Button proceed;
@@ -70,29 +72,26 @@ public class IPinConfirmFragment extends Fragment {
 
 
     private String payeeId, serviceName, receipt;
+    CardDBManager dbManager;
 
-    public IPinConfirmFragment() {
+    public IPinConfirmActivity() {
         // Required empty public constructor
     }
 
     public void topUp(final Card card) {
 
         final ProgressDialog progressDialog;
-        progressDialog = ProgressDialog.show(getActivity(), serviceName, getString(R.string.loading_wait), false, false);
+        progressDialog = ProgressDialog.show(this, serviceName, getString(R.string.loading_wait), false, false);
         EBSRequest request = new EBSRequest();
 
-        SharedPreferences sp = getActivity().getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
         String key = sp.getString("public_key", "");
-        Log.i("Public Key", card.getIpin());
 
-
-        request.setOtherPan(card.getPan());
-        request.setExpDate(card.getExpDate());
+        request.setOtherPan(pan.getText().toString());
+        request.setExpDate(exp_date.getText().toString());
 
         String encryptedIPIN =  new IPINBlockGenerator().getIPINBlock(ipin.getText().toString(),key, request.getUuid());
         String encryptedOTP =  new IPINBlockGenerator().getIPINBlock(otp.getText().toString(),key, request.getUuid());
-
-
         request.setIpin(encryptedIPIN);
         request.setOtp(encryptedOTP);
 
@@ -128,11 +127,25 @@ public class IPinConfirmFragment extends Fragment {
                                 progressDialog.dismiss();
                                 result = gson.fromJson(response.get("ebs_response").toString(), type);
                                 Log.i("MY Response", response.toString());
-                                Intent intent = new Intent(getActivity(), ResultActivity.class);
-                                intent.putExtra("response", result);
-                                intent.putExtra("card", card);
-                                startActivity(intent);
-                                getActivity().finish();
+
+
+                                new AlertDialog.Builder(IPinConfirmActivity.this)
+                                        .setTitle(R.string.ipin_changed_prompt)
+                                        .setMessage(R.string.ipin_changed_prompt)
+
+                                        // Specifying a listener allows you to take an action before dismissing the dialog.
+                                        // The dialog is automatically dismissed when a dialog button is clicked.
+                                        .setPositiveButton(R.string.back_home_prompt, (dialog, which) -> {
+                                            // Continue with delete operation
+                                            finish();
+                                        })
+
+                                        // A null listener allows the button to dismiss the dialog and take no further action.
+                                        // .setNegativeButton("Close", (dialog, which) -> android.os.Process.killProcess(android.os.Process.myPid()))
+                                        .setIcon(R.drawable.ic_padlock)
+                                        .show();
+
+                                finish();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -145,7 +158,7 @@ public class IPinConfirmFragment extends Fragment {
                         // handle error
                         Log.i("Purchase Error", String.valueOf(error.getErrorBody()));
                         if (error.getErrorCode() == 504) {
-                            Toast.makeText(getActivity(), "Unable to connect to host", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(IPinConfirmActivity.this, "Unable to connect to host", Toast.LENGTH_SHORT).show();
                         }
                         Gson gson = new Gson();
                         Type type = new TypeToken<EBSResponse>() {
@@ -156,37 +169,58 @@ public class IPinConfirmFragment extends Fragment {
                             JSONObject obj = new JSONObject(error.getErrorBody());
                             result = gson.fromJson(obj.get("details").toString(), type);
                             Log.i("MY Error", result.getResponseMessage());
-                            Intent intent = new Intent(getActivity(), ResultActivity.class);
-                            intent.putExtra("response", result);
-                            intent.putExtra("card", card);
-                            startActivity(intent);
-                            getActivity().finish();
+
+                            new AlertDialog.Builder(IPinConfirmActivity.this)
+                                    .setTitle(R.string.ipin_changed_error)
+                                    .setMessage(R.string.ipin_changed_error)
+
+                                    // Specifying a listener allows you to take an action before dismissing the dialog.
+                                    // The dialog is automatically dismissed when a dialog button is clicked.
+                                    .setPositiveButton(R.string.Rety, (dialog, which) -> {
+                                        // Continue with delete operation
+
+                                    }).setNegativeButton(R.string.back_home_prompt, (dialog, which) -> {
+                                Intent intent = new Intent(IPinConfirmActivity.this, MainActivity.class);
+
+                                startActivity(intent);
+                                finish();
+                            })
+
+                                    // A null listener allows the button to dismiss the dialog and take no further action.
+//                    .setNegativeButton("Close", (dialog, which) -> android.os.Process.killProcess(android.os.Process.myPid()))
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show();
+
+//                            Intent intent = new Intent(IPinConfirmActivity.this, ResultActivity.class);
+//                            intent.putExtra("response", result);
+//                            intent.putExtra("card", card);
+//                            startActivity(intent);
+//                            finish();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
                 });
-
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_ipin_verify, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        Globals.service = "telecom_topup";
-        serviceName = "Zain Top-up";
-        receipt = "zainTopup";
-        payeeId = "0010010001";
-        return view;
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        dbManager = new CardDBManager(this);
+        dbManager.open();
+        setContentView(R.layout.fragment_ipin_verify);
+        setTitle(getString(R.string.ipin_completion_title));
+        ButterKnife.bind(this);
+        Globals.service = "ipin_completion";
+        serviceName = "IPIN completion";
+        receipt = "ipin_completion";
+
+        // update pan and expdate values here...
+        Intent intent = getIntent();
+        pan.setText(( String) intent.getSerializableExtra("pan"));
+        exp_date.setText(( String) intent.getSerializableExtra("expdate"));
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
 
     @OnClick(R.id.proceed)
     public void onViewClicked() {
@@ -207,18 +241,16 @@ public class IPinConfirmFragment extends Fragment {
             error = true;
             exp_date.setError("Amount cannot be empty");
         }
+        if (!ipin2.getText().toString().equals(ipin.getText().toString())) {
+            error = true;
+            ipin2.setError(getString(R.string.ipin_mismatched_error));
+        }
         if(!error)
         {
             Globals.serviceName = serviceName;
-            Globals.service = "telecomTopup";
+            Globals.service = "ipin_completion";
             Globals.service = receipt;
-            CardDialog dialog = CardDialog.newInstance();
-            dialog.setCallback(this::topUp);
-            Bundle args = new Bundle();
-            args.putString("service", serviceName);
-
-            dialog.setArguments(args);
-            dialog.show(getActivity().getSupportFragmentManager(), "tag");
+            topUp(null);
         } else {
             //manage error case here
         }

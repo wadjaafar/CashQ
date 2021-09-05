@@ -1,14 +1,13 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -60,10 +59,10 @@
             android:background="@drawable/edittext_background"
             android:drawableStart="@drawable/ic_info"
             android:drawablePadding="10dp"
-
             android:fontFamily="@font/latosemibold"
             android:hint="@string/expiration_date"
-            android:inputType="numberDecimal"
+            android:inputType="number"
+            android:maxLength="4"
             android:padding="20dp"
             android:textColorHint="#606060"
             android:textSize="14sp"
@@ -73,36 +72,8 @@
             app:layout_constraintTop_toBottomOf="@+id/pan"
             app:layout_editor_absoluteY="300dp" />
 
-<!--        phone-->
-        <EditText
-            android:id="@+id/phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/edittext_background"
-            android:drawableStart="@drawable/ic_phone"
-            android:drawablePadding="10dp"
-            android:drawableTint="@color/darkGray"
-            android:fontFamily="@font/latosemibold"
-            android:hint="@string/phone_number"
-            android:inputType="phone"
-            android:padding="20dp"
-            android:maxLength="10"
-            android:textColorHint="#606060"
-            android:textSize="14sp"
-            android:textAlignment="viewStart"
-            android:textDirection="locale"
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/exp_date"
-            app:layout_editor_absoluteY="300dp"
-
-            />
-<!--otp-->
+        <!--otp-->
         <EditText
             android:id="@+id/otp"
             android:layout_width="match_parent"
@@ -116,18 +87,18 @@
             android:drawableTint="@color/darkGray"
             android:fontFamily="@font/latosemibold"
             android:hint="@string/otp"
-            android:inputType="number"
+            android:inputType="numberPassword"
             android:padding="20dp"
-            android:maxLength="10"
+            android:maxLength="4"
             android:textColorHint="#606060"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phone"
+            app:layout_constraintTop_toBottomOf="@+id/exp_date"
             app:layout_editor_absoluteY="300dp" />
 
-<!--        ipin-->
+            <!--        ipin-->
         <EditText
             android:id="@+id/ipin"
             android:layout_width="match_parent"
@@ -141,9 +112,9 @@
             android:drawableTint="@color/darkGray"
             android:fontFamily="@font/latosemibold"
             android:hint="@string/ipin"
-            android:inputType="number"
+            android:inputType="numberPassword"
             android:padding="20dp"
-            android:maxLength="10"
+            android:maxLength="4"
             android:textColorHint="#606060"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -152,25 +123,49 @@
             app:layout_constraintTop_toBottomOf="@+id/otp"
             app:layout_editor_absoluteY="300dp" />
 
-
-
+        <EditText
+            android:id="@+id/ipin2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/edittext_background"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/darkGray"
+            android:fontFamily="@font/latosemibold"
+            android:hint="@string/confirm_ipin"
+            android:inputType="numberPassword"
+            android:padding="20dp"
+            android:maxLength="4"
+            android:textColorHint="#606060"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ipin"
+            app:layout_editor_absoluteY="300dp" />
 
         <Button
             android:id="@+id/proceed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="24dp"
             android:background="@drawable/button_background"
-            android:text="@string/proceed"
+            android:text="@string/sign_up"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ipin2"
+            app:layout_editor_absoluteY="400dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+</ScrollView>

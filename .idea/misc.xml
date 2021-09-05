@@ -7,11 +7,18 @@
         <entry key="..\:/Users/user/StudioProjects/CashQ/app/src/main/res/drawable/ic_message_dots.xml" value="0.2125" />
         <entry key="..\:/Users/user/StudioProjects/CashQ/app/src/main/res/layout/activity_card.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/user/StudioProjects/CashQ/app/src/main/res/layout/activity_card_issuance.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/user/StudioProjects/CashQ/app/src/main/res/layout/activity_education.xml" value="0.19947916666666668" />
+        <entry key="..\:/Users/user/StudioProjects/CashQ/app/src/main/res/layout/activity_sign_up.xml" value="0.19947916666666668" />
         <entry key="..\:/Users/user/StudioProjects/CashQ/app/src/main/res/layout/activity_telecom.xml" value="0.1" />
         <entry key="..\:/Users/user/StudioProjects/CashQ/app/src/main/res/layout/dialog_card.xml" value="0.5" />
         <entry key="..\:/Users/user/StudioProjects/CashQ/app/src/main/res/layout/fragment_card_completion.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/user/StudioProjects/CashQ/app/src/main/res/layout/fragment_generate_card.xml" value="0.1" />
+        <entry key="..\:/Users/user/StudioProjects/CashQ/app/src/main/res/layout/fragment_ipin.xml" value="0.23958333333333334" />
+        <entry key="..\:/Users/user/StudioProjects/CashQ/app/src/main/res/layout/fragment_ipin_verify.xml" value="0.2848731884057971" />
+        <entry key="..\:/Users/user/StudioProjects/CashQ/app/src/main/res/layout/fragment_mohe_arab_inquiry.xml" value="0.19947916666666668" />
+        <entry key="..\:/Users/user/StudioProjects/CashQ/app/src/main/res/layout/fragment_mohe_arab_payment.xml" value="0.36302083333333335" />
         <entry key="..\:/Users/user/StudioProjects/CashQ/app/src/main/res/layout/fragment_telecom_inquiry.xml" value="0.1" />
+        <entry key="..\:/Users/user/StudioProjects/CashQ/app/src/main/res/menu/popup_actions.xml" value="0.21510416666666668" />
       </map>
     </option>
   </component>

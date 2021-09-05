@@ -55,6 +55,7 @@
         <activity android:name="net.soluspay.cashq.TelecomActivity" />
         <activity android:name="net.soluspay.cashq.ElectricityActivity" />
         <activity android:name="net.soluspay.cashq.CardCompletionActivity" />
+        <activity android:name="net.soluspay.cashq.IPinConfirmActivity" />
         <activity
             android:name="net.soluspay.cashq.CustomsActivity"
             android:label="@string/customs_title" />

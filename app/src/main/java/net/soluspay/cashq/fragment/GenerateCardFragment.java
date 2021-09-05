@@ -158,22 +158,19 @@ public class GenerateCardFragment extends Fragment {
                             JSONObject obj = new JSONObject(error.getErrorBody());
                             result = gson.fromJson(obj.get("details").toString(), type);
                             Log.i("MY Error", result.getResponseMessage());
-                            Intent intent = new Intent(getActivity(), CardCompletionActivity.class);
+                            Intent intent = new Intent(getActivity(), ResultActivity.class);
                             intent.putExtra("uuid", request.getUuid());
                             intent.putExtra("phone", phone.getText().toString());
-
                             intent.putExtra("response", result);
                             startActivity(intent);
                             getActivity().finish();
                         } catch (JSONException e) {
                             Toast.makeText(getContext(), R.string.unexpected_error, Toast.LENGTH_LONG).show();
                             getActivity().finish();
-
                             e.printStackTrace();
                         }
                     }
                 });
-
     }
 
     @Override

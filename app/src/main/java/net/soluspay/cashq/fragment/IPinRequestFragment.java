@@ -25,8 +25,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import net.soluspay.cashq.CardCompletionActivity;
 import net.soluspay.cashq.CardDialog;
 import net.soluspay.cashq.Constants;
+import net.soluspay.cashq.IPinConfirmActivity;
 import net.soluspay.cashq.ResultActivity;
 import net.soluspay.cashq.model.Card;
 import net.soluspay.cashq.model.EBSRequest;
@@ -56,6 +58,7 @@ public class IPinRequestFragment extends Fragment {
     @BindView(R.id.exp_date)
     EditText exp_date;
 
+
     @BindView(R.id.phone)
     EditText phone;
 
@@ -78,12 +81,12 @@ public class IPinRequestFragment extends Fragment {
 
         SharedPreferences sp = Objects.requireNonNull(getActivity()).getSharedPreferences("your_prefs", Activity.MODE_PRIVATE);
         String key = sp.getString("public_key", "");
-        Log.i("Public Key", card.getIpin());
 
 
-        request.setPan(card.getPan());
-        request.setExpDate(card.getExpDate());
-        request.setPhoneNo(phone.getText().toString());
+        request.setOtherPan(pan.getText().toString());
+        request.setExpDate(exp_date.getText().toString());
+        request.setPhoneNumber(phone.getText().toString());
+
 
         Gson gson = new GsonBuilder().create();
         String json = gson.toJson(request);
@@ -96,67 +99,71 @@ public class IPinRequestFragment extends Fragment {
         }
 
         Log.i("my request", object.toString());
-
         AndroidNetworking.post(request.serverUrl() + Constants.START_IPIN)
-                .addJSONObjectBody(object) // posting java object
-                .setTag("test")
-                .setPriority(Priority.MEDIUM)
-                .addHeaders("Authorization", "Basic dGVzdDp0ZXN0MTI=")
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        // do anything with response
-                        Log.i("Smoke Response", response.toString());
-                        if (response != null) {
+                    .addJSONObjectBody(object) // posting java object
+                    .setTag("test")
+                    .setPriority(Priority.MEDIUM)
+                    .addHeaders("Authorization", "Basic dGVzdDp0ZXN0MTI=")
+                    .build()
+                    .getAsJSONObject(new JSONObjectRequestListener() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            // do anything with response
+                            Log.i("Smoke Response", response.toString());
+                            if (response != null) {
+                                Gson gson = new Gson();
+                                Type type = new TypeToken<EBSResponse>() {
+                                }.getType();
+                                EBSResponse result = null;
+                                try {
+                                    progressDialog.dismiss();
+                                    result = gson.fromJson(response.get("ebs_response").toString(), type);
+                                    Log.i("MY Response", response.toString());
+                                    Intent intent = new Intent(getActivity(), CardCompletionActivity.class);
+                                    intent.putExtra("response", result);
+                                    intent.putExtra("uuid", request.getUuid());
+                                    intent.putExtra("phone", phone.getText().toString());
+                                    startActivity(intent);
+                                    getActivity().finish();
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                        }
+                        @Override
+                        public void onError(ANError error) {
+                            // handle error
+                            Log.i("Purchase Error", String.valueOf(error.getErrorBody()));
+                            Log.i("Purchase Error code", String.valueOf(error.getErrorCode()));
+                            if (error.getErrorCode() == 504) {
+                                Toast.makeText(getActivity(), "Unable to connect to host", Toast.LENGTH_SHORT).show();
+                            }
                             Gson gson = new Gson();
                             Type type = new TypeToken<EBSResponse>() {
                             }.getType();
                             EBSResponse result = null;
                             try {
                                 progressDialog.dismiss();
-                                result = gson.fromJson(response.get("ebs_response").toString(), type);
-                                Log.i("MY Response", response.toString());
-                                Intent intent = new Intent(getActivity(), ResultActivity.class);
-                                intent.putExtra("response", result);
-                                intent.putExtra("card", card);
+                                JSONObject obj = new JSONObject(error.getErrorBody());
+                                result = gson.fromJson(obj.get("details").toString(), type);
+                                Log.i("MY Error", result.getResponseMessage());
+                                Intent intent = new Intent(getActivity(), IPinConfirmActivity.class);
+                                intent.putExtra("uuid", request.getUuid());
+                                intent.putExtra("pan", pan.getText().toString());
+                                intent.putExtra("expdate", exp_date.getText().toString());
+
                                 startActivity(intent);
                                 getActivity().finish();
                             } catch (JSONException e) {
+                                Toast.makeText(getContext(), R.string.unexpected_error, Toast.LENGTH_LONG).show();
+                                getActivity().finish();
                                 e.printStackTrace();
                             }
                         }
+                    });
 
-                    }
-
-                    @Override
-                    public void onError(ANError error) {
-                        // handle error
-                        Log.i("Purchase Error", String.valueOf(error.getErrorBody()));
-                        if (error.getErrorCode() == 504) {
-                            Toast.makeText(getActivity(), "Unable to connect to host", Toast.LENGTH_SHORT).show();
-                        }
-                        Gson gson = new Gson();
-                        Type type = new TypeToken<EBSResponse>() {
-                        }.getType();
-                        EBSResponse result = null;
-                        try {
-                            progressDialog.dismiss();
-                            JSONObject obj = new JSONObject(error.getErrorBody());
-                            result = gson.fromJson(obj.get("details").toString(), type);
-                            Log.i("MY Error", result.getResponseMessage());
-                            Intent intent = new Intent(getActivity(), ResultActivity.class);
-                            intent.putExtra("response", result);
-                            intent.putExtra("card", card);
-                            startActivity(intent);
-                            getActivity().finish();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-
-    }
+        }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -164,9 +171,9 @@ public class IPinRequestFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ipin, container, false);
         unbinder = ButterKnife.bind(this, view);
-        Globals.service = "telecom_topup";
+        Globals.service = "ipin";
         serviceName = getString(R.string.ipin_generation_service);
-        receipt = "zainTopup";
+        receipt = "ipin";
         return view;
     }
 
@@ -198,17 +205,13 @@ public class IPinRequestFragment extends Fragment {
         if(!error)
         {
             Globals.serviceName = serviceName;
-            Globals.service = "telecomTopup";
+            Globals.service = "ipin";
             Globals.service = receipt;
-            CardDialog dialog = CardDialog.newInstance();
-            dialog.setCallback(this::topUp);
-            Bundle args = new Bundle();
-            args.putString("service", serviceName);
-
-            dialog.setArguments(args);
-            dialog.show(getActivity().getSupportFragmentManager(), "tag");
+            // call the static method here...
+            topUp(null);
         } else {
             //manage error case here
+
         }
 
     }

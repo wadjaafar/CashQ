@@ -46,7 +46,7 @@ public class IPinActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         IPinActivity.ViewPagerAdapter adapter = new IPinActivity.ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new IPinRequestFragment(), getString(R.string.generate_new_ipin));
-        adapter.addFragment(new IPinConfirmFragment(), getString(R.string.confirm));
+//        adapter.addFragment(new IPinConfirmFragment(), getString(R.string.confirm));
         viewPager.setAdapter(adapter);
     }
 

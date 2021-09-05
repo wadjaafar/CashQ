@@ -242,5 +242,15 @@
     <string name="voucher_generation">Voucher Generation</string>
     <string name="card_added_successfully">Card addedd successfully!</string>
     <string name="Rety">Retry</string>
+    <string name="ipin_success_message">IPIN generated successfully!</string>
+    <string name="back_home_prompt">Back home</string>
+    <string name="ipin_completion_title">IPIN completion</string>
+    <string name="confirm_ipin">Confirm IPIN</string>
+    <string name="ipin_mismatched_error">IPINs must be the same.</string>
+    <string name="ipin_changed_prompt">IPIN changed successfully!</string>
+    <string name="ipin_changed_error">IPIN generation transaction failed</string>
+    <string name="my_cards">My Cards</string>
+    <string name="generate_a_new_card">Generate a new Card!</string>
+    <string name="add_card_button">Add your existing cards.</string>
 
 </resources>

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#EF3C5A</color>
-    <color name="colorPrimaryDark">#D61D3C</color>
-    <color name="textColorPrimary">#FFFFFF</color>
-    <color name="colorAccent">#f44336</color>
-    <color name="windowBackground">#FFFFFF</color>
-    <color name="navigationBarColor">#000000</color>
-    <color name="darkGray">#6c6c6c</color>
-    <color name="white">#FFFFFF</color>
-    <color name="lightGray">#EDEDED</color>
+        <color name="colorPrimary">#D72A27</color>
+        <color name="checkoutBackground">#D72A27</color>
+        <color name="colorPrimaryDark">#b71c1c</color>
+        <color name="colorAccent">#FFBD0B</color>
+        <color name="darkGray">#6c6c6c</color>
+        <color name="backgroundColor">#6c6c6c</color>
+        <color name="white">#FFFFFF</color>
+        <color name="fieldsBlack">#000000</color>
     <color name="black">#000000</color>
+        <color name="textColorPrimary">#000000</color>
+
 </resources>

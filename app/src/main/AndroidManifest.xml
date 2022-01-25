@@ -10,7 +10,7 @@
     <uses-feature android:name="android.hardware.camera" />
 
     <application
-        android:name="net.soluspay.cashq.utils.MyApplication"
+        android:name="com.tutipay.app.utils.MyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher_logo"
         android:label="@string/app_name"
@@ -19,55 +19,57 @@
         android:theme="@style/AppTheme"
         tools:ignore="HardcodedDebugMode">
         <activity
-            android:name="net.soluspay.cashq.CardIssuanceActivity"
+            android:name="com.tutipay.app.CardIssuanceActivity"
             android:exported="true" />
 
         <service
-            android:name="net.soluspay.cashq.MyTileService"
+            android:name="com.tutipay.app.MyTileService"
             android:icon="@drawable/image_qr"
             android:label="@string/quickpay"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
 
-        <activity android:name="net.soluspay.cashq.AboutActivity" />
-        <activity android:name="net.soluspay.cashq.BillersActivity" />
-        <activity android:name="net.soluspay.cashq.ServicePayment" />
-        <activity android:name="net.soluspay.cashq.AddCardActivity" />
-        <activity android:name="net.soluspay.cashq.SignUpActivity" />
-        <activity android:name="net.soluspay.cashq.CardActivity" />
-        <activity android:name="net.soluspay.cashq.WorkingKeyActivity" />
+        <activity android:name="com.tutipay.app.AboutActivity" />
+        <activity android:name="com.tutipay.app.BillersActivity" />
+        <activity android:name="com.tutipay.app.ServicePayment" />
+        <activity android:name="com.tutipay.app.AddCardActivity" />
+        <activity android:name="com.tutipay.app.SignUpActivity" />
+        <activity android:name="com.tutipay.app.CardActivity" />
+        <activity android:name="com.tutipay.app.WorkingKeyActivity" />
         <activity
-            android:name="net.soluspay.cashq.SettingsActivity"
+            android:name="com.tutipay.app.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity
-            android:name="net.soluspay.cashq.ComingSoonActivity"
+            android:name="com.tutipay.app.ComingSoonActivity"
             android:label="Coming Soon" />
-        <activity android:name="net.soluspay.cashq.BalanceInquiryActivity" />
-        <activity android:name="net.soluspay.cashq.MOHEArabActivity" />
-        <activity android:name="net.soluspay.cashq.MOHEActivity" />
-        <activity android:name="net.soluspay.cashq.EducationActivity" />
-        <activity android:name="net.soluspay.cashq.PinChangeActivity" />
-        <activity android:name="net.soluspay.cashq.VoucherActivity" />
-        <activity android:name="net.soluspay.cashq.FundsTransferActivity" />
-        <activity android:name="net.soluspay.cashq.TelecomActivity" />
-        <activity android:name="net.soluspay.cashq.ElectricityActivity" />
-        <activity android:name="net.soluspay.cashq.CardCompletionActivity" />
-        <activity android:name="net.soluspay.cashq.IPinConfirmActivity" />
+        <activity android:name="com.tutipay.app.BalanceInquiryActivity" />
+        <activity android:name="com.tutipay.app.MOHEArabActivity" />
+        <activity android:name="com.tutipay.app.MOHEActivity" />
+        <activity android:name="com.tutipay.app.EducationActivity" />
+        <activity android:name="com.tutipay.app.PinChangeActivity" />
+        <activity android:name="com.tutipay.app.VoucherActivity" />
+        <activity android:name="com.tutipay.app.FundsTransferActivity" />
+        <activity android:name="com.tutipay.app.TelecomActivity" />
+        <activity android:name="com.tutipay.app.ElectricityActivity" />
+        <activity android:name="com.tutipay.app.CardCompletionActivity" />
+        <activity android:name="com.tutipay.app.IPinConfirmActivity" />
         <activity
-            android:name="net.soluspay.cashq.CustomsActivity"
+            android:name="com.tutipay.app.CustomsActivity"
             android:label="@string/customs_title" />
         <activity
-            android:name="net.soluspay.cashq.E15Activity"
+            android:name="com.tutipay.app.E15Activity"
             android:label="@string/e15_service" />
-        <activity android:name="net.soluspay.cashq.LockActivity" />
+        <activity android:name="com.tutipay.app.LockActivity" />
         <activity
-            android:name="net.soluspay.cashq.MerchantActivity"
+            android:name="com.tutipay.app.MerchantActivity"
             android:label="Merchant Services" />
-        <activity android:name="net.soluspay.cashq.BillPaymentActivity" />
-        <activity android:name="net.soluspay.cashq.MainActivity">
+        <activity android:name="com.tutipay.app.BillPaymentActivity" />
+        <activity android:name="com.tutipay.app.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -90,12 +92,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="net.soluspay.cashq.CheckoutActivity"
+            android:name="com.tutipay.app.CheckoutActivity"
             android:label="@string/confirm" />
-        <activity android:name="net.soluspay.cashq.ResultActivity" />
+        <activity android:name="com.tutipay.app.ResultActivity" />
         <activity
-            android:name="net.soluspay.cashq.SignInActivity"
-            android:noHistory="true">
+            android:name="com.tutipay.app.SignInActivity"
+            android:noHistory="true"
+            android:exported="true">
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
@@ -106,12 +109,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="net.soluspay.cashq.PurchaseActivity" />
-        <activity android:name="net.soluspay.cashq.QRPayActivity" />
-        <activity android:name="net.soluspay.cashq.ScanCodeActivity" />
-        <activity android:name="net.soluspay.cashq.IPinActivity" />
-        <activity android:name="net.soluspay.cashq.EditCardActivity" />
-        <activity android:name="net.soluspay.cashq.QRWebview" />
+        <activity android:name="com.tutipay.app.PurchaseActivity" />
+        <activity android:name="com.tutipay.app.QRPayActivity" />
+        <activity android:name="com.tutipay.app.ScanCodeActivity" />
+        <activity android:name="com.tutipay.app.IPinActivity" />
+        <activity android:name="com.tutipay.app.EditCardActivity" />
+        <activity android:name="com.tutipay.app.QRWebview" />
     </application>
 
 </manifest>

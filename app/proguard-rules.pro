@@ -32,6 +32,6 @@
 
 # Application classes that will be serialized/deserialized over Gson
 -keep class com.google.gson.examples.android.model.** { *; }
--keep class net.soluspay.cashq.model.EBSRequest { <fields>; }
--keep class net.soluspay.cashq.model.EBSResponse { <fields>; }
+-keep class android:name="com.tutipay.app.soluspay.cashq.model.EBSRequest { <fields>; }
+-keep class com.tutipay.app.model.EBSResponse { <fields>; }
 ##---------------End: proguard configuration for Gson  ----------

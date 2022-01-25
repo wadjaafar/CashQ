@@ -8,8 +8,8 @@
         android:shortcutDisabledMessage="@string/shortcut_balance_title">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="net.soluspay.cashq"
-            android:targetClass="net.soluspay.cashq.BalanceInquiryActivity" />
+            android:targetPackage="com.tutipay.app"
+            android:targetClass="com.tutipay.app.BalanceInquiryActivity" />
         <!-- If your shortcut is associated with multiple intents, include them
              here. The last intent in the list determines what the user sees when
              they launch this shortcut. -->

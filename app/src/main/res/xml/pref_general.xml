@@ -2,18 +2,18 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="Admin Settings">
 
-        <net.soluspay.cashq.utils.EditTextPreference
+        <com.tutipay.app.utils.EditTextPreference
             android:title="Terminal ID"
             android:key="@string/key_terminal"
             android:inputType="number"
             android:maxLength="8"/>
 
 
-        <net.soluspay.cashq.utils.EditTextPreference
+        <com.tutipay.app.utils.EditTextPreference
             android:title="Client ID"
             android:key="@string/key_client"/>
 
-        <net.soluspay.cashq.utils.EditTextPreference
+        <com.tutipay.app.utils.EditTextPreference
             android:title="Master Key"
         android:key="@string/key_master_key"
         android:maxLength="16"/>
@@ -23,11 +23,11 @@
 
     <PreferenceCategory android:title="Network Settings">
 
-        <net.soluspay.cashq.utils.EditTextPreference
+        <com.tutipay.app.utils.EditTextPreference
             android:key="@string/key_host"
             android:title="Host"/>
 
-        <net.soluspay.cashq.utils.EditTextPreference
+        <com.tutipay.app.utils.EditTextPreference
             android:title="Port"
             android:key="@string/key_port"
             android:maxLength="5"

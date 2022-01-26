@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <color name="colorPrimary">#D72A27</color>
-        <color name="checkoutBackground">#D72A27</color>
+        <color name="colorPrimary">#FB5607</color>
+        <color name="checkoutBackground">#FB5607</color>
         <color name="colorPrimaryDark">#b71c1c</color>
         <color name="colorAccent">#FFBD0B</color>
         <color name="darkGray">#6c6c6c</color>

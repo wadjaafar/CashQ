@@ -9,9 +9,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.gndi_sd.szzt.R;
 
 public class AboutActivity extends AppCompatActivity {
@@ -23,11 +21,6 @@ public class AboutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        WebView myWebView = new WebView(getApplicationContext());
-//        setContentView(myWebView);
-//        myWebView.loadUrl("https://soluspay.net/privacy");
-
         setContentView(R.layout.activity_about);
         setTitle("About & Privacy");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -35,9 +28,7 @@ public class AboutActivity extends AppCompatActivity {
         WebSettings settings = webview.getSettings();
         settings.setJavaScriptEnabled(true);
         webview.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-
         progressBar = ProgressDialog.show(AboutActivity.this, getString(R.string.loading), getString(R.string.loading_wait));
 //        progressBar.show();
         webview.setWebViewClient(new WebViewClient() {

@@ -12,9 +12,9 @@
     <application
         android:name="com.tutipay.app.utils.MyApplication"
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher_logo"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_logo_round"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="HardcodedDebugMode">
@@ -87,7 +87,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="cashq.app"
+                    android:host="app.2t.sd"
                     android:scheme="https" />
             </intent-filter>
         </activity>

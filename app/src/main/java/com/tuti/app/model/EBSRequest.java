@@ -43,8 +43,6 @@ public class EBSRequest implements Serializable {
     private final String entityGroup = "1";
     private final String registrationType = "01";
 
-
-
     public void setServiceProviderId(String serviceProviderId) {
         this.serviceProviderId = serviceProviderId;
     }
@@ -65,11 +63,9 @@ public class EBSRequest implements Serializable {
         this.IPIN = IPIN;
     }
 
-
     public void setMerchantID(String id) {
         this.merchantID = id;
     }
-
 
     public void setNewIPIN(String newIPIN) {
         this.newIPIN = newIPIN;
@@ -114,15 +110,15 @@ public class EBSRequest implements Serializable {
         String host;
 
         if (development) {
-            host = "beta.soluspay.net/consumer/";
+            host = "beta.tutipay.com/consumer/";
         } else {
-            host = "beta.soluspay.net/api/consumer/";
+            host = "beta.tutipay.com/api/consumer/";
         }
 
         URIBuilder builder = new URIBuilder();
         try {
             // how to handle https ones?
-            // url is: https://beta.soluspay.net/api/
+            // url is: https://beta.tutipay.com/api/
             builder.setScheme("https")
                     .setHost(host)
                     .build();
@@ -133,11 +129,11 @@ public class EBSRequest implements Serializable {
     }
 
     public String serverUrl() {
-        String host = "beta.soluspay.net/api/consumer/";
+        String host = "beta.tutipay.com/api/consumer/";
         URIBuilder builder = new URIBuilder();
         try {
             // how to handle https ones?
-            // url is: https://beta.soluspay.net/api/
+            // url is: https://tutipay.com/api/
             builder.setScheme("https")
                     .setHost(host)
                     .build();
@@ -170,7 +166,6 @@ public class EBSRequest implements Serializable {
     public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
     }
-
 
     public String getEntityId() {
         return entityId;

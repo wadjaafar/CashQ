@@ -248,5 +248,6 @@
     <string name="my_cards">My Cards</string>
     <string name="generate_a_new_card">Generate a new Card!</string>
     <string name="add_card_button">Add your existing cards.</string>
+    <string name="generate_card_completion">الخطوة 2: تأكيد رقم البطاقة</string>
 
 </resources>

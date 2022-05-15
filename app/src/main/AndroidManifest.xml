@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.gndi_sd.szzt">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -26,7 +25,8 @@
             android:name="net.soluspay.cashq.MyTileService"
             android:icon="@drawable/image_qr"
             android:label="@string/quickpay"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -67,7 +67,8 @@
             android:name="net.soluspay.cashq.MerchantActivity"
             android:label="Merchant Services" />
         <activity android:name="net.soluspay.cashq.BillPaymentActivity" />
-        <activity android:name="net.soluspay.cashq.MainActivity">
+        <activity android:name="net.soluspay.cashq.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -95,7 +96,8 @@
         <activity android:name="net.soluspay.cashq.ResultActivity" />
         <activity
             android:name="net.soluspay.cashq.SignInActivity"
-            android:noHistory="true">
+            android:noHistory="true"
+            android:exported="true">
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />

@@ -114,9 +114,9 @@ public class EBSRequest implements Serializable {
         String host;
 
         if (development) {
-            host = "beta.soluspay.net/consumer/";
+            host = "beta.soluspay.sd/consumer/";
         } else {
-            host = "beta.soluspay.net/api/consumer/";
+            host = "beta.soluspay.sd/api/consumer/";
         }
 
         URIBuilder builder = new URIBuilder();
@@ -133,7 +133,7 @@ public class EBSRequest implements Serializable {
     }
 
     public String serverUrl() {
-        String host = "beta.soluspay.net/api/consumer/";
+        String host = "beta.soluspay.sd/api/consumer/";
         URIBuilder builder = new URIBuilder();
         try {
             // how to handle https ones?
